@@ -1,0 +1,5 @@
+spec=002-webhook
+step=08-test-auditor
+role=test-auditor
+allowed=<none>
+outcome=PASS

@@ -1,4 +1,5 @@
 using AgenticPayments.Application.Payments;
+using AgenticPayments.Application.Webhooks;
 using AgenticPayments.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@ public static class InfrastructureServiceCollectionExtensions
     {
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("Postgres")));
         services.AddScoped<IPaymentRepository, PaymentRepository>();
+        services.AddScoped<IWebhookEventRepository, WebhookEventRepository>();
         return services;
     }
 }

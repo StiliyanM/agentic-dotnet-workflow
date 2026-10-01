@@ -1,4 +1,5 @@
 using AgenticPayments.Application.Payments;
+using AgenticPayments.Application.Webhooks;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ public static class ApplicationServiceCollectionExtensions
     {
         services.AddValidatorsFromAssembly(typeof(ApplicationServiceCollectionExtensions).Assembly);
         services.AddScoped<CreatePaymentUseCase>();
+        services.AddScoped<ProcessProviderWebhookUseCase>();
         return services;
     }
 }

@@ -1,0 +1,8 @@
+spec=002-webhook
+step=14-documenter
+role=documenter
+allowed=README.md docs/user/*
+changed: README.md
+changed: docs/user/payments-api.md
+changed: docs/user/provider-webhook.md
+outcome=PASS

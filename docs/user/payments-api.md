@@ -1,6 +1,6 @@
 # Payments API reference
 
-This page describes the API as it is implemented now. Webhooks (specs 002 and 003) are planned and are not on this page.
+This page describes the API as it is implemented now. The provider webhook (`POST /webhooks/provider`, spec 002) is on its own page: [provider-webhook.md](provider-webhook.md). Spec 003 (events out of order) is planned and is not implemented.
 
 ## `POST /payments`
 
@@ -33,6 +33,8 @@ For `amount`, a JSON string that contains a number (`"10.50"`) is accepted. This
 | `status` | string | `Pending` |
 
 There is no `Location` header.
+
+A payment status is `Pending`, `Succeeded` or `Failed`. A new payment is always `Pending`. Only the provider webhook changes it to `Succeeded` or `Failed`. There is no endpoint that reads a payment.
 
 ### Error responses
 

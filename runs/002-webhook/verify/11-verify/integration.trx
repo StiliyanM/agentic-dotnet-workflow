@@ -1,0 +1,1580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="3e919276-633d-4b52-a969-1cb42e9601fe" name="Stiliyan@DESKTOP-NPVESJH 2026-10-01 23:46:03" runUser="DESKTOP-NPVESJH\Stiliyan" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-01T23:46:03.8005936+03:00" queuing="2026-10-01T23:46:03.8005939+03:00" start="2026-10-01T23:45:54.2086854+03:00" finish="2026-10-01T23:46:05.1389850+03:00" />
+  <TestSettings name="default" id="07ea0d95-6999-4b2c-9946-f00435f4668e">
+    <Deployment runDeploymentRoot="Stiliyan_DESKTOP-NPVESJH_2026-10-01_23_46_03" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c573408d-e55a-4db4-a651-114dcb95f9eb" testId="bb37238a-eaa0-dd84-a8b3-674296fc39fc" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;\&quot;JPY\&quot;&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0025764" startTime="2026-10-01T23:46:04.4707024+03:00" endTime="2026-10-01T23:46:04.4734612+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c573408d-e55a-4db4-a651-114dcb95f9eb" />
+    <UnitTestResult executionId="b89afff6-0c66-4475-b3ad-776c16f8e94e" testId="2171f9eb-55c9-9f76-1b5b-aa68aba455d9" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyBody_Returns400" computerName="DESKTOP-NPVESJH" duration="00:00:00.0044623" startTime="2026-10-01T23:46:04.5499253+03:00" endTime="2026-10-01T23:46:04.5543606+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b89afff6-0c66-4475-b3ad-776c16f8e94e" />
+    <UnitTestResult executionId="09c68ef1-4faf-4b90-abad-f9c47aa060bb" testId="9741e2d9-5494-0c90-aa18-62bce5c9ddec" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_AmountZero_Returns400WithAmountError" computerName="DESKTOP-NPVESJH" duration="00:00:00.0040869" startTime="2026-10-01T23:46:04.4894738+03:00" endTime="2026-10-01T23:46:04.4938049+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="09c68ef1-4faf-4b90-abad-f9c47aa060bb" />
+    <UnitTestResult executionId="dcbad3e1-c295-4b4a-9c98-5db2f1024edd" testId="b6a9146a-d252-e679-825a-756eba487247" testName="AgenticPayments.IntegrationTests.HealthTests.Health_WhenDatabaseIsReachable_ReturnsOk" computerName="DESKTOP-NPVESJH" duration="00:00:00.0214126" startTime="2026-10-01T23:46:04.3046435+03:00" endTime="2026-10-01T23:46:04.3260034+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dcbad3e1-c295-4b4a-9c98-5db2f1024edd" />
+    <UnitTestResult executionId="908d5598-cafa-4803-8865-f7f59dc59762" testId="cbabd749-55af-0d55-062d-5d9499f7ede8" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;Gbp&quot;, expectedColumnValue: &quot;GBP&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0088106" startTime="2026-10-01T23:46:04.4374351+03:00" endTime="2026-10-01T23:46:04.4500744+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="908d5598-cafa-4803-8865-f7f59dc59762" />
+    <UnitTestResult executionId="b824bbb6-81ca-4d29-925a-62aa11ba8ea6" testId="54922560-6a4f-bdb7-f72b-2fcd43458818" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0018747" startTime="2026-10-01T23:46:04.4759818+03:00" endTime="2026-10-01T23:46:04.4780711+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b824bbb6-81ca-4d29-925a-62aa11ba8ea6" />
+    <UnitTestResult executionId="d8fbfd86-3660-4857-80b9-69968cacfbd9" testId="ed12f460-a3d9-507e-fabd-67b4c57df11b" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidStatus_Returns400WithStatusError(statusJson: &quot;\&quot;refunded\&quot;&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0110535" startTime="2026-10-01T23:46:03.8490842+03:00" endTime="2026-10-01T23:46:03.8635599+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d8fbfd86-3660-4857-80b9-69968cacfbd9" />
+    <UnitTestResult executionId="f4017dda-7087-4bd6-8fa3-6b55155843eb" testId="2d608020-d1ed-8c1d-f256-57e8089d2326" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MalformedJson_Returns400" computerName="DESKTOP-NPVESJH" duration="00:00:00.0028107" startTime="2026-10-01T23:46:04.5545435+03:00" endTime="2026-10-01T23:46:04.5575476+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f4017dda-7087-4bd6-8fa3-6b55155843eb" />
+    <UnitTestResult executionId="65eb1dd4-2dac-4a60-a0e4-d7d98ba7205d" testId="f6032ce4-3614-35fb-7e95-a8414777715c" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidStatus_Returns400WithStatusError(statusJson: &quot;\&quot;pending\&quot;&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0176177" startTime="2026-10-01T23:46:03.8263962+03:00" endTime="2026-10-01T23:46:03.8482907+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="65eb1dd4-2dac-4a60-a0e4-d7d98ba7205d" />
+    <UnitTestResult executionId="3b235dfc-7721-4379-b627-8078e48cef17" testId="2e27742c-3acd-f7c4-e0bc-d436143cdf07" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_UppercaseHexSignature_Returns200" computerName="DESKTOP-NPVESJH" duration="00:00:00.0185228" startTime="2026-10-01T23:46:03.9734279+03:00" endTime="2026-10-01T23:46:03.9950080+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3b235dfc-7721-4379-b627-8078e48cef17" />
+    <UnitTestResult executionId="e0ce7fd7-2430-41bb-beb0-696f0245d993" testId="d8d3137a-7442-c192-e9e4-f7158f1b681b" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl" computerName="DESKTOP-NPVESJH" duration="00:00:00.0116938" startTime="2026-10-01T23:46:04.5584751+03:00" endTime="2026-10-01T23:46:04.5721277+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e0ce7fd7-2430-41bb-beb0-696f0245d993" />
+    <UnitTestResult executionId="eaf9e33f-c35d-4f20-af0e-96bc200558a2" testId="6aeb5b4d-e575-c750-c27b-7627661e063d" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;body changed after signing&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0113977" startTime="2026-10-01T23:46:04.0677773+03:00" endTime="2026-10-01T23:46:04.0844609+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eaf9e33f-c35d-4f20-af0e-96bc200558a2" />
+    <UnitTestResult executionId="c389d92f-5b21-445a-9b5c-20dc59b26132" testId="f70dfaf1-8402-24f0-b279-e7f48b8bb00d" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentDuplicates_ProcessOnce" computerName="DESKTOP-NPVESJH" duration="00:00:02.4378335" startTime="2026-10-01T23:46:01.2312490+03:00" endTime="2026-10-01T23:46:03.7569357+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c389d92f-5b21-445a-9b5c-20dc59b26132" />
+    <UnitTestResult executionId="d315f0fd-7ee4-4c0b-9edc-b6329c28a4a3" testId="dde9aa77-2a53-5200-225e-e15c9a12f49f" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_EmptyEventId_Returns400WithEventIdError" computerName="DESKTOP-NPVESJH" duration="00:00:00.0607012" startTime="2026-10-01T23:46:03.7824408+03:00" endTime="2026-10-01T23:46:03.8247497+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d315f0fd-7ee4-4c0b-9edc-b6329c28a4a3" />
+    <UnitTestResult executionId="b3b83e4c-9eea-4e0f-ace0-77106bc34cf9" testId="703f67b1-e3d8-77ef-ebe5-95676c93a65d" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;not hex&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0111053" startTime="2026-10-01T23:46:04.1265492+03:00" endTime="2026-10-01T23:46:04.1427709+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b3b83e4c-9eea-4e0f-ace0-77106bc34cf9" />
+    <UnitTestResult executionId="21064776-8e4d-4c4d-a07e-42b7e0f099bf" testId="a377238e-eaf9-c6f7-7e3a-f6e9480316e4" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;0&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0021156" startTime="2026-10-01T23:46:04.4869801+03:00" endTime="2026-10-01T23:46:04.4893132+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="21064776-8e4d-4c4d-a07e-42b7e0f099bf" />
+    <UnitTestResult executionId="ce851e35-3d43-49d0-abeb-f24b2eff52c0" testId="a6446c74-bb1c-9583-04df-d87f0c8c6673" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Ideal&quot;, currency: &quot;Eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0207366" startTime="2026-10-01T23:46:04.4939912+03:00" endTime="2026-10-01T23:46:04.5186352+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ce851e35-3d43-49d0-abeb-f24b2eff52c0" />
+    <UnitTestResult executionId="7f2696c3-d494-4488-8179-a3fb650e2449" testId="dd70e897-3e05-122c-b69d-73aae02ff443" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidStatus_Returns400WithStatusError(statusJson: &quot;1&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0103649" startTime="2026-10-01T23:46:03.8637344+03:00" endTime="2026-10-01T23:46:03.8779058+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f2696c3-d494-4488-8179-a3fb650e2449" />
+    <UnitTestResult executionId="2f3cea9d-c238-4aeb-a956-6f7eb1991579" testId="b6114beb-0634-03fa-7623-d7386fc064f7" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0021697" startTime="2026-10-01T23:46:04.4852254+03:00" endTime="2026-10-01T23:46:04.4868343+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f3cea9d-c238-4aeb-a956-6f7eb1991579" />
+    <UnitTestResult executionId="31752805-5e79-4f69-b68d-e95490dcc550" testId="c5e973cf-2f3d-dafb-95d9-ec1bb2f7b16b" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ValidSignedEvent_Returns200AndUpdatesStatus(status: &quot;succeeded&quot;, expectedStatus: Succeeded)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0169694" startTime="2026-10-01T23:46:04.0454490+03:00" endTime="2026-10-01T23:46:04.0675582+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31752805-5e79-4f69-b68d-e95490dcc550" />
+    <UnitTestResult executionId="350898ed-1eed-496e-9bd9-02fbf5535a3c" testId="312588f5-925f-b562-47bf-4caae5ecec89" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;EUR&quot;, expectedColumnValue: &quot;EUR&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.1033802" startTime="2026-10-01T23:46:04.3271564+03:00" endTime="2026-10-01T23:46:04.4372602+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="350898ed-1eed-496e-9bd9-02fbf5535a3c" />
+    <UnitTestResult executionId="ce707bf9-018e-4245-aa99-ff3ac93b7020" testId="7c0fd82a-510e-5e1e-a267-356a1efaed47" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;wrong length&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0090730" startTime="2026-10-01T23:46:04.0846495+03:00" endTime="2026-10-01T23:46:04.0975918+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ce707bf9-018e-4245-aa99-ff3ac93b7020" />
+    <UnitTestResult executionId="eb704d3a-3dc5-4896-8571-5cba3a619a8d" testId="07a231ff-f950-b3bf-a870-8755dc79df00" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase" computerName="DESKTOP-NPVESJH" duration="00:00:00.0036372" startTime="2026-10-01T23:46:04.6216331+03:00" endTime="2026-10-01T23:46:04.6254132+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb704d3a-3dc5-4896-8571-5cba3a619a8d" />
+    <UnitTestResult executionId="62d9df69-0e98-429c-a382-b505ad77c045" testId="d0267218-c00a-f97c-339b-a092fd8f088d" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingField_Returns400WithRequiredError(field: &quot;paymentId&quot;, expectedMessage: &quot;PaymentId is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0024439" startTime="2026-10-01T23:46:03.8930007+03:00" endTime="2026-10-01T23:46:03.8993897+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="62d9df69-0e98-429c-a382-b505ad77c045" />
+    <UnitTestResult executionId="d6d586cd-fb25-4431-847d-31f66908ddbd" testId="9334cc02-c8d3-3fb7-874d-5d3302dc29e1" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;signed with another secret&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0104219" startTime="2026-10-01T23:46:04.1113847+03:00" endTime="2026-10-01T23:46:04.1263651+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d6d586cd-fb25-4431-847d-31f66908ddbd" />
+    <UnitTestResult executionId="79e7873d-64e5-4356-8b9f-c1cf6c70084f" testId="45923f15-5750-6400-5ba4-357251ef8599" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors" computerName="DESKTOP-NPVESJH" duration="00:00:00.0047909" startTime="2026-10-01T23:46:04.6162189+03:00" endTime="2026-10-01T23:46:04.6212967+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="79e7873d-64e5-4356-8b9f-c1cf6c70084f" />
+    <UnitTestResult executionId="ce136c1d-39db-49d4-9a4b-d3750710bec8" testId="0a40babc-4a3d-657a-5a83-e751dfe3cbdb" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ValidSignedEvent_Returns200AndUpdatesStatus(status: &quot;FAILED&quot;, expectedStatus: Failed)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0286368" startTime="2026-10-01T23:46:04.0110607+03:00" endTime="2026-10-01T23:46:04.0452947+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ce136c1d-39db-49d4-9a4b-d3750710bec8" />
+    <UnitTestResult executionId="c80059f4-cbd8-499b-b373-1928dc6d07f7" testId="5b8a2990-97f5-0694-e675-4c384055b6bb" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_SignedNonJsonContentType_Returns415" computerName="DESKTOP-NPVESJH" duration="00:00:00.0103600" startTime="2026-10-01T23:46:03.9952180+03:00" endTime="2026-10-01T23:46:04.0108269+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c80059f4-cbd8-499b-b373-1928dc6d07f7" />
+    <UnitTestResult executionId="31bd7947-bb86-4f2f-9055-795f6f22bc8d" testId="fe0d9472-3857-b1af-0d29-d62ff07065a5" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;two header values&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0096313" startTime="2026-10-01T23:46:04.0977899+03:00" endTime="2026-10-01T23:46:04.1112348+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31bd7947-bb86-4f2f-9055-795f6f22bc8d" />
+    <UnitTestResult executionId="a94e32f9-2593-4721-9202-2409fdc02033" testId="2bb9347b-4f54-12c2-0aca-f07b8b5e0ba9" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_UnsignedMalformedBody_Returns401" computerName="DESKTOP-NPVESJH" duration="00:00:00.0030716" startTime="2026-10-01T23:46:04.2511184+03:00" endTime="2026-10-01T23:46:04.2544864+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a94e32f9-2593-4721-9202-2409fdc02033" />
+    <UnitTestResult executionId="33989a9e-6387-4d63-b4a6-0dc88a51439f" testId="58d97d25-8376-7b74-5707-1d1ade2153ab" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Startup_WebhookSecretMissing_Fails" computerName="DESKTOP-NPVESJH" duration="00:00:00.0469528" startTime="2026-10-01T23:46:04.2034839+03:00" endTime="2026-10-01T23:46:04.2509110+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33989a9e-6387-4d63-b4a6-0dc88a51439f" />
+    <UnitTestResult executionId="bfbe8e76-c425-4595-8553-bd4c9f94bc6b" testId="5c22c064-4b19-2e48-70c0-d20447d15dcb" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyObject_Returns400WithErrorForEachField" computerName="DESKTOP-NPVESJH" duration="00:00:00.0061670" startTime="2026-10-01T23:46:04.5936588+03:00" endTime="2026-10-01T23:46:04.6001549+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bfbe8e76-c425-4595-8553-bd4c9f94bc6b" />
+    <UnitTestResult executionId="bc4bb79e-36fd-4416-9cde-5105ddbafbe4" testId="5fcd3cf4-d14e-1aef-4fb8-4fe9f7ce3cee" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;usd&quot;, expectedColumnValue: &quot;USD&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0082063" startTime="2026-10-01T23:46:04.4502478+03:00" endTime="2026-10-01T23:46:04.4610080+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc4bb79e-36fd-4416-9cde-5105ddbafbe4" />
+    <UnitTestResult executionId="6f8df45e-f009-48e9-861c-e042d69bfc5f" testId="677e8a52-328a-0cad-7910-dc0d1bb6e5a4" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;amount&quot;, expectedMessage: &quot;Amount is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0027104" startTime="2026-10-01T23:46:04.6048025+03:00" endTime="2026-10-01T23:46:04.6077678+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6f8df45e-f009-48e9-861c-e042d69bfc5f" />
+    <UnitTestResult executionId="10f2deec-af89-434a-a011-e84c2ef10e1f" testId="0ed1a3de-e954-cda2-b162-2cc2cdfbfc75" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;no prefix&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0223067" startTime="2026-10-01T23:46:04.1438894+03:00" endTime="2026-10-01T23:46:04.1705689+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="10f2deec-af89-434a-a011-e84c2ef10e1f" />
+    <UnitTestResult executionId="23c1f420-2a5e-4bf7-9d4f-c1615023462e" testId="ea980d1b-01a2-47a0-a5cf-fa8e2f44f300" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidPaymentId_Returns400WithPaymentIdError(paymentIdJson: &quot;123&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0072384" startTime="2026-10-01T23:46:04.1708375+03:00" endTime="2026-10-01T23:46:04.1803870+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23c1f420-2a5e-4bf7-9d4f-c1615023462e" />
+    <UnitTestResult executionId="cfc73eb3-6267-42eb-b82b-20faec2ae1f3" testId="682ad0db-14a7-7836-15bf-01859530f918" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ContentTypeNotJson_Returns415" computerName="DESKTOP-NPVESJH" duration="00:00:00.0043007" startTime="2026-10-01T23:46:04.6112419+03:00" endTime="2026-10-01T23:46:04.6159298+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cfc73eb3-6267-42eb-b82b-20faec2ae1f3" />
+    <UnitTestResult executionId="3f47be46-fb63-4d99-b726-395c603cdd4e" testId="a248a394-5a30-9047-d8ff-79e3c38bc0d8" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;true&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0021575" startTime="2026-10-01T23:46:04.4782063+03:00" endTime="2026-10-01T23:46:04.4806473+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f47be46-fb63-4d99-b726-395c603cdd4e" />
+    <UnitTestResult executionId="784e1827-6632-42e2-b21a-31fae4803c5e" testId="a531fd16-4101-3d76-0d9e-ff748561cda8" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_PersistsPayment" computerName="DESKTOP-NPVESJH" duration="00:00:00.0177434" startTime="2026-10-01T23:46:04.5760705+03:00" endTime="2026-10-01T23:46:04.5933641+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="784e1827-6632-42e2-b21a-31fae4803c5e" />
+    <UnitTestResult executionId="111f22cd-44d9-4299-b08d-989e3c4d25ca" testId="d4e92576-b80c-3fb1-3900-db48ba2c0851" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingSignature_Returns401AndChangesNothing" computerName="DESKTOP-NPVESJH" duration="00:00:00.0109743" startTime="2026-10-01T23:46:04.2852293+03:00" endTime="2026-10-01T23:46:04.3015127+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="111f22cd-44d9-4299-b08d-989e3c4d25ca" />
+    <UnitTestResult executionId="a2d9f7d4-3f57-41a5-9cbb-860114ec3708" testId="9a7cd51e-cfe1-064c-46b0-cc6dce874fe3" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_UnknownPayment_Returns404AndStoresNoEvent" computerName="DESKTOP-NPVESJH" duration="00:00:00.0112690" startTime="2026-10-01T23:46:04.1894339+03:00" endTime="2026-10-01T23:46:04.2032849+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a2d9f7d4-3f57-41a5-9cbb-860114ec3708" />
+    <UnitTestResult executionId="f7202855-8e26-4bd1-8f81-d6eef4bcdb5c" testId="8e700095-db97-90ce-ed11-53b37966ecd3" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.TryRecordAsync_EventIdAlreadyStored_ReturnsFalseAndSavesNothing" computerName="DESKTOP-NPVESJH" duration="00:00:00.0250892" startTime="2026-10-01T23:46:04.2546822+03:00" endTime="2026-10-01T23:46:04.2850317+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f7202855-8e26-4bd1-8f81-d6eef4bcdb5c" />
+    <UnitTestResult executionId="30cb5155-2813-46a8-8340-7616d9cbcbc4" testId="e143082c-3cbb-a10a-57c5-e0ee660d8853" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidPaymentId_Returns400WithPaymentIdError(paymentIdJson: &quot;\&quot;not-a-guid\&quot;&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0062011" startTime="2026-10-01T23:46:04.1805431+03:00" endTime="2026-10-01T23:46:04.1892242+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30cb5155-2813-46a8-8340-7616d9cbcbc4" />
+    <UnitTestResult executionId="d0bfa4c8-e7fb-46be-8c4e-080262a8fed1" testId="15790f2c-77c8-5a4e-a8a8-3370535e4297" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingField_Returns400WithRequiredError(field: &quot;status&quot;, expectedMessage: &quot;Status is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0026070" startTime="2026-10-01T23:46:03.8871170+03:00" endTime="2026-10-01T23:46:03.8928331+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0bfa4c8-e7fb-46be-8c4e-080262a8fed1" />
+    <UnitTestResult executionId="dc74e07f-27bd-4507-a538-2b56c56d7242" testId="f904db9a-0ac6-b1b4-2d88-9fbf64b107a1" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;currency&quot;, expectedMessage: &quot;Currency is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0039931" startTime="2026-10-01T23:46:04.6004896+03:00" endTime="2026-10-01T23:46:04.6046264+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc74e07f-27bd-4507-a538-2b56c56d7242" />
+    <UnitTestResult executionId="3308533c-53c9-42b6-9fc6-4278b652b831" testId="71f390fe-27f1-3a87-0d56-bc01a9f44603" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Klarna&quot;, currency: &quot;Usd&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Usd)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0077963" startTime="2026-10-01T23:46:04.5187979+03:00" endTime="2026-10-01T23:46:04.5289996+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3308533c-53c9-42b6-9fc6-4278b652b831" />
+    <UnitTestResult executionId="81359767-d470-4be8-9615-5bb243f54052" testId="f894dd8e-2012-0c52-211f-6d303a485192" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;IDEAL&quot;, currency: &quot;eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0064647" startTime="2026-10-01T23:46:04.5395034+03:00" endTime="2026-10-01T23:46:04.5494949+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="81359767-d470-4be8-9615-5bb243f54052" />
+    <UnitTestResult executionId="e8451857-6b14-4914-9fe2-5c7261ea54bb" testId="b8771c92-5c1c-74ca-c95f-5f48f5ad81c5" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;ideal, klarna\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0032696" startTime="2026-10-01T23:46:04.4809448+03:00" endTime="2026-10-01T23:46:04.4842935+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e8451857-6b14-4914-9fe2-5c7261ea54bb" />
+    <UnitTestResult executionId="b0febc2b-e111-4edd-ae3f-b598751457fc" testId="58b4646d-58e4-ee02-4484-27292a697526" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_DuplicateEventId_Returns200AndDoesNotChangeStatusAgain" computerName="DESKTOP-NPVESJH" duration="00:00:00.0448365" startTime="2026-10-01T23:46:03.9196449+03:00" endTime="2026-10-01T23:46:03.9705897+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b0febc2b-e111-4edd-ae3f-b598751457fc" />
+    <UnitTestResult executionId="06437c31-672f-4ea5-8261-480df7dc500f" testId="b96416a7-1a06-ac8c-a486-e7866d73aec7" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;\&quot;abc\&quot;&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0091180" startTime="2026-10-01T23:46:04.4611903+03:00" endTime="2026-10-01T23:46:04.4705405+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06437c31-672f-4ea5-8261-480df7dc500f" />
+    <UnitTestResult executionId="b7bbdf4f-0e5a-42b6-9307-5724ffc106b2" testId="9b076e1b-1090-52e1-f010-8abea7bbcb32" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;1\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0020157" startTime="2026-10-01T23:46:04.4735913+03:00" endTime="2026-10-01T23:46:04.4758449+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b7bbdf4f-0e5a-42b6-9307-5724ffc106b2" />
+    <UnitTestResult executionId="06a5fb7a-6c08-4a3c-bc4c-29a0bc10af22" testId="e0de215f-7bfc-1b0e-ed5f-c02839dbcb2e" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;KLARNA&quot;, currency: &quot;gbp&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Gbp)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0076980" startTime="2026-10-01T23:46:04.5291919+03:00" endTime="2026-10-01T23:46:04.5393549+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06a5fb7a-6c08-4a3c-bc4c-29a0bc10af22" />
+    <UnitTestResult executionId="010086f8-109a-442a-909e-f5a16b17fcc8" testId="b82f7476-bd40-024f-9130-303381b26e26" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;method&quot;, expectedMessage: &quot;Method is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0026557" startTime="2026-10-01T23:46:04.6080464+03:00" endTime="2026-10-01T23:46:04.6109193+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="010086f8-109a-442a-909e-f5a16b17fcc8" />
+    <UnitTestResult executionId="f6bba55c-1959-40b2-8be5-12d4e9d2bbc8" testId="6b03ef4d-5ef6-aea9-8428-37bdbc0671d4" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_SignedMalformedJson_Returns400Problem" computerName="DESKTOP-NPVESJH" duration="00:00:00.0044346" startTime="2026-10-01T23:46:03.8996417+03:00" endTime="2026-10-01T23:46:03.9192386+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f6bba55c-1959-40b2-8be5-12d4e9d2bbc8" />
+    <UnitTestResult executionId="17e70f38-3c9a-466c-8701-edd8d24f0841" testId="68b613a8-9205-ee08-e336-6e8d49c3620a" testName="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingField_Returns400WithRequiredError(field: &quot;eventId&quot;, expectedMessage: &quot;EventId is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0060400" startTime="2026-10-01T23:46:03.8781148+03:00" endTime="2026-10-01T23:46:03.8869579+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="17e70f38-3c9a-466c-8701-edd8d24f0841" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="d8d3137a-7442-c192-e9e4-f7158f1b681b">
+      <Execution id="e0ce7fd7-2430-41bb-beb0-696f0245d993" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidStatus_Returns400WithStatusError(statusJson: &quot;\&quot;refunded\&quot;&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="ed12f460-a3d9-507e-fabd-67b4c57df11b">
+      <Execution id="d8fbfd86-3660-4857-80b9-69968cacfbd9" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidStatus_Returns400WithStatusError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.HealthTests.Health_WhenDatabaseIsReachable_ReturnsOk" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b6a9146a-d252-e679-825a-756eba487247">
+      <Execution id="dcbad3e1-c295-4b4a-9c98-5db2f1024edd" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.HealthTests" name="Health_WhenDatabaseIsReachable_ReturnsOk" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="07a231ff-f950-b3bf-a870-8755dc79df00">
+      <Execution id="eb704d3a-3dc5-4896-8571-5cba3a619a8d" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_SignedMalformedJson_Returns400Problem" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="6b03ef4d-5ef6-aea9-8428-37bdbc0671d4">
+      <Execution id="f6bba55c-1959-40b2-8be5-12d4e9d2bbc8" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_SignedMalformedJson_Returns400Problem" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.TryRecordAsync_EventIdAlreadyStored_ReturnsFalseAndSavesNothing" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="8e700095-db97-90ce-ed11-53b37966ecd3">
+      <Execution id="f7202855-8e26-4bd1-8f81-d6eef4bcdb5c" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="TryRecordAsync_EventIdAlreadyStored_ReturnsFalseAndSavesNothing" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b6114beb-0634-03fa-7623-d7386fc064f7">
+      <Execution id="2f3cea9d-c238-4aeb-a956-6f7eb1991579" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;amount&quot;, expectedMessage: &quot;Amount is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="677e8a52-328a-0cad-7910-dc0d1bb6e5a4">
+      <Execution id="6f8df45e-f009-48e9-861c-e042d69bfc5f" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingField_Returns400WithRequiredError(field: &quot;status&quot;, expectedMessage: &quot;Status is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="15790f2c-77c8-5a4e-a8a8-3370535e4297">
+      <Execution id="d0bfa4c8-e7fb-46be-8c4e-080262a8fed1" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_DuplicateEventId_Returns200AndDoesNotChangeStatusAgain" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="58b4646d-58e4-ee02-4484-27292a697526">
+      <Execution id="b0febc2b-e111-4edd-ae3f-b598751457fc" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_DuplicateEventId_Returns200AndDoesNotChangeStatusAgain" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;\&quot;JPY\&quot;&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="bb37238a-eaa0-dd84-a8b3-674296fc39fc">
+      <Execution id="c573408d-e55a-4db4-a651-114dcb95f9eb" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidPaymentId_Returns400WithPaymentIdError(paymentIdJson: &quot;123&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="ea980d1b-01a2-47a0-a5cf-fa8e2f44f300">
+      <Execution id="23c1f420-2a5e-4bf7-9d4f-c1615023462e" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidPaymentId_Returns400WithPaymentIdError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;ideal, klarna\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b8771c92-5c1c-74ca-c95f-5f48f5ad81c5">
+      <Execution id="e8451857-6b14-4914-9fe2-5c7261ea54bb" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Klarna&quot;, currency: &quot;Usd&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Usd)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="71f390fe-27f1-3a87-0d56-bc01a9f44603">
+      <Execution id="3308533c-53c9-42b6-9fc6-4278b652b831" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;currency&quot;, expectedMessage: &quot;Currency is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="f904db9a-0ac6-b1b4-2d88-9fbf64b107a1">
+      <Execution id="dc74e07f-27bd-4507-a538-2b56c56d7242" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentDuplicates_ProcessOnce" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="f70dfaf1-8402-24f0-b279-e7f48b8bb00d">
+      <Execution id="c389d92f-5b21-445a-9b5c-20dc59b26132" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_ConcurrentDuplicates_ProcessOnce" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_EmptyEventId_Returns400WithEventIdError" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="dde9aa77-2a53-5200-225e-e15c9a12f49f">
+      <Execution id="d315f0fd-7ee4-4c0b-9edc-b6329c28a4a3" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_EmptyEventId_Returns400WithEventIdError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidPaymentId_Returns400WithPaymentIdError(paymentIdJson: &quot;\&quot;not-a-guid\&quot;&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="e143082c-3cbb-a10a-57c5-e0ee660d8853">
+      <Execution id="30cb5155-2813-46a8-8340-7616d9cbcbc4" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidPaymentId_Returns400WithPaymentIdError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;not hex&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="703f67b1-e3d8-77ef-ebe5-95676c93a65d">
+      <Execution id="b3b83e4c-9eea-4e0f-ace0-77106bc34cf9" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidSignature_Returns401" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ValidSignedEvent_Returns200AndUpdatesStatus(status: &quot;succeeded&quot;, expectedStatus: Succeeded)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="c5e973cf-2f3d-dafb-95d9-ec1bb2f7b16b">
+      <Execution id="31752805-5e79-4f69-b68d-e95490dcc550" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_ValidSignedEvent_Returns200AndUpdatesStatus" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="45923f15-5750-6400-5ba4-357251ef8599">
+      <Execution id="79e7873d-64e5-4356-8b9f-c1cf6c70084f" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;Gbp&quot;, expectedColumnValue: &quot;GBP&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="cbabd749-55af-0d55-062d-5d9499f7ede8">
+      <Execution id="908d5598-cafa-4803-8865-f7f59dc59762" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_Currency_StoresIsoCodeInColumn" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingSignature_Returns401AndChangesNothing" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="d4e92576-b80c-3fb1-3900-db48ba2c0851">
+      <Execution id="111f22cd-44d9-4299-b08d-989e3c4d25ca" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_MissingSignature_Returns401AndChangesNothing" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_SignedNonJsonContentType_Returns415" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="5b8a2990-97f5-0694-e675-4c384055b6bb">
+      <Execution id="c80059f4-cbd8-499b-b373-1928dc6d07f7" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_SignedNonJsonContentType_Returns415" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;wrong length&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="7c0fd82a-510e-5e1e-a267-356a1efaed47">
+      <Execution id="ce707bf9-018e-4245-aa99-ff3ac93b7020" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidSignature_Returns401" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;method&quot;, expectedMessage: &quot;Method is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b82f7476-bd40-024f-9130-303381b26e26">
+      <Execution id="010086f8-109a-442a-909e-f5a16b17fcc8" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_UnsignedMalformedBody_Returns401" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="2bb9347b-4f54-12c2-0aca-f07b8b5e0ba9">
+      <Execution id="a94e32f9-2593-4721-9202-2409fdc02033" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_UnsignedMalformedBody_Returns401" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;no prefix&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="0ed1a3de-e954-cda2-b162-2cc2cdfbfc75">
+      <Execution id="10f2deec-af89-434a-a011-e84c2ef10e1f" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidSignature_Returns401" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_PersistsPayment" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a531fd16-4101-3d76-0d9e-ff748561cda8">
+      <Execution id="784e1827-6632-42e2-b21a-31fae4803c5e" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_ValidRequest_PersistsPayment" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingField_Returns400WithRequiredError(field: &quot;eventId&quot;, expectedMessage: &quot;EventId is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="68b613a8-9205-ee08-e336-6e8d49c3620a">
+      <Execution id="17e70f38-3c9a-466c-8701-edd8d24f0841" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;1\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="9b076e1b-1090-52e1-f010-8abea7bbcb32">
+      <Execution id="b7bbdf4f-0e5a-42b6-9307-5724ffc106b2" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MalformedJson_Returns400" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="2d608020-d1ed-8c1d-f256-57e8089d2326">
+      <Execution id="f4017dda-7087-4bd6-8fa3-6b55155843eb" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MalformedJson_Returns400" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_UnknownPayment_Returns404AndStoresNoEvent" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="9a7cd51e-cfe1-064c-46b0-cc6dce874fe3">
+      <Execution id="a2d9f7d4-3f57-41a5-9cbb-860114ec3708" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_UnknownPayment_Returns404AndStoresNoEvent" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ContentTypeNotJson_Returns415" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="682ad0db-14a7-7836-15bf-01859530f918">
+      <Execution id="cfc73eb3-6267-42eb-b82b-20faec2ae1f3" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_ContentTypeNotJson_Returns415" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyObject_Returns400WithErrorForEachField" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="5c22c064-4b19-2e48-70c0-d20447d15dcb">
+      <Execution id="bfbe8e76-c425-4595-8553-bd4c9f94bc6b" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_EmptyObject_Returns400WithErrorForEachField" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Ideal&quot;, currency: &quot;Eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a6446c74-bb1c-9583-04df-d87f0c8c6673">
+      <Execution id="ce851e35-3d43-49d0-abeb-f24b2eff52c0" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;KLARNA&quot;, currency: &quot;gbp&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Gbp)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="e0de215f-7bfc-1b0e-ed5f-c02839dbcb2e">
+      <Execution id="06a5fb7a-6c08-4a3c-bc4c-29a0bc10af22" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;EUR&quot;, expectedColumnValue: &quot;EUR&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="312588f5-925f-b562-47bf-4caae5ecec89">
+      <Execution id="350898ed-1eed-496e-9bd9-02fbf5535a3c" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_Currency_StoresIsoCodeInColumn" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;signed with another secret&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="9334cc02-c8d3-3fb7-874d-5d3302dc29e1">
+      <Execution id="d6d586cd-fb25-4431-847d-31f66908ddbd" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidSignature_Returns401" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Startup_WebhookSecretMissing_Fails" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="58d97d25-8376-7b74-5707-1d1ade2153ab">
+      <Execution id="33989a9e-6387-4d63-b4a6-0dc88a51439f" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Startup_WebhookSecretMissing_Fails" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidStatus_Returns400WithStatusError(statusJson: &quot;\&quot;pending\&quot;&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="f6032ce4-3614-35fb-7e95-a8414777715c">
+      <Execution id="65eb1dd4-2dac-4a60-a0e4-d7d98ba7205d" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidStatus_Returns400WithStatusError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;\&quot;abc\&quot;&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b96416a7-1a06-ac8c-a486-e7866d73aec7">
+      <Execution id="06437c31-672f-4ea5-8261-480df7dc500f" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="54922560-6a4f-bdb7-f72b-2fcd43458818">
+      <Execution id="b824bbb6-81ca-4d29-925a-62aa11ba8ea6" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_AmountZero_Returns400WithAmountError" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="9741e2d9-5494-0c90-aa18-62bce5c9ddec">
+      <Execution id="09c68ef1-4faf-4b90-abad-f9c47aa060bb" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_AmountZero_Returns400WithAmountError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyBody_Returns400" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="2171f9eb-55c9-9f76-1b5b-aa68aba455d9">
+      <Execution id="b89afff6-0c66-4475-b3ad-776c16f8e94e" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_EmptyBody_Returns400" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_MissingField_Returns400WithRequiredError(field: &quot;paymentId&quot;, expectedMessage: &quot;PaymentId is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="d0267218-c00a-f97c-339b-a092fd8f088d">
+      <Execution id="62d9df69-0e98-429c-a382-b505ad77c045" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;two header values&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="fe0d9472-3857-b1af-0d29-d62ff07065a5">
+      <Execution id="31bd7947-bb86-4f2f-9055-795f6f22bc8d" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidSignature_Returns401" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;usd&quot;, expectedColumnValue: &quot;USD&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="5fcd3cf4-d14e-1aef-4fb8-4fe9f7ce3cee">
+      <Execution id="bc4bb79e-36fd-4416-9cde-5105ddbafbe4" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_Currency_StoresIsoCodeInColumn" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_UppercaseHexSignature_Returns200" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="2e27742c-3acd-f7c4-e0bc-d436143cdf07">
+      <Execution id="3b235dfc-7721-4379-b627-8078e48cef17" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_UppercaseHexSignature_Returns200" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidSignature_Returns401(signatureCase: &quot;body changed after signing&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="6aeb5b4d-e575-c750-c27b-7627661e063d">
+      <Execution id="eaf9e33f-c35d-4f20-af0e-96bc200558a2" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidSignature_Returns401" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_InvalidStatus_Returns400WithStatusError(statusJson: &quot;1&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="dd70e897-3e05-122c-b69d-73aae02ff443">
+      <Execution id="7f2696c3-d494-4488-8179-a3fb650e2449" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_InvalidStatus_Returns400WithStatusError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;true&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a248a394-5a30-9047-d8ff-79e3c38bc0d8">
+      <Execution id="3f47be46-fb63-4d99-b726-395c603cdd4e" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ValidSignedEvent_Returns200AndUpdatesStatus(status: &quot;FAILED&quot;, expectedStatus: Failed)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="0a40babc-4a3d-657a-5a83-e751dfe3cbdb">
+      <Execution id="ce136c1d-39db-49d4-9a4b-d3750710bec8" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.ProviderWebhookTests" name="Webhook_ValidSignedEvent_Returns200AndUpdatesStatus" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;IDEAL&quot;, currency: &quot;eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="f894dd8e-2012-0c52-211f-6d303a485192">
+      <Execution id="81359767-d470-4be8-9615-5bb243f54052" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;0&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a377238e-eaf9-c6f7-7e3a-f6e9480316e4">
+      <Execution id="21064776-8e4d-4c4d-a07e-42b7e0f099bf" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="bb37238a-eaa0-dd84-a8b3-674296fc39fc" executionId="c573408d-e55a-4db4-a651-114dcb95f9eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2171f9eb-55c9-9f76-1b5b-aa68aba455d9" executionId="b89afff6-0c66-4475-b3ad-776c16f8e94e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9741e2d9-5494-0c90-aa18-62bce5c9ddec" executionId="09c68ef1-4faf-4b90-abad-f9c47aa060bb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6a9146a-d252-e679-825a-756eba487247" executionId="dcbad3e1-c295-4b4a-9c98-5db2f1024edd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cbabd749-55af-0d55-062d-5d9499f7ede8" executionId="908d5598-cafa-4803-8865-f7f59dc59762" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54922560-6a4f-bdb7-f72b-2fcd43458818" executionId="b824bbb6-81ca-4d29-925a-62aa11ba8ea6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ed12f460-a3d9-507e-fabd-67b4c57df11b" executionId="d8fbfd86-3660-4857-80b9-69968cacfbd9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2d608020-d1ed-8c1d-f256-57e8089d2326" executionId="f4017dda-7087-4bd6-8fa3-6b55155843eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f6032ce4-3614-35fb-7e95-a8414777715c" executionId="65eb1dd4-2dac-4a60-a0e4-d7d98ba7205d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e27742c-3acd-f7c4-e0bc-d436143cdf07" executionId="3b235dfc-7721-4379-b627-8078e48cef17" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d8d3137a-7442-c192-e9e4-f7158f1b681b" executionId="e0ce7fd7-2430-41bb-beb0-696f0245d993" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6aeb5b4d-e575-c750-c27b-7627661e063d" executionId="eaf9e33f-c35d-4f20-af0e-96bc200558a2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f70dfaf1-8402-24f0-b279-e7f48b8bb00d" executionId="c389d92f-5b21-445a-9b5c-20dc59b26132" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dde9aa77-2a53-5200-225e-e15c9a12f49f" executionId="d315f0fd-7ee4-4c0b-9edc-b6329c28a4a3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="703f67b1-e3d8-77ef-ebe5-95676c93a65d" executionId="b3b83e4c-9eea-4e0f-ace0-77106bc34cf9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a377238e-eaf9-c6f7-7e3a-f6e9480316e4" executionId="21064776-8e4d-4c4d-a07e-42b7e0f099bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6446c74-bb1c-9583-04df-d87f0c8c6673" executionId="ce851e35-3d43-49d0-abeb-f24b2eff52c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dd70e897-3e05-122c-b69d-73aae02ff443" executionId="7f2696c3-d494-4488-8179-a3fb650e2449" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6114beb-0634-03fa-7623-d7386fc064f7" executionId="2f3cea9d-c238-4aeb-a956-6f7eb1991579" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c5e973cf-2f3d-dafb-95d9-ec1bb2f7b16b" executionId="31752805-5e79-4f69-b68d-e95490dcc550" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="312588f5-925f-b562-47bf-4caae5ecec89" executionId="350898ed-1eed-496e-9bd9-02fbf5535a3c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7c0fd82a-510e-5e1e-a267-356a1efaed47" executionId="ce707bf9-018e-4245-aa99-ff3ac93b7020" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07a231ff-f950-b3bf-a870-8755dc79df00" executionId="eb704d3a-3dc5-4896-8571-5cba3a619a8d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d0267218-c00a-f97c-339b-a092fd8f088d" executionId="62d9df69-0e98-429c-a382-b505ad77c045" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9334cc02-c8d3-3fb7-874d-5d3302dc29e1" executionId="d6d586cd-fb25-4431-847d-31f66908ddbd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="45923f15-5750-6400-5ba4-357251ef8599" executionId="79e7873d-64e5-4356-8b9f-c1cf6c70084f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a40babc-4a3d-657a-5a83-e751dfe3cbdb" executionId="ce136c1d-39db-49d4-9a4b-d3750710bec8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5b8a2990-97f5-0694-e675-4c384055b6bb" executionId="c80059f4-cbd8-499b-b373-1928dc6d07f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe0d9472-3857-b1af-0d29-d62ff07065a5" executionId="31bd7947-bb86-4f2f-9055-795f6f22bc8d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2bb9347b-4f54-12c2-0aca-f07b8b5e0ba9" executionId="a94e32f9-2593-4721-9202-2409fdc02033" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58d97d25-8376-7b74-5707-1d1ade2153ab" executionId="33989a9e-6387-4d63-b4a6-0dc88a51439f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c22c064-4b19-2e48-70c0-d20447d15dcb" executionId="bfbe8e76-c425-4595-8553-bd4c9f94bc6b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5fcd3cf4-d14e-1aef-4fb8-4fe9f7ce3cee" executionId="bc4bb79e-36fd-4416-9cde-5105ddbafbe4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="677e8a52-328a-0cad-7910-dc0d1bb6e5a4" executionId="6f8df45e-f009-48e9-861c-e042d69bfc5f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ed1a3de-e954-cda2-b162-2cc2cdfbfc75" executionId="10f2deec-af89-434a-a011-e84c2ef10e1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea980d1b-01a2-47a0-a5cf-fa8e2f44f300" executionId="23c1f420-2a5e-4bf7-9d4f-c1615023462e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="682ad0db-14a7-7836-15bf-01859530f918" executionId="cfc73eb3-6267-42eb-b82b-20faec2ae1f3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a248a394-5a30-9047-d8ff-79e3c38bc0d8" executionId="3f47be46-fb63-4d99-b726-395c603cdd4e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a531fd16-4101-3d76-0d9e-ff748561cda8" executionId="784e1827-6632-42e2-b21a-31fae4803c5e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d4e92576-b80c-3fb1-3900-db48ba2c0851" executionId="111f22cd-44d9-4299-b08d-989e3c4d25ca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9a7cd51e-cfe1-064c-46b0-cc6dce874fe3" executionId="a2d9f7d4-3f57-41a5-9cbb-860114ec3708" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8e700095-db97-90ce-ed11-53b37966ecd3" executionId="f7202855-8e26-4bd1-8f81-d6eef4bcdb5c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e143082c-3cbb-a10a-57c5-e0ee660d8853" executionId="30cb5155-2813-46a8-8340-7616d9cbcbc4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="15790f2c-77c8-5a4e-a8a8-3370535e4297" executionId="d0bfa4c8-e7fb-46be-8c4e-080262a8fed1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f904db9a-0ac6-b1b4-2d88-9fbf64b107a1" executionId="dc74e07f-27bd-4507-a538-2b56c56d7242" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="71f390fe-27f1-3a87-0d56-bc01a9f44603" executionId="3308533c-53c9-42b6-9fc6-4278b652b831" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f894dd8e-2012-0c52-211f-6d303a485192" executionId="81359767-d470-4be8-9615-5bb243f54052" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8771c92-5c1c-74ca-c95f-5f48f5ad81c5" executionId="e8451857-6b14-4914-9fe2-5c7261ea54bb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58b4646d-58e4-ee02-4484-27292a697526" executionId="b0febc2b-e111-4edd-ae3f-b598751457fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b96416a7-1a06-ac8c-a486-e7866d73aec7" executionId="06437c31-672f-4ea5-8261-480df7dc500f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9b076e1b-1090-52e1-f010-8abea7bbcb32" executionId="b7bbdf4f-0e5a-42b6-9307-5724ffc106b2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e0de215f-7bfc-1b0e-ed5f-c02839dbcb2e" executionId="06a5fb7a-6c08-4a3c-bc4c-29a0bc10af22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b82f7476-bd40-024f-9130-303381b26e26" executionId="010086f8-109a-442a-909e-f5a16b17fcc8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b03ef4d-5ef6-aea9-8428-37bdbc0671d4" executionId="f6bba55c-1959-40b2-8be5-12d4e9d2bbc8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68b613a8-9205-ee08-e336-6e8d49c3620a" executionId="17e70f38-3c9a-466c-8701-edd8d24f0841" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="55" executed="55" passed="55" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.11)&#xD;
+[xUnit.net 00:00:00.17]   Discovering: AgenticPayments.IntegrationTests&#xD;
+[xUnit.net 00:00:00.29]   Discovered:  AgenticPayments.IntegrationTests&#xD;
+[xUnit.net 00:00:00.37]   Starting:    AgenticPayments.IntegrationTests&#xD;
+[testcontainers.org 00:00:00.27] Connected to Docker:&#xD;
+  Host: npipe://./pipe/docker_engine&#xD;
+  Server Version: 29.8.1&#xD;
+  Kernel Version: 6.18.40.1-microsoft-standard-WSL2&#xD;
+  API Version: 1.56&#xD;
+  Operating System: Docker Desktop (containerized)&#xD;
+  Total Memory: 7.64 GB&#xD;
+  Labels: &#xD;
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli&#xD;
+[testcontainers.org 00:00:00.72] Docker container 25b5bec28d9f created&#xD;
+[testcontainers.org 00:00:00.92] Start Docker container 25b5bec28d9f&#xD;
+[testcontainers.org 00:00:01.38] Wait for Docker container 25b5bec28d9f to complete readiness checks&#xD;
+[testcontainers.org 00:00:02.48] Docker container 25b5bec28d9f ready&#xD;
+[testcontainers.org 00:00:02.67] Docker container 325c3b645669 created&#xD;
+[testcontainers.org 00:00:02.69] Start Docker container 325c3b645669&#xD;
+[testcontainers.org 00:00:03.04] Wait for Docker container 325c3b645669 to complete readiness checks&#xD;
+[testcontainers.org 00:00:03.08] Execute "pg_isready --host localhost --dbname postgres --username postgres" at Docker container 325c3b645669&#xD;
+[testcontainers.org 00:00:04.24] Execute "pg_isready --host localhost --dbname postgres --username postgres" at Docker container 325c3b645669&#xD;
+[testcontainers.org 00:00:05.33] Execute "pg_isready --host localhost --dbname postgres --username postgres" at Docker container 325c3b645669&#xD;
+[testcontainers.org 00:00:05.39] Docker container 325c3b645669 ready&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END&#xD;
+FROM pg_class AS cls&#xD;
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace&#xD;
+WHERE&#xD;
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND&#xD;
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND&#xD;
+        -- Exclude tables which are members of PG extensions&#xD;
+        NOT EXISTS (&#xD;
+            SELECT 1 FROM pg_depend WHERE&#xD;
+                classid=(&#xD;
+                    SELECT cls.oid&#xD;
+                    FROM pg_class AS cls&#xD;
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace&#xD;
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'&#xD;
+                ) AND&#xD;
+                objid=cls.oid AND&#xD;
+                deptype IN ('e', 'x')&#xD;
+        )&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Payments" (&#xD;
+          "Id" uuid NOT NULL,&#xD;
+          "Amount" numeric(18,2) NOT NULL,&#xD;
+          "Currency" character varying(3) NOT NULL,&#xD;
+          "Method" text NOT NULL,&#xD;
+          "Status" text NOT NULL,&#xD;
+          "CreatedAt" timestamp with time zone NOT NULL,&#xD;
+          CONSTRAINT "PK_Payments" PRIMARY KEY ("Id")&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "ProcessedWebhookEvents" (&#xD;
+          "EventId" character varying(200) NOT NULL,&#xD;
+          "PaymentId" uuid NOT NULL,&#xD;
+          "ProcessedAt" timestamp with time zone NOT NULL,&#xD;
+          CONSTRAINT "PK_ProcessedWebhookEvents" PRIMARY KEY ("EventId"),&#xD;
+          CONSTRAINT "FK_ProcessedWebhookEvents_Payments_PaymentId" FOREIGN KEY ("PaymentId") REFERENCES "Payments" ("Id") ON DELETE CASCADE&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_ProcessedWebhookEvents_PaymentId" ON "ProcessedWebhookEvents" ("PaymentId");&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Api&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (26ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (5ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (7ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (7ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (7ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (8ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (4ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (4ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (8ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (8ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (8ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (4ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]&#xD;
+      Failed executing DbCommand (15ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]&#xD;
+      Failed executing DbCommand (15ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]&#xD;
+      Failed executing DbCommand (15ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]&#xD;
+      Failed executing DbCommand (15ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+fail: Microsoft.EntityFrameworkCore.Update[10000]&#xD;
+      An exception occurred in the database while saving changes for context type 'AgenticPayments.Infrastructure.Persistence.AppDbContext'.&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+fail: Microsoft.EntityFrameworkCore.Update[10000]&#xD;
+      An exception occurred in the database while saving changes for context type 'AgenticPayments.Infrastructure.Persistence.AppDbContext'.&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+fail: Microsoft.EntityFrameworkCore.Update[10000]&#xD;
+      An exception occurred in the database while saving changes for context type 'AgenticPayments.Infrastructure.Persistence.AppDbContext'.&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+fail: Microsoft.EntityFrameworkCore.Update[10000]&#xD;
+      An exception occurred in the database while saving changes for context type 'AgenticPayments.Infrastructure.Persistence.AppDbContext'.&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (63ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (6ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (3ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (3ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (15ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (4ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."EventId", p."PaymentId", p."ProcessedAt"&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (3ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."EventId", p."PaymentId", p."ProcessedAt"&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "ProcessedWebhookEvents" AS p&#xD;
+          WHERE p."EventId" = @eventId)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END&#xD;
+FROM pg_class AS cls&#xD;
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace&#xD;
+WHERE&#xD;
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND&#xD;
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND&#xD;
+        -- Exclude tables which are members of PG extensions&#xD;
+        NOT EXISTS (&#xD;
+            SELECT 1 FROM pg_depend WHERE&#xD;
+                classid=(&#xD;
+                    SELECT cls.oid&#xD;
+                    FROM pg_class AS cls&#xD;
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace&#xD;
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'&#xD;
+                ) AND&#xD;
+                objid=cls.oid AND&#xD;
+                deptype IN ('e', 'x')&#xD;
+        )&#xD;
+fail: Microsoft.Extensions.Hosting.Internal.Host[11]&#xD;
+      Hosting failed to start&#xD;
+      Microsoft.Extensions.Options.OptionsValidationException: Webhooks:Provider:Secret is required.&#xD;
+         at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)&#xD;
+         at Microsoft.Extensions.Options.OptionsMonitor`1.&lt;&gt;c.&lt;Get&gt;b__10_0(String name, IOptionsFactory`1 factory)&#xD;
+         at Microsoft.Extensions.Options.OptionsCache`1.&lt;&gt;c__DisplayClass3_1`1.&lt;GetOrAdd&gt;b__2()&#xD;
+         at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)&#xD;
+         at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)&#xD;
+         at System.Lazy`1.CreateValue()&#xD;
+         at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)&#xD;
+         at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)&#xD;
+         at Microsoft.Extensions.DependencyInjection.OptionsBuilderExtensions.&lt;&gt;c__DisplayClass0_1`1.&lt;ValidateOnStart&gt;b__1()&#xD;
+         at Microsoft.Extensions.Options.StartupValidator.Validate()&#xD;
+      --- End of stack trace from previous location ---&#xD;
+         at Microsoft.Extensions.Options.StartupValidator.Validate()&#xD;
+         at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p0, @p1, @p2);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @p&#xD;
+      LIMIT 1&#xD;
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]&#xD;
+      Failed executing DbCommand (2ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?', @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Payments" SET "Status" = @p0&#xD;
+      WHERE "Id" = @p1;&#xD;
+      INSERT INTO "ProcessedWebhookEvents" ("EventId", "PaymentId", "ProcessedAt")&#xD;
+      VALUES (@p2, @p3, @p4);&#xD;
+fail: Microsoft.EntityFrameworkCore.Update[10000]&#xD;
+      An exception occurred in the database while saving changes for context type 'AgenticPayments.Infrastructure.Persistence.AppDbContext'.&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+      Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.&#xD;
+       ---&gt; Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+      DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)&#xD;
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource&lt;TResult&gt;.GetResult(Int16 token)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+        Exception data:&#xD;
+          Severity: ERROR&#xD;
+          SqlState: 23505&#xD;
+          MessageText: duplicate key value violates unique constraint "PK_ProcessedWebhookEvents"&#xD;
+          Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.&#xD;
+          SchemaName: public&#xD;
+          TableName: ProcessedWebhookEvents&#xD;
+          ConstraintName: PK_ProcessedWebhookEvents&#xD;
+          File: nbtinsert.c&#xD;
+          Line: 666&#xD;
+          Routine: _bt_check_unique&#xD;
+         --- End of inner exception stack trace ---&#xD;
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)&#xD;
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@paymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @paymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@eventId='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT count(*)::int&#xD;
+      FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = @eventId&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_eventIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "ProcessedWebhookEvents" AS p&#xD;
+      WHERE p."EventId" = ANY (@_eventIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_paymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_paymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT s."Value"&#xD;
+      FROM (&#xD;
+          SELECT "Currency" AS "Value" FROM "Payments" WHERE "Id" = @p0&#xD;
+      ) AS s&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT s."Value"&#xD;
+      FROM (&#xD;
+          SELECT "Currency" AS "Value" FROM "Payments" WHERE "Id" = @p0&#xD;
+      ) AS s&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT s."Value"&#xD;
+      FROM (&#xD;
+          SELECT "Currency" AS "Value" FROM "Payments" WHERE "Id" = @p0&#xD;
+      ) AS s&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+[testcontainers.org 00:00:08.87] Delete Docker container 325c3b645669&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:09.89]   Finished:    AgenticPayments.IntegrationTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

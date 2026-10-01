@@ -1,0 +1,6 @@
+spec=002-webhook
+step=05-test-writer
+role=test-writer
+allowed=tests/*
+changed: tests/AgenticPayments.IntegrationTests/ProviderWebhookTests.cs
+outcome=PASS

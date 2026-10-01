@@ -18,4 +18,6 @@ public sealed class Payment(decimal amount, Currency currency, PaymentMethod met
     public PaymentStatus Status { get; private set; } = PaymentStatus.Pending;
 
     public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
+
+    public void ChangeStatus(PaymentStatus status) => Status = status;
 }

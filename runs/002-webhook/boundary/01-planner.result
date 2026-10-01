@@ -1,0 +1,6 @@
+spec=002-webhook
+step=01-planner
+role=planner
+allowed=plans/002-webhook.md
+changed: plans/002-webhook.md
+outcome=PASS

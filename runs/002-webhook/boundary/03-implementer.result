@@ -1,0 +1,26 @@
+spec=002-webhook
+step=03-implementer
+role=implementer
+allowed=src/* AgenticPayments.slnx
+changed: src/AgenticPayments.Api/Program.cs
+changed: src/AgenticPayments.Api/Webhooks/ProviderWebhookOptions.cs
+changed: src/AgenticPayments.Api/Webhooks/ProviderWebhookSignature.cs
+changed: src/AgenticPayments.Api/Webhooks/WebhookEndpoints.cs
+changed: src/AgenticPayments.Application/ApplicationServiceCollectionExtensions.cs
+changed: src/AgenticPayments.Application/Payments/IPaymentRepository.cs
+changed: src/AgenticPayments.Application/Webhooks/IWebhookEventRepository.cs
+changed: src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs
+changed: src/AgenticPayments.Application/Webhooks/ProviderPaymentStatus.cs
+changed: src/AgenticPayments.Application/Webhooks/ProviderWebhookOutcome.cs
+changed: src/AgenticPayments.Application/Webhooks/ProviderWebhookRequest.cs
+changed: src/AgenticPayments.Application/Webhooks/ProviderWebhookResult.cs
+changed: src/AgenticPayments.Application/Webhooks/ProviderWebhookValidator.cs
+changed: src/AgenticPayments.Domain/Payments/Payment.cs
+changed: src/AgenticPayments.Domain/Payments/PaymentStatus.cs
+changed: src/AgenticPayments.Domain/Webhooks/ProcessedWebhookEvent.cs
+changed: src/AgenticPayments.Infrastructure/InfrastructureServiceCollectionExtensions.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/AppDbContext.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/PaymentRepository.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/ProcessedWebhookEventConfiguration.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/WebhookEventRepository.cs
+outcome=PASS
