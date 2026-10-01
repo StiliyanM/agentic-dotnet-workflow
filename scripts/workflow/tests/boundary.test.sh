@@ -75,6 +75,7 @@ unexpected_commit()       { echo "// change" >>src/A.cs; git commit -qam "agent 
 hook_added()              { echo "exit 0" >"$(git rev-parse --git-path hooks)/pre-commit"; }
 planner_own_plan()        { echo "# plan" >plans/001-x.md; }
 planner_other_plan()      { echo "# plan" >plans/002-y.md; }
+documenter_docs()         { mkdir -p docs/user; echo "# api" >docs/user/api.md; echo "# readme" >README.md; }
 
 expect allowed-edit                0 implementer allowed_edit
 expect allowed-new-file            0 implementer allowed_new_file
@@ -89,6 +90,8 @@ expect unexpected-commit           1 implementer unexpected_commit
 expect hook-added                  1 implementer hook_added
 expect reviewer-edit               1 reviewer    allowed_edit
 expect planner-other-plan          1 planner     planner_other_plan
+expect documenter-docs             0 documenter  documenter_docs
+expect documenter-code             1 documenter  allowed_edit
 
 # Evidence is kept and user work is not removed after a violation.
 new_repo evidence

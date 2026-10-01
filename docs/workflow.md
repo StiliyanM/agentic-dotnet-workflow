@@ -39,7 +39,7 @@ These checks find mistakes. They are not a security sandbox. An agent that tries
 
 ### Self-test
 
-`bash scripts/workflow/tests/boundary.test.sh` runs each case in a new temporary repository: an allowed edit, a forbidden unstaged edit, a forbidden staged edit, a staged edit reverted in the working tree, a new forbidden file, a deleted file, an unexpected commit, a new hook, a reviewer edit, a plan for another spec, evidence kept after a violation, and the diff command.
+`bash scripts/workflow/tests/boundary.test.sh` runs each case in a new temporary repository: an allowed edit, a forbidden unstaged edit, a forbidden staged edit, a staged edit reverted in the working tree, a new forbidden file, a deleted file, an unexpected commit, a new hook, a reviewer edit, a plan for another spec, documenter edits to docs and to code, evidence kept after a violation, and the diff command.
 
 ## Verification commands
 
