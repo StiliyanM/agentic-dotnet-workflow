@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ApmPlayground.Api\ApmPlayground.Api.csproj" />
+    <ProjectReference Include="..\..\src\ApmPlayground.Domain\ApmPlayground.Domain.csproj" />
+    <ProjectReference Include="..\..\src\ApmPlayground.Application\ApmPlayground.Application.csproj" />
   </ItemGroup>
 
 </Project>

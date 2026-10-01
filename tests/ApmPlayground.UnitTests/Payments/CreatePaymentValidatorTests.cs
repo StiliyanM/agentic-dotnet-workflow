@@ -1,12 +1,14 @@
 using System.Globalization;
-using ApmPlayground.Api.Payments;
+using ApmPlayground.Application.Payments;
 using AutoFixture;
+using FluentValidation.Results;
 
 namespace ApmPlayground.UnitTests.Payments;
 
 public class CreatePaymentValidatorTests
 {
     private readonly Fixture _fixture = new();
+    private readonly CreatePaymentValidator _validator = new();
 
     [Theory]
     [InlineData("ideal", "EUR", "10.50")]
@@ -17,9 +19,11 @@ public class CreatePaymentValidatorTests
     {
         var request = new CreatePaymentRequest(ParseAmount(amount), currency, method);
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        Assert.Empty(errors);
+        Assert.Multiple(
+            () => Assert.True(result.IsValid),
+            () => Assert.Empty(result.Errors));
     }
 
     [Theory]
@@ -30,9 +34,9 @@ public class CreatePaymentValidatorTests
     {
         var request = ValidRequest() with { Amount = ParseAmount(amount) };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "amount", "Amount must be greater than 0.");
+        AssertSingleError(result, "amount", "Amount must be greater than 0.");
     }
 
     [Fact]
@@ -40,9 +44,9 @@ public class CreatePaymentValidatorTests
     {
         var request = ValidRequest() with { Amount = 10000000000000000m };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "amount", "Amount is too large.");
+        AssertSingleError(result, "amount", "Amount is too large.");
     }
 
     [Fact]
@@ -50,9 +54,9 @@ public class CreatePaymentValidatorTests
     {
         var request = ValidRequest() with { Amount = null };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "amount", "Amount is required.");
+        AssertSingleError(result, "amount", "Amount is required.");
     }
 
     [Theory]
@@ -62,22 +66,23 @@ public class CreatePaymentValidatorTests
     {
         var request = ValidRequest() with { Amount = ParseAmount(amount) };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "amount", "Amount must have at most 2 decimal places.");
+        AssertSingleError(result, "amount", "Amount must have at most 2 decimal places.");
     }
 
     [Theory]
     [InlineData("JPY")]
     [InlineData("eur")]
     [InlineData("EURO")]
+    [InlineData(" ")]
     public void Validate_UnsupportedCurrency_ReturnsCurrencyError(string currency)
     {
         var request = ValidRequest() with { Currency = currency };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "currency", $"Currency '{currency}' is not supported.");
+        AssertSingleError(result, "currency", $"Currency '{currency}' is not supported.");
     }
 
     [Theory]
@@ -87,22 +92,23 @@ public class CreatePaymentValidatorTests
     {
         var request = ValidRequest() with { Currency = currency };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "currency", "Currency is required.");
+        AssertSingleError(result, "currency", "Currency is required.");
     }
 
     [Theory]
     [InlineData("paypal")]
     [InlineData("IDEAL")]
     [InlineData("Klarna")]
+    [InlineData(" ")]
     public void Validate_UnknownMethod_ReturnsMethodError(string method)
     {
         var request = ValidRequest() with { Method = method };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "method", "Method must be 'ideal' or 'klarna'.");
+        AssertSingleError(result, "method", "Method must be 'ideal' or 'klarna'.");
     }
 
     [Theory]
@@ -112,9 +118,9 @@ public class CreatePaymentValidatorTests
     {
         var request = ValidRequest() with { Method = method };
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
-        AssertSingleError(errors, "method", "Method is required.");
+        AssertSingleError(result, "method", "Method is required.");
     }
 
     [Fact]
@@ -123,8 +129,9 @@ public class CreatePaymentValidatorTests
         var currency = _fixture.Create<string>();
         var request = new CreatePaymentRequest(-_fixture.Create<decimal>(), currency, _fixture.Create<string>());
 
-        var errors = CreatePaymentValidator.Validate(request);
+        var result = _validator.Validate(request);
 
+        var errors = result.ToDictionary();
         Assert.Multiple(
             () => Assert.Equal(3, errors.Count),
             () => Assert.Equal("Amount must be greater than 0.", Assert.Single(errors["amount"])),
@@ -144,11 +151,11 @@ public class CreatePaymentValidatorTests
 
     private static decimal ParseAmount(string amount) => decimal.Parse(amount, CultureInfo.InvariantCulture);
 
-    private static void AssertSingleError(Dictionary<string, string[]> errors, string key, string message)
+    private static void AssertSingleError(ValidationResult result, string key, string message)
     {
-        var error = Assert.Single(errors);
+        var error = Assert.Single(result.Errors);
         Assert.Multiple(
-            () => Assert.Equal(key, error.Key),
-            () => Assert.Equal(message, Assert.Single(error.Value)));
+            () => Assert.Equal(key, error.PropertyName),
+            () => Assert.Equal(message, error.ErrorMessage));
     }
 }

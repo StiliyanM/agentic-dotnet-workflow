@@ -1,4 +1,4 @@
-using ApmPlayground.Api.Payments;
+using ApmPlayground.Domain.Payments;
 using AutoFixture;
 
 namespace ApmPlayground.UnitTests.Payments;

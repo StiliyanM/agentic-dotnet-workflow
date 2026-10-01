@@ -33,3 +33,33 @@
 - `SupportedCurrencies.All` could be private.
 - `EnsureCreated()` cannot add tables to a database that already exists. Spec 002 may need migrations.
 - `POST /payments` is not idempotent, so a retried request makes a new payment. No spec asks for this.
+
+## 004-layered-structure (2026-10-01)
+
+- **Status:** PASSED. Committed on `spec/004-layered-structure` and merged into `main`.
+- **Loops:** 1
+- **Final result:** 30 unit tests and 12 integration tests pass. Build has 0 warnings. Format check passes.
+- **Before the run:** the standing rules were added on `main` (`docs/architecture.md`, agent prompt changes, specs 004 and 005), because you asked for the layers, FluentValidation and typed contracts.
+
+### Problems that each gate found
+
+| Gate | Loop 0 | Loop 1 |
+|---|---|---|
+| Preflight | None | – |
+| Boundary checks | None | None |
+| Build / format / test | None (40 of 40 pass) | None (42 of 42 pass) |
+| Test-auditor | PASS | PASS |
+| Reviewer | CHANGES: FluentValidation `NotEmpty()` treats `" "` as missing, so the messages for currency and method changed from spec 001. Sent to the test-writer (new `" "` cases), then the implementer. | APPROVE (2 optional items) |
+
+### Decisions on unclear specs
+
+- Integration tests: only the `using` lines changed, because the types moved to new namespaces. Test bodies did not change.
+- Validator keys: `OverridePropertyName` keeps the error keys camelCase. There is no global resolver.
+- Validation runs in `CreatePaymentUseCase`. The endpoint only maps the result to HTTP.
+- `SupportedCurrencies` is in Domain. `PaymentMethodNames` is in Application, because it maps wire strings.
+- `IPaymentRepository.AddAsync` adds and saves in one call. There is no Unit of Work.
+- Required-string check: `IsNullOrEmpty`, not `NotEmpty()`, to keep the spec 001 behavior.
+
+### Open items (optional, not done)
+
+- `CreatePaymentUseCase` parses the method a second time to get the enum. Spec 005 (enum contracts) should remove this.
