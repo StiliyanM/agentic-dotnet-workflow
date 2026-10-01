@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+    <ProjectReference Include="..\ApmPlayground.Application\ApmPlayground.Application.csproj" />
+    <ProjectReference Include="..\ApmPlayground.Infrastructure\ApmPlayground.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

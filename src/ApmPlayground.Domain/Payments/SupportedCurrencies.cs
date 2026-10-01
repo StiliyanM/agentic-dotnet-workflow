@@ -1,4 +1,4 @@
-namespace ApmPlayground.Api.Payments;
+namespace ApmPlayground.Domain.Payments;
 
 public static class SupportedCurrencies
 {

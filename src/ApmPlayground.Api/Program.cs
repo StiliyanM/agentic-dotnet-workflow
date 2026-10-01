@@ -1,11 +1,12 @@
-using ApmPlayground.Api.Data;
 using ApmPlayground.Api.Payments;
-using Microsoft.EntityFrameworkCore;
+using ApmPlayground.Application;
+using ApmPlayground.Infrastructure;
+using ApmPlayground.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>((sp, options) =>
-    options.UseNpgsql(sp.GetRequiredService<IConfiguration>().GetConnectionString("Postgres")));
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 

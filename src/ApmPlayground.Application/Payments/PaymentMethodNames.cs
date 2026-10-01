@@ -1,4 +1,6 @@
-namespace ApmPlayground.Api.Payments;
+using ApmPlayground.Domain.Payments;
+
+namespace ApmPlayground.Application.Payments;
 
 public static class PaymentMethodNames
 {
