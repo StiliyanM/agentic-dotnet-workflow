@@ -11,7 +11,7 @@ public sealed class PaymentConfiguration : IEntityTypeConfiguration<Payment>
         ArgumentNullException.ThrowIfNull(builder);
 
         builder.Property(p => p.Amount).HasPrecision(Payment.AmountPrecision, Payment.AmountScale);
-        builder.Property(p => p.Currency).HasMaxLength(3).IsRequired();
+        builder.Property(p => p.Currency).HasConversion<string>().HasMaxLength(3).IsRequired();
         builder.Property(p => p.Method).HasConversion<string>();
         builder.Property(p => p.Status).HasConversion<string>();
     }

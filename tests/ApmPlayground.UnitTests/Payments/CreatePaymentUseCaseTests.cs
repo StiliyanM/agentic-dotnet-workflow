@@ -16,9 +16,9 @@ public class CreatePaymentUseCaseTests
     }
 
     [Theory]
-    [InlineData("ideal")]
-    [InlineData("klarna")]
-    public async Task ExecuteAsync_ValidRequest_ReturnsPendingResponseWithRedirectUrl(string method)
+    [InlineData(PaymentMethod.Ideal, "ideal")]
+    [InlineData(PaymentMethod.Klarna, "klarna")]
+    public async Task ExecuteAsync_ValidRequest_ReturnsPendingResponseWithRedirectUrl(PaymentMethod method, string segment)
     {
         var request = ValidRequest() with { Method = method };
 
@@ -27,15 +27,17 @@ public class CreatePaymentUseCaseTests
         Assert.True(result.IsSuccess);
         Assert.Multiple(
             () => Assert.NotEqual(Guid.Empty, result.Response.PaymentId),
-            () => Assert.Equal("Pending", result.Response.Status),
-            () => Assert.Equal($"https://pay.example.com/{method}/{result.Response.PaymentId:D}", result.Response.RedirectUrl),
+            () => Assert.Equal(PaymentStatus.Pending, result.Response.Status),
+            () => Assert.Equal(
+                new Uri($"https://pay.example.com/{segment}/{result.Response.PaymentId:D}"),
+                result.Response.RedirectUrl),
             () => Assert.Empty(result.Errors));
     }
 
     [Fact]
     public async Task ExecuteAsync_ValidRequest_AddsPaymentToRepository()
     {
-        var request = ValidRequest() with { Method = "klarna" };
+        var request = ValidRequest() with { Method = PaymentMethod.Klarna };
 
         var result = await _useCase.ExecuteAsync(request, CancellationToken.None);
 
@@ -64,13 +66,25 @@ public class CreatePaymentUseCaseTests
             () => Assert.Empty(_repository.Added));
     }
 
-    private CreatePaymentRequest ValidRequest()
+    [Fact]
+    public async Task ExecuteAsync_UndefinedMethod_ReturnsErrorsAndDoesNotAddPayment()
     {
-        string[] methods = ["ideal", "klarna"];
-        string[] currencies = ["EUR", "GBP", "USD"];
-        return new CreatePaymentRequest(
-            _fixture.Create<int>() + 0.99m,
-            currencies[_fixture.Create<int>() % currencies.Length],
-            methods[_fixture.Create<int>() % methods.Length]);
+        var request = ValidRequest() with { Method = (PaymentMethod)99 };
+
+        var result = await _useCase.ExecuteAsync(request, CancellationToken.None);
+
+        Assert.Multiple(
+            () => Assert.False(result.IsSuccess),
+            () => Assert.Null(result.Response),
+            () => Assert.Equal("method", Assert.Single(result.Errors).Key),
+            () => Assert.Equal("Method has an invalid value.", Assert.Single(result.Errors["method"])),
+            () => Assert.Empty(_repository.Added));
     }
+
+    private CreatePaymentRequest ValidRequest() => new()
+    {
+        Amount = _fixture.Create<int>() + 0.99m,
+        Currency = _fixture.Create<Currency>(),
+        Method = _fixture.Create<PaymentMethod>(),
+    };
 }

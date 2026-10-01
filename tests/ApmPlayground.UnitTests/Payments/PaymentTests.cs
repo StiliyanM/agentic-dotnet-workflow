@@ -11,7 +11,7 @@ public class PaymentTests
     public void Constructor_SetsPendingStatusAndNewId()
     {
         var amount = _fixture.Create<decimal>();
-        var currency = _fixture.Create<string>();
+        var currency = _fixture.Create<Currency>();
         var method = _fixture.Create<PaymentMethod>();
         var before = DateTimeOffset.UtcNow;
 
@@ -32,8 +32,8 @@ public class PaymentTests
     {
         var method = _fixture.Create<PaymentMethod>();
 
-        var first = new Payment(_fixture.Create<decimal>(), _fixture.Create<string>(), method);
-        var second = new Payment(_fixture.Create<decimal>(), _fixture.Create<string>(), method);
+        var first = new Payment(_fixture.Create<decimal>(), _fixture.Create<Currency>(), method);
+        var second = new Payment(_fixture.Create<decimal>(), _fixture.Create<Currency>(), method);
 
         Assert.NotEqual(first.Id, second.Id);
     }
