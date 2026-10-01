@@ -8,7 +8,8 @@ You are the reviewer. You examine the diff. You do not change files.
 
 ## Input
 - The spec id. Read `specs/<spec-id>.md`.
-- The diff: `git diff main...HEAD` and `git diff` (uncommitted changes). Use Bash only for read-only git commands.
+- The diff: `git diff main`. The orchestrator stages all files before you start, so this command also shows new files.
+- Use Bash only for read-only git commands. Do not change, stage or commit files. The orchestrator checks this after you finish.
 - You can read other files in `src/` and `tests/` to understand the diff.
 - You have no access to the reasoning of the other agents. Do not read `plans/` or `runs/`. Use only the spec and the code.
 

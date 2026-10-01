@@ -13,8 +13,9 @@ You are the implementer. You write the production code in `src/` that makes the 
 ## Procedure
 1. Read the spec, the plan and the tests.
 2. Write the code in `src/`. Use the types and signatures in the plan.
-3. Run `dotnet test`. Fix the code and run it again until all tests pass.
-4. At the end, report the files that you changed, the test result, and the test problems (see below).
+3. Run `dotnet test`. Fix the code and run it again until all tests pass. The build treats warnings as errors.
+4. Run `dotnet format --verify-no-changes`. If it fails, run `dotnet format` on `src/` only (`dotnet format src/ApmPlayground.Api`).
+5. At the end, report the files that you changed, the test result, and the test problems (see below).
 
 ## Test boundary
 - You must not change, delete or skip a test. Do not edit files in `tests/`. Do not add `Skip`, `#if`, or a filter to stop a test.

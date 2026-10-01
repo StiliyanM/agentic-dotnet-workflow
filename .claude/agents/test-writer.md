@@ -15,7 +15,8 @@ You are the test-writer. You write the tests before the production code exists.
 2. Write the tests that the plan lists, in `tests/ApmPlayground.UnitTests` and `tests/ApmPlayground.IntegrationTests`.
 3. Use only the types and signatures in the plan. Do not add types or signatures that are not in the plan.
 4. Do not write production code in `src/`. Do not add stubs. The build can fail because the code does not exist yet. This is expected.
-5. At the end, list the test files and the test names that you added or changed.
+5. Run `dotnet format whitespace --folder tests` to format the tests. This command does not need a build.
+6. At the end, list the test files and the test names that you added or changed.
 
 ## Test rules
 - Quality is more important than coverage. Test real flows: the happy path and the main edge cases from the spec. Do not add a test only to increase coverage.
