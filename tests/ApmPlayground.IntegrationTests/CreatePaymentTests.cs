@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace ApmPlayground.IntegrationTests;
 
 [Collection(ApiCollection.Name)]
-public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
+public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
 {
     private static readonly JsonSerializerOptions ResponseJsonOptions = new(JsonSerializerDefaults.Web)
     {
@@ -63,8 +63,8 @@ public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     }
 
     [Theory]
-    [InlineData("ideal", PaymentMethod.Ideal, "EUR", Currency.EUR)]
-    [InlineData("klarna", PaymentMethod.Klarna, "USD", Currency.USD)]
+    [InlineData("ideal", PaymentMethod.Ideal, "EUR", Currency.Eur)]
+    [InlineData("klarna", PaymentMethod.Klarna, "USD", Currency.Usd)]
     public async Task CreatePayment_ValidRequest_PersistsPayment(
         string method,
         PaymentMethod expectedMethod,
@@ -103,10 +103,10 @@ public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     }
 
     [Theory]
-    [InlineData("IDEAL", "eur", "ideal", PaymentMethod.Ideal, Currency.EUR)]
-    [InlineData("Ideal", "Eur", "ideal", PaymentMethod.Ideal, Currency.EUR)]
-    [InlineData("KLARNA", "gbp", "klarna", PaymentMethod.Klarna, Currency.GBP)]
-    [InlineData("Klarna", "Usd", "klarna", PaymentMethod.Klarna, Currency.USD)]
+    [InlineData("IDEAL", "eur", "ideal", PaymentMethod.Ideal, Currency.Eur)]
+    [InlineData("Ideal", "Eur", "ideal", PaymentMethod.Ideal, Currency.Eur)]
+    [InlineData("KLARNA", "gbp", "klarna", PaymentMethod.Klarna, Currency.Gbp)]
+    [InlineData("Klarna", "Usd", "klarna", PaymentMethod.Klarna, Currency.Usd)]
     public async Task CreatePayment_MethodAndCurrencyInAnyCase_Returns201(
         string method,
         string currency,
@@ -118,7 +118,7 @@ public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
 
         using var response = await PostRawAsync(
             client,
-            $"{{\"amount\":{RawAmount()},\"currency\":\"{currency}\",\"method\":\"{method}\"}}");
+            $$"""{"amount":{{RawAmount()}},"currency":"{{currency}}","method":"{{method}}"}""");
         var body = await ReadCreatedPaymentAsync(response);
         using var raw = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
 
@@ -132,6 +132,29 @@ public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
                 raw.RootElement.GetProperty("redirectUrl").GetString()),
             () => Assert.Equal(expectedMethod, payment.Method),
             () => Assert.Equal(expectedCurrency, payment.Currency));
+    }
+
+    [Theory]
+    [InlineData("EUR", "EUR")]
+    [InlineData("eur", "EUR")]
+    [InlineData("Gbp", "GBP")]
+    [InlineData("usd", "USD")]
+    public async Task CreatePayment_Currency_StoresIsoCodeInColumn(string currency, string expectedColumnValue)
+    {
+        using var client = factory.CreateClient();
+
+        using var response = await client.PostAsJsonAsync(
+            "/payments",
+            new { amount = ValidAmount(), currency, method = SupportedMethod() });
+        var body = await ReadCreatedPaymentAsync(response);
+
+        await using var scope = factory.Services.CreateAsyncScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        var columnValue = await db.Database
+            .SqlQuery<string>($"""SELECT "Currency" AS "Value" FROM "Payments" WHERE "Id" = {body.PaymentId}""")
+            .SingleAsync();
+
+        Assert.Equal(expectedColumnValue, columnValue);
     }
 
     [Fact]
@@ -215,7 +238,7 @@ public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     {
         using var client = factory.CreateClient();
 
-        using var response = await PostRawAsync(client, "{}");
+        using var response = await PostRawAsync(client, """{}""");
 
         using var problem = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         var errors = problem.RootElement.GetProperty("errors");
@@ -236,7 +259,7 @@ public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
 
         using var response = await PostRawAsync(
             client,
-            $"{{\"amount\":{RawAmount()},\"currency\":\"{SupportedCurrency()}\",\"Method\":\"paypal\"}}");
+            $$"""{"amount":{{RawAmount()}},"currency":"{{SupportedCurrency()}}","Method":"paypal"}""");
 
         await AssertValidationProblemAsync(response, "method", "Method has an invalid value.");
     }
@@ -246,7 +269,7 @@ public class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     {
         using var client = factory.CreateClient();
 
-        using var response = await PostRawAsync(client, "{ \"amount\": 10.50, \"currency\": ");
+        using var response = await PostRawAsync(client, """{ "amount": 10.50, "currency": """);
 
         await AssertPlainProblemAsync(response);
     }

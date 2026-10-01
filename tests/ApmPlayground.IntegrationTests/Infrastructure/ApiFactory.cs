@@ -4,7 +4,7 @@ using Testcontainers.PostgreSql;
 
 namespace ApmPlayground.IntegrationTests.Infrastructure;
 
-public class ApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
+public sealed class ApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
     private readonly PostgreSqlContainer _postgres = new PostgreSqlBuilder("postgres:17-alpine")
         .Build();

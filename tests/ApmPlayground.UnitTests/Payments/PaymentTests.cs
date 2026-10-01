@@ -3,7 +3,7 @@ using AutoFixture;
 
 namespace ApmPlayground.UnitTests.Payments;
 
-public class PaymentTests
+public sealed class PaymentTests
 {
     private readonly Fixture _fixture = new();
 

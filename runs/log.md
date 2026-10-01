@@ -93,3 +93,33 @@
 
 - Missing-field detection reads the System.Text.Json message text. The integration tests catch a change in a later .NET version.
 - `StrictEnumConverter` could cache the name lookup.
+
+## 006-apply-style-rules (2026-10-01)
+
+- **Status:** PASSED. Committed on `spec/006-apply-style-rules` and merged into `main`.
+- **Loops:** 1
+- **Final result:** 19 unit tests and 35 integration tests pass. The build enforces the analyzer style rules with 0 warnings. Format check passes.
+- **Before the run:** `docs/csharp-style.md`, the agent prompt changes and spec 006 were committed on `main`. The `.editorconfig` and `Directory.Build.props` enforcement was the first commit on the spec branch, so `main` did not break before the code followed the rules.
+
+### Problems that each gate found
+
+| Gate | Loop 0 | Loop 1 |
+|---|---|---|
+| Preflight | None | – |
+| Boundary checks | None | None |
+| Build / format / test | Before the code changes: IDE0290 on `Payment`. After the implementer: none (54 of 54 pass). | None (54 of 54 pass) |
+| Test-auditor | PASS | PASS |
+| Reviewer | CHANGES: `/health` did not pass the `CancellationToken`. Optional: the Domain comment described storage, and the `HealthTests` response was not disposed. Sent to the test-writer (test style item), then the implementer. | APPROVE (3 optional items) |
+
+### Decisions on unclear specs
+
+- `Payment` is a sealed class with a primary constructor. The constructor parameters are used only in property initializers (to avoid CS9124). EF Core binds by parameter name.
+- `Currency { Eur, Gbp, Usd }`. Infrastructure stores `ToString().ToUpperInvariant()` and reads it with a case-insensitive parse. A new integration test reads the raw column.
+- JSON pieces that start or end with `"` stay as escaped strings, because a one-line raw string literal cannot do this.
+- `CreatePaymentResult` keeps its private constructor, because a primary constructor cannot be private.
+- The rules that an analyzer cannot check (enum member case, raw strings, `field`, records) are in `docs/csharp-style.md`, and the reviewer checks them.
+
+### Open items (optional, not done)
+
+- `Enum.Parse<Currency>(s, true)` could use the named argument `ignoreCase: true`.
+- The two reviewers did not agree on the `Currency` comment. It stays short.

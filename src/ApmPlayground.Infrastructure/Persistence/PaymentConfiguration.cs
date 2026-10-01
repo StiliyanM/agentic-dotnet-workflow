@@ -11,7 +11,11 @@ public sealed class PaymentConfiguration : IEntityTypeConfiguration<Payment>
         ArgumentNullException.ThrowIfNull(builder);
 
         builder.Property(p => p.Amount).HasPrecision(Payment.AmountPrecision, Payment.AmountScale);
-        builder.Property(p => p.Currency).HasConversion<string>().HasMaxLength(3).IsRequired();
+        // The column stores the upper-case ISO code, which is the member name in upper case.
+        builder.Property(p => p.Currency)
+            .HasConversion(c => c.ToString().ToUpperInvariant(), s => Enum.Parse<Currency>(s, true))
+            .HasMaxLength(3)
+            .IsRequired();
         builder.Property(p => p.Method).HasConversion<string>();
         builder.Property(p => p.Status).HasConversion<string>();
     }

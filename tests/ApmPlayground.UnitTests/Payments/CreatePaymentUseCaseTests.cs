@@ -4,7 +4,7 @@ using AutoFixture;
 
 namespace ApmPlayground.UnitTests.Payments;
 
-public class CreatePaymentUseCaseTests
+public sealed class CreatePaymentUseCaseTests
 {
     private readonly Fixture _fixture = new();
     private readonly FakePaymentRepository _repository = new();
