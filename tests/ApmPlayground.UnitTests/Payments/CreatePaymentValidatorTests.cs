@@ -6,16 +6,16 @@ using FluentValidation.Results;
 
 namespace ApmPlayground.UnitTests.Payments;
 
-public class CreatePaymentValidatorTests
+public sealed class CreatePaymentValidatorTests
 {
     private readonly Fixture _fixture = new();
     private readonly CreatePaymentValidator _validator = new();
 
     [Theory]
-    [InlineData(PaymentMethod.Ideal, Currency.EUR, "10.50")]
-    [InlineData(PaymentMethod.Klarna, Currency.GBP, "0.01")]
-    [InlineData(PaymentMethod.Klarna, Currency.USD, "1000")]
-    [InlineData(PaymentMethod.Ideal, Currency.EUR, "9999999999999999.99")]
+    [InlineData(PaymentMethod.Ideal, Currency.Eur, "10.50")]
+    [InlineData(PaymentMethod.Klarna, Currency.Gbp, "0.01")]
+    [InlineData(PaymentMethod.Klarna, Currency.Usd, "1000")]
+    [InlineData(PaymentMethod.Ideal, Currency.Eur, "9999999999999999.99")]
     public void Validate_ValidRequest_ReturnsNoErrors(PaymentMethod method, Currency currency, string amount)
     {
         var request = new CreatePaymentRequest

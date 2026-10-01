@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApmPlayground.Infrastructure.Persistence;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
     public DbSet<Payment> Payments => Set<Payment>();
 

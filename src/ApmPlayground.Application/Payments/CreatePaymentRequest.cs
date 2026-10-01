@@ -2,7 +2,7 @@ using ApmPlayground.Domain.Payments;
 
 namespace ApmPlayground.Application.Payments;
 
-public record CreatePaymentRequest
+public sealed record CreatePaymentRequest
 {
     public required decimal Amount { get; init; }
 
