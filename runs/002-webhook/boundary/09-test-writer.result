@@ -1,0 +1,8 @@
+spec=002-webhook
+step=09-test-writer
+role=test-writer
+allowed=tests/*
+changed: tests/AgenticPayments.IntegrationTests/ProviderWebhookTests.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/FakeWebhookEventRepository.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/ProcessProviderWebhookUseCaseTests.cs
+outcome=PASS

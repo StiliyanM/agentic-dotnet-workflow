@@ -12,4 +12,7 @@ public sealed class PaymentRepository(AppDbContext db) : IPaymentRepository
         db.Payments.Add(payment);
         await db.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<Payment?> FindAsync(Guid id, CancellationToken cancellationToken) =>
+        await db.Payments.FindAsync([id], cancellationToken);
 }

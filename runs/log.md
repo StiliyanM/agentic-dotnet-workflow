@@ -160,3 +160,38 @@ Found and documented, not changed:
 - `"amount": "10.50"` (a numeric string) is accepted. `currency` and `method` reject numeric strings. No spec decided this.
 
 Evidence: from the next spec run, each run has `runs/<id>/evidence.md`. No evidence files were made for the earlier runs.
+
+## 002-webhook (2026-10-01)
+
+- **Status:** PASSED. Committed on `spec/002-webhook` and merged into `main`.
+- **Loops:** 2
+- **Final result:** 36 unit tests and 55 integration tests pass (step 11-verify, exit status 0). Build has 0 warnings. Format check passes.
+- **Evidence:** [runs/002-webhook/evidence.md](002-webhook/evidence.md). This is the first run with the evidence format.
+
+### Problems that each gate found
+
+| Gate | Loop 0 | Loop 1 | Loop 2 |
+|---|---|---|---|
+| Preflight | None | – | – |
+| Boundary checks | None (all 15 agent steps PASS) | None | None |
+| Build / format / test | Build failed: unused `using` in a test file (IDE0005). The implementer reported WRONG TEST. Sent to the test-writer. | None (36/36, 53/53) | None (36/36, 55/55) |
+| Test-auditor | Not run | FAIL: 5 assertion groups outside one `Assert.Multiple`; the "two header values" row could not fail; no test for a non-GUID `paymentId`. Sent to the test-writer. | PASS |
+| Reviewer | Not run | Not run | APPROVE (4 optional items) |
+| Documentation review | – | – | APPROVE (2 optional items). The one check claim in the README matches the evidence. |
+
+### Decisions on unclear specs
+
+- Signature: header `X-Provider-Signature`, value `sha256=<hex>` of HMAC-SHA256 over the raw body bytes, with the UTF-8 secret as the key. Constant-time comparison. Exactly one header value. Checked before the body is parsed.
+- Responses: 401 problem for any signature failure, 415/400 as in the existing body contract, 404 problem for an unknown payment, 200 with no body for success and for a duplicate.
+- Status: the webhook accepts `succeeded` and `failed` (any case). `pending` is rejected. `PaymentStatus` has `Pending`, `Succeeded`, `Failed`.
+- Idempotency: table `ProcessedWebhookEvents` with `EventId` as primary key. Duplicate check before the payment lookup. A unique violation (23505) is a duplicate. The event row and the status change are saved in one transaction.
+- `eventId`: a string, 1 to 200 characters, case-sensitive.
+- Secret: `Webhooks:Provider:Secret`, not in any committed file. The app does not start without it.
+- Schema: `EnsureCreated` stays. A local database from before this spec must be created again.
+- Left to spec 003: transition rules and event ordering. In 002 any event sets the status (last write wins).
+
+### Open items (optional, not done)
+
+- `WebhookEventRepository.TryRecordAsync` saves the payment only because the same `DbContext` tracks it. This is a hidden dependency.
+- Two different events for the same payment at the same time: the last one saved wins. There is no concurrency token.
+- **Maintenance needed:** the CLAUDE.md command for the reviewer diff has no path filter, so the diff includes `plans/` and `runs/`. In this run the orchestrator used `src/ tests/ AgenticPayments.slnx` as the filter.

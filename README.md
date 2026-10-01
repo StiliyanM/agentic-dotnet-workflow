@@ -2,7 +2,7 @@
 
 This repository tests an agentic development workflow in Claude Code. An orchestrator runs specialized agents (planner, test-writer, implementer, test-auditor, reviewer, documenter) on small specs. Each agent works inside fixed boundaries. Tests, checks and a reviewer decide whether a change is accepted.
 
-The case study is a small payments API in .NET 10: create a payment with an alternative payment method (iDEAL or Klarna), and receive a redirect URL. The API is a learning and testing project. It is **not production-ready**.
+The case study is a small payments API in .NET 10: create a payment with an alternative payment method (iDEAL or Klarna), receive a redirect URL, and receive signed provider webhooks that change the payment status. The API is a learning and testing project. It is **not production-ready**.
 
 ## Status
 
@@ -12,10 +12,10 @@ The case study is a small payments API in .NET 10: create a payment with an alte
 | [004-layered-structure](specs/004-layered-structure.md) | Domain, Application, Infrastructure and Api projects. FluentValidation. | Completed |
 | [005-typed-payment-contract](specs/005-typed-payment-contract.md) | Typed, non-nullable request and response. Case-insensitive enums. Field errors for bad JSON values. | Completed |
 | [006-apply-style-rules](specs/006-apply-style-rules.md) | C# 14 style rules, enforced by analyzers in the build. | Completed |
-| [002-webhook](specs/002-webhook.md) | `POST /webhooks/provider` with HMAC-SHA256 signature check and idempotent event processing. | **Planned. Not implemented.** |
+| [002-webhook](specs/002-webhook.md) | `POST /webhooks/provider` with HMAC-SHA256 signature check and idempotent event processing. Sets the status to `Succeeded` or `Failed`. | Completed |
 | [003-out-of-order](specs/003-out-of-order.md) | Webhook events out of sequence. A terminal status is not replaced. | **Planned. Not implemented.** |
 
-Specs 002 and 003 have no code. The API has no webhook endpoint, and a payment status cannot change from `Pending`.
+Spec 003 has no code. A webhook event can change any status, also `Succeeded` or `Failed` (see [Known limitations](#known-limitations)).
 
 ## Prerequisites
 
@@ -27,13 +27,13 @@ Specs 002 and 003 have no code. The API has no webhook endpoint, and a payment s
 ## Setup
 
 ```bash
-git clone https://github.com/StiliyanM/apm-playground.git agentic-dotnet-workflow
+git clone https://github.com/StiliyanM/agentic-dotnet-workflow.git
 cd agentic-dotnet-workflow
 dotnet restore AgenticPayments.slnx
 dotnet build AgenticPayments.slnx
 ```
 
-The GitHub repository is going to be renamed to `agentic-dotnet-workflow` (see [Names](#names)). After the rename, GitHub redirects the old URL.
+The GitHub repository was renamed from `apm-playground` to `agentic-dotnet-workflow` (see [Names](#names)).
 
 ## Run the API locally
 
@@ -43,20 +43,29 @@ Start PostgreSQL in Docker. This example uses port 5433 to avoid a conflict with
 docker run -d --name agentic-payments-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=apm -p 5433:5432 postgres:17-alpine
 ```
 
-Run the API with a connection string for that container (bash):
+The API needs two settings:
+- `ConnectionStrings__Postgres`: the connection string for that container.
+- `Webhooks__Provider__Secret`: the secret for the webhook signature. No committed file contains it. Choose your own value. The API does not start without it (`Webhooks:Provider:Secret is required.`).
+
+Run the API (bash):
 
 ```bash
-ConnectionStrings__Postgres="Host=localhost;Port=5433;Database=apm;Username=postgres;Password=postgres" dotnet run --project src/AgenticPayments.Api --launch-profile http
+ConnectionStrings__Postgres="Host=localhost;Port=5433;Database=apm;Username=postgres;Password=postgres" \
+Webhooks__Provider__Secret="local-dev-webhook-secret" \
+dotnet run --project src/AgenticPayments.Api --launch-profile http
 ```
 
-In PowerShell, set the variable first:
+In PowerShell, set the variables first:
 
 ```powershell
 $env:ConnectionStrings__Postgres = "Host=localhost;Port=5433;Database=apm;Username=postgres;Password=postgres"
+$env:Webhooks__Provider__Secret = "local-dev-webhook-secret"
 dotnet run --project src/AgenticPayments.Api --launch-profile http
 ```
 
 The API listens on `http://localhost:5034`. It creates the database schema at startup (`EnsureCreated`). `GET /health` returns 200 when the database is reachable.
+
+**Database created before spec 002.** `EnsureCreated` does not add tables to a database that already has tables. A local database from before spec 002 has no `ProcessedWebhookEvents` table, and webhook requests fail. Remove the container (this deletes its payments) and start a new one with the `docker run` command above.
 
 Stop and remove the container:
 
@@ -85,6 +94,23 @@ A request with a missing amount and an unknown currency (`{"currency": "JPY", "m
 ```
 
 The full request rules and error responses are in [docs/user/payments-api.md](docs/user/payments-api.md).
+
+### Webhook example
+
+Sign the raw body with HMAC-SHA256 and the configured secret, and send it in the header `X-Provider-Signature: sha256=<hex>` (bash, needs `openssl`). Replace `<paymentId>` with the `paymentId` from the response above:
+
+```bash
+SECRET='local-dev-webhook-secret'
+BODY='{"eventId":"evt_001","paymentId":"<paymentId>","status":"succeeded"}'
+SIGNATURE=$(printf '%s' "$BODY" | openssl dgst -sha256 -hmac "$SECRET" | sed 's/^.* //')
+curl -i -X POST http://localhost:5034/webhooks/provider -H "Content-Type: application/json" -H "X-Provider-Signature: sha256=$SIGNATURE" --data-binary "$BODY"
+```
+
+This command was not run as part of the verification. The integration tests send requests in the same format.
+
+Response: `200 OK` with no body. The payment status is now `Succeeded`. The same `eventId` again returns `200` and changes nothing. A missing or wrong signature returns `401`. An unknown `paymentId` returns `404`.
+
+The signature rules, the check order and all responses are in [docs/user/provider-webhook.md](docs/user/provider-webhook.md).
 
 ## Verification
 
@@ -128,7 +154,7 @@ Correction rules:
 ## Execution evidence
 
 - [runs/log.md](runs/log.md): one entry for each run, with loops, gate findings, decisions and status.
-- `runs/<id>/evidence.md`: base commit, each step, each verification command with its exit status, and links to the agent reports and test output. This format starts with the next spec run. Earlier runs (001, 004, 005, 006) have only their `runs/log.md` entries.
+- `runs/<id>/evidence.md`: base commit, each step, each verification command with its exit status, and links to the agent reports and test output. The first run with this format is 002: [runs/002-webhook/evidence.md](runs/002-webhook/evidence.md). Its last verification (step 11-verify) ran build, format, unit tests (36/36) and integration tests (55/55) with exit status 0. Earlier runs (001, 004, 005, 006) have only their `runs/log.md` entries.
 - CI: each workflow run uploads `artifacts/verify/` (logs and TRX files) as the `verify-results` artifact.
 
 ## Agent boundaries
@@ -149,14 +175,14 @@ The orchestrator runs `scripts/workflow/boundary.sh` before and after each agent
 ## Known limitations
 
 - **Simulated provider redirect.** `redirectUrl` is `https://pay.example.com/{method}/{paymentId}`. No payment provider is called. The URL does not lead to a real payment page.
-- **No status changes.** Webhooks (specs 002 and 003) are not implemented, so every payment stays `Pending`.
-- **No read endpoint.** There is no `GET /payments/{id}`. The `201` response has no `Location` header.
+- **No status transition rules.** Each new webhook `eventId` sets the status. A later event can change `Succeeded` to `Failed`, or `Failed` to `Succeeded`. Spec 003 is planned to add rules.
+- **Different webhook events at the same time.** When two events with different `eventId` values for the same payment arrive at the same time, the last one saved wins. There is no concurrency check.
+- **No read endpoint.** There is no `GET /payments/{id}`. The `201` response has no `Location` header. To see a status change, query the database.
 - **Create is not idempotent.** A repeated `POST /payments` creates a second payment. There is no idempotency key.
-- **Schema with `EnsureCreated`.** No migrations. When the database already has tables, `EnsureCreated` does nothing. It does not add new tables or columns to an existing schema.
+- **Schema with `EnsureCreated`.** No migrations. When the database already has tables, `EnsureCreated` does nothing. It does not add new tables or columns to an existing schema. A database created before spec 002 must be removed once (see [Run the API locally](#run-the-api-locally)).
 - **`amount` accepts a numeric string.** `"amount": "10.50"` is accepted, but `currency` and `method` reject numeric strings. This comes from the JSON Web defaults. No spec decided it, and no test covers it.
-- **No authentication, authorization or rate limiting.**
+- **No authentication, authorization or rate limiting.** The webhook signature is the only check, and only on `POST /webhooks/provider`.
 - **Currencies and methods are fixed.** EUR, GBP, USD; `ideal`, `klarna`. There is no check of which currencies a method supports.
-- The GitHub repository rename is not done yet (see below).
 
 ## Names
 
@@ -164,7 +190,7 @@ The project had other names before the rename in commit `65b0c4d` (2026-10-01). 
 
 | Item | Old name | New name |
 |---|---|---|
-| GitHub repository | `apm-playground` | `agentic-dotnet-workflow` (rename pending) |
+| GitHub repository | `apm-playground` | `agentic-dotnet-workflow` |
 | Solution | `ApmPlayground.slnx` | `AgenticPayments.slnx` |
 | Project and namespace prefix | `ApmPlayground` | `AgenticPayments` |
 

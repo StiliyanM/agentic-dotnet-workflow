@@ -37,4 +37,16 @@ public sealed class PaymentTests
 
         Assert.NotEqual(first.Id, second.Id);
     }
+
+    [Theory]
+    [InlineData(PaymentStatus.Succeeded)]
+    [InlineData(PaymentStatus.Failed)]
+    public void ChangeStatus_SetsStatus(PaymentStatus status)
+    {
+        var payment = new Payment(_fixture.Create<decimal>(), _fixture.Create<Currency>(), _fixture.Create<PaymentMethod>());
+
+        payment.ChangeStatus(status);
+
+        Assert.Equal(status, payment.Status);
+    }
 }

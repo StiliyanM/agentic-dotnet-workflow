@@ -1,0 +1,12 @@
+spec=002-webhook
+step=02-test-writer
+role=test-writer
+allowed=tests/*
+changed: tests/AgenticPayments.IntegrationTests/Infrastructure/ApiFactory.cs
+changed: tests/AgenticPayments.IntegrationTests/ProviderWebhookTests.cs
+changed: tests/AgenticPayments.UnitTests/Payments/FakePaymentRepository.cs
+changed: tests/AgenticPayments.UnitTests/Payments/PaymentTests.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/FakeWebhookEventRepository.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/ProcessProviderWebhookUseCaseTests.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/ProviderWebhookValidatorTests.cs
+outcome=PASS

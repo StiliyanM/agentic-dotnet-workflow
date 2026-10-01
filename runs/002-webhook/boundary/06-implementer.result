@@ -1,0 +1,5 @@
+spec=002-webhook
+step=06-implementer
+role=implementer
+allowed=src/* AgenticPayments.slnx
+outcome=PASS
