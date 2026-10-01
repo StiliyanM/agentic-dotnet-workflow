@@ -123,3 +123,16 @@
 
 - `Enum.Parse<Currency>(s, true)` could use the named argument `ignoreCase: true`.
 - The two reviewers did not agree on the `Currency` comment. It stays short.
+
+## Rename note (2026-10-01)
+
+The repository, solution and projects have new names. Entries and plans above this note use the old names. They are historical records and are not changed.
+
+| Item | Old name | New name |
+|---|---|---|
+| GitHub repository | `apm-playground` | `agentic-dotnet-workflow` |
+| Solution | `ApmPlayground.slnx` | `AgenticPayments.slnx` |
+| Project and namespace prefix | `ApmPlayground` | `AgenticPayments` |
+
+- The projects were moved with `git mv`, so `git log --follow` shows the history of each file.
+- The GitHub repository rename was not done in this change, because this environment has no authenticated GitHub access. Until it is done, `origin` stays `https://github.com/StiliyanM/apm-playground.git`.

@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AgenticPayments.Api/AgenticPayments.Api.csproj" />
+    <Project Path="src/AgenticPayments.Application/AgenticPayments.Application.csproj" />
+    <Project Path="src/AgenticPayments.Domain/AgenticPayments.Domain.csproj" />
+    <Project Path="src/AgenticPayments.Infrastructure/AgenticPayments.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AgenticPayments.IntegrationTests/AgenticPayments.IntegrationTests.csproj" />
+    <Project Path="tests/AgenticPayments.UnitTests/AgenticPayments.UnitTests.csproj" />
+  </Folder>
+</Solution>

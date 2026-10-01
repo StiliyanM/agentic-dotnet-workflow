@@ -1,0 +1,15 @@
+using AgenticPayments.Application.Payments;
+using AgenticPayments.Domain.Payments;
+
+namespace AgenticPayments.Infrastructure.Persistence;
+
+public sealed class PaymentRepository(AppDbContext db) : IPaymentRepository
+{
+    public async Task AddAsync(Payment payment, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(payment);
+
+        db.Payments.Add(payment);
+        await db.SaveChangesAsync(cancellationToken);
+    }
+}

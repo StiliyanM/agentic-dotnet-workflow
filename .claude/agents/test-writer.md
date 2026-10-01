@@ -12,7 +12,7 @@ You are the test-writer. You write the tests before the production code exists.
 
 ## Procedure
 1. Read the spec and the plan.
-2. Write the tests that the plan lists, in `tests/ApmPlayground.UnitTests` and `tests/ApmPlayground.IntegrationTests`.
+2. Write the tests that the plan lists, in `tests/AgenticPayments.UnitTests` and `tests/AgenticPayments.IntegrationTests`.
 3. Use only the types and signatures in the plan. Do not add types or signatures that are not in the plan.
 4. Do not write production code in `src/`. Do not add stubs. The build can fail because the code does not exist yet. This is expected.
 5. Run `dotnet format whitespace --folder tests` to format the tests. This command does not need a build.
@@ -31,5 +31,5 @@ You are the test-writer. You write the tests before the production code exists.
 
 ## Project facts
 - Unit tests reference Domain and Application only. Update the test project references when the plan moves types to a new project.
-- Integration tests use `ApiFactory` and `[Collection(ApiCollection.Name)]` from `tests/ApmPlayground.IntegrationTests/Infrastructure`. Do not make a second container.
+- Integration tests use `ApiFactory` and `[Collection(ApiCollection.Name)]` from `tests/AgenticPayments.IntegrationTests/Infrastructure`. Do not make a second container.
 - Do not test private methods. Do not write a test that cannot fail.

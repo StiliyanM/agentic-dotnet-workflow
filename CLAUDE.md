@@ -1,8 +1,8 @@
-# ApmPlayground
+# AgenticPayments
 
 Playground to test an agentic development workflow.
 
-- .NET 10 solution `ApmPlayground.slnx`. The code in `src/` follows the layers in `docs/architecture.md` (Domain, Application, Infrastructure, Api). Tests: `tests/ApmPlayground.UnitTests`, `tests/ApmPlayground.IntegrationTests`.
+- .NET 10 solution `AgenticPayments.slnx`. The code in `src/` follows the layers in `docs/architecture.md` (Domain, Application, Infrastructure, Api). Tests: `tests/AgenticPayments.UnitTests`, `tests/AgenticPayments.IntegrationTests`.
 - `docs/architecture.md` and `docs/csharp-style.md` contain required rules for all specs. Only I change them, not a run. `.editorconfig` enforces the style rules that an analyzer can check.
 - PostgreSQL through EF Core is the only storage. The integration tests need Docker (Testcontainers).
 - Specs are in `specs/`. Plans are in `plans/`. The run log is `runs/log.md`.
@@ -34,7 +34,7 @@ These steps give the details of the orchestrator rules.
 |---|---|
 | planner | `plans/` |
 | test-writer | `tests/` |
-| implementer | `src/`, `ApmPlayground.slnx` |
+| implementer | `src/`, `AgenticPayments.slnx` |
 | test-auditor, reviewer | nothing |
 
 If an agent changes a different path, undo that change (`git checkout -- <path>` and delete the new files). This is a failed gate for that agent. Send the violation to it as a finding.

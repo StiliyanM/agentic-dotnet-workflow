@@ -10,10 +10,10 @@ The layer structure below is a required rule. It is not a KISS or YAGNI violatio
 
 | Project | Contains | Can reference |
 |---|---|---|
-| `src/ApmPlayground.Domain` | Entities, value objects, domain enums, domain rules (invariants). | Nothing. No NuGet packages. |
-| `src/ApmPlayground.Application` | Use cases (services), request and response contracts, FluentValidation validators, interfaces for persistence and other external services (ports). DI extension `AddApplication()`. | Domain. FluentValidation packages. |
-| `src/ApmPlayground.Infrastructure` | `AppDbContext`, EF Core entity configurations (`IEntityTypeConfiguration<T>`), implementations of the Application interfaces. DI extension `AddInfrastructure(IConfiguration)`. | Application, Domain. EF Core and Npgsql packages. |
-| `src/ApmPlayground.Api` | `Program.cs` (composition root), minimal API endpoints, HTTP mapping (status codes, problem details, JSON options). | Application, Infrastructure. |
+| `src/AgenticPayments.Domain` | Entities, value objects, domain enums, domain rules (invariants). | Nothing. No NuGet packages. |
+| `src/AgenticPayments.Application` | Use cases (services), request and response contracts, FluentValidation validators, interfaces for persistence and other external services (ports). DI extension `AddApplication()`. | Domain. FluentValidation packages. |
+| `src/AgenticPayments.Infrastructure` | `AppDbContext`, EF Core entity configurations (`IEntityTypeConfiguration<T>`), implementations of the Application interfaces. DI extension `AddInfrastructure(IConfiguration)`. | Application, Domain. EF Core and Npgsql packages. |
+| `src/AgenticPayments.Api` | `Program.cs` (composition root), minimal API endpoints, HTTP mapping (status codes, problem details, JSON options). | Application, Infrastructure. |
 
 - Domain does not know about EF Core, HTTP or JSON. Configure persistence in Infrastructure, not with attributes on entities.
 - Application does not reference EF Core. It uses the interfaces that it defines. Infrastructure implements them.
