@@ -2,7 +2,8 @@
 
 Playground to test an agentic development workflow.
 
-- .NET 10 solution `ApmPlayground.slnx`: `src/ApmPlayground.Api` (minimal API, EF Core, PostgreSQL), `tests/ApmPlayground.UnitTests`, `tests/ApmPlayground.IntegrationTests`.
+- .NET 10 solution `ApmPlayground.slnx`. The code in `src/` follows the layers in `docs/architecture.md` (Domain, Application, Infrastructure, Api). Tests: `tests/ApmPlayground.UnitTests`, `tests/ApmPlayground.IntegrationTests`.
+- `docs/architecture.md` contains required rules for all specs. Only I change it, not a run.
 - PostgreSQL through EF Core is the only storage. The integration tests need Docker (Testcontainers).
 - Specs are in `specs/`. Plans are in `plans/`. The run log is `runs/log.md`.
 - Agents are in `.claude/agents/`: planner, test-writer, implementer, test-auditor, reviewer.
@@ -23,7 +24,7 @@ When I write "run spec <id>":
 
 These steps give the details of the orchestrator rules.
 
-**Preflight (before rule 1).** Make sure that the working tree is clean, `docker info` passes, and `dotnet test` passes on `main`. If one of them fails, stop. Do not make a branch. Do not count it as a loop. Tell me the cause.
+**Preflight (before rule 1).** Make sure that the working tree is clean, `docker info` passes, and `dotnet test` passes on `main`. If the `docker` command is not found, add `%LOCALAPPDATA%\Programs\DockerDesktop\resources\bin` to PATH for the command and try again. If one of them fails, stop. Do not make a branch. Do not count it as a loop. Tell me the cause.
 
 **Branch.** Start `spec/<id>` from `main`.
 
@@ -33,7 +34,7 @@ These steps give the details of the orchestrator rules.
 |---|---|
 | planner | `plans/` |
 | test-writer | `tests/` |
-| implementer | `src/` |
+| implementer | `src/`, `ApmPlayground.slnx` |
 | test-auditor, reviewer | nothing |
 
 If an agent changes a different path, undo that change (`git checkout -- <path>` and delete the new files). This is a failed gate for that agent. Send the violation to it as a finding.

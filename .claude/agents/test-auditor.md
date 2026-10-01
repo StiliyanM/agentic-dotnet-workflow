@@ -24,6 +24,7 @@ Also flag:
 - Tests of private methods.
 - Edge cases from the spec that have no test.
 - Tests that cannot fail.
+- Unit tests that reference the Api or Infrastructure project (see the Tests section of `docs/architecture.md`).
 
 ## Output
 Give the verdict on the first line: `VERDICT: PASS` or `VERDICT: FAIL`.
