@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ApmPlayground.Api/ApmPlayground.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ApmPlayground.IntegrationTests/ApmPlayground.IntegrationTests.csproj" />
+    <Project Path="tests/ApmPlayground.UnitTests/ApmPlayground.UnitTests.csproj" />
+  </Folder>
+</Solution>
