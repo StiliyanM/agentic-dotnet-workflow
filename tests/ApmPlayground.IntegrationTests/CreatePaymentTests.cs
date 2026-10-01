@@ -203,6 +203,41 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     }
 
     [Fact]
+    public async Task CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors()
+    {
+        using var client = factory.CreateClient();
+
+        using var response = await PostRawAsync(
+            client,
+            $$"""{"currency":"JPY","method":"{{SupportedMethod()}}"}""");
+
+        using var problem = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        var errors = problem.RootElement.GetProperty("errors");
+        Assert.Multiple(
+            () => Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode),
+            () => Assert.Equal(2, errors.EnumerateObject().Count()),
+            () => Assert.Equal("Amount is required.", Assert.Single(errors.GetProperty("amount").EnumerateArray()).GetString()),
+            () => Assert.Equal("Currency has an invalid value.", Assert.Single(errors.GetProperty("currency").EnumerateArray()).GetString()));
+    }
+
+    [Fact]
+    public async Task CreatePayment_ContentTypeNotJson_Returns415()
+    {
+        using var client = factory.CreateClient();
+        using var content = new StringContent(
+            $$"""{"amount":{{RawAmount()}},"currency":"{{SupportedCurrency()}}","method":"{{SupportedMethod()}}"}""",
+            Encoding.UTF8,
+            "text/plain");
+
+        using var response = await client.PostAsync("/payments", content);
+
+        var body = await response.Content.ReadAsStringAsync();
+        Assert.Multiple(
+            () => Assert.Equal(HttpStatusCode.UnsupportedMediaType, response.StatusCode),
+            () => Assert.Empty(body));
+    }
+
+    [Fact]
     public async Task CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase()
     {
         using var client = factory.CreateClient();

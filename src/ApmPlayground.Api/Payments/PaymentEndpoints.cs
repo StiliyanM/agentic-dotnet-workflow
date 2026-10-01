@@ -1,4 +1,6 @@
 using ApmPlayground.Application.Payments;
+using Microsoft.AspNetCore.Http.Json;
+using Microsoft.Extensions.Options;
 
 namespace ApmPlayground.Api.Payments;
 
@@ -11,11 +13,21 @@ public static class PaymentEndpoints
     }
 
     private static async Task<IResult> CreatePaymentAsync(
-        CreatePaymentRequest request,
+        HttpRequest httpRequest,
+        IOptions<JsonOptions> jsonOptions,
         CreatePaymentUseCase useCase,
         CancellationToken cancellationToken)
     {
-        var result = await useCase.ExecuteAsync(request, cancellationToken);
+        var body = await JsonRequestBody.ReadAsync<CreatePaymentRequest>(
+            httpRequest,
+            jsonOptions.Value.SerializerOptions,
+            cancellationToken);
+        if (!body.IsSuccess)
+        {
+            return body.Error;
+        }
+
+        var result = await useCase.ExecuteAsync(body.Value, cancellationToken);
         return result.IsSuccess
             ? TypedResults.Json(result.Response, statusCode: StatusCodes.Status201Created)
             : TypedResults.ValidationProblem(result.Errors);
