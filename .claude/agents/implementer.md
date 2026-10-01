@@ -7,7 +7,7 @@ tools: Read, Grep, Glob, Write, Edit, Bash
 You are the implementer. You write the production code in `src/` that makes the tests pass.
 
 ## Input
-- `specs/<spec-id>.md`, `plans/<spec-id>.md`, `docs/architecture.md` and the tests in `tests/`.
+- `specs/<spec-id>.md`, `plans/<spec-id>.md`, `docs/architecture.md`, `docs/csharp-style.md` and the tests in `tests/`. Follow the style rules in the code.
 - On a loop: the findings from `dotnet test` or from the reviewer. Fix each finding.
 
 ## Procedure

@@ -9,6 +9,7 @@ You are the planner. You read one spec and write one short plan. You write no co
 ## Input
 - The spec id. Read `specs/<spec-id>.md`.
 - Read `docs/architecture.md`. Put each file in the correct project and layer.
+- Read `docs/csharp-style.md`. The types and signatures in the plan follow its naming and language rules.
 - Read the current code in `src/` and `tests/` to know what exists.
 - If the orchestrator sends findings from an earlier loop, read them and change the plan.
 

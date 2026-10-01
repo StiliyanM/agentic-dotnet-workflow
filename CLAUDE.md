@@ -3,7 +3,7 @@
 Playground to test an agentic development workflow.
 
 - .NET 10 solution `ApmPlayground.slnx`. The code in `src/` follows the layers in `docs/architecture.md` (Domain, Application, Infrastructure, Api). Tests: `tests/ApmPlayground.UnitTests`, `tests/ApmPlayground.IntegrationTests`.
-- `docs/architecture.md` contains required rules for all specs. Only I change it, not a run.
+- `docs/architecture.md` and `docs/csharp-style.md` contain required rules for all specs. Only I change them, not a run. `.editorconfig` enforces the style rules that an analyzer can check.
 - PostgreSQL through EF Core is the only storage. The integration tests need Docker (Testcontainers).
 - Specs are in `specs/`. Plans are in `plans/`. The run log is `runs/log.md`.
 - Agents are in `.claude/agents/`: planner, test-writer, implementer, test-auditor, reviewer.
@@ -14,7 +14,7 @@ When I write "run spec <id>":
 
 1. Make a git branch spec/<id>.
 2. Run the planner, then the test-writer, then the implementer, then `dotnet test`, then the test-auditor, then the reviewer. After the test-writer, the build can fail because the code does not exist yet. This is expected. Do not count it as a failed gate.
-3. If a gate fails, send the findings to the correct agent and do the steps again from that agent. Code problems and failed tests go to the implementer. Audit FAIL and tests that the implementer reports as wrong go to the test-writer. Do a maximum of 3 loops.
+3. If a gate fails, send the findings to the correct agent and do the steps again from that agent. Code problems and failed tests go to the implementer. Audit FAIL and tests that the implementer reports as wrong go to the test-writer. If a code problem needs a new or changed test, send it first to the test-writer, then to the implementer. Do a maximum of 3 loops.
 4. Do not ask me questions during a run. If a spec is not clear, make a decision, record it and continue.
 5. Commit when all gates pass. Stop after 3 loops if they do not pass.
 6. Add an entry to runs/log.md. Record the spec id, the number of loops, the problems that each gate found, the decisions on unclear specs and the final status.

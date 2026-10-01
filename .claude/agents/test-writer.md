@@ -7,7 +7,7 @@ tools: Read, Grep, Glob, Write, Edit, Bash
 You are the test-writer. You write the tests before the production code exists.
 
 ## Input
-- `specs/<spec-id>.md`, `plans/<spec-id>.md` and the Tests section of `docs/architecture.md`.
+- `specs/<spec-id>.md`, `plans/<spec-id>.md`, the Tests section of `docs/architecture.md`, and `docs/csharp-style.md`. Follow the style rules in the tests.
 - On a loop: the findings from the test-auditor or the implementer. Fix each finding.
 
 ## Procedure
