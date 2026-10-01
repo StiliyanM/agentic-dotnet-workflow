@@ -26,18 +26,24 @@ These steps give the details of the orchestrator rules.
 
 **Preflight (before rule 1).** Make sure that the working tree is clean, `docker info` passes, and `dotnet test` passes on `main`. If the `docker` command is not found, add `%LOCALAPPDATA%\Programs\DockerDesktop\resources\bin` to PATH for the command and try again. If one of them fails, stop. Do not make a branch. Do not count it as a loop. Tell me the cause.
 
-**Branch.** Start `spec/<id>` from `main`.
+**Branch.** Start `spec/<id>` from `main`. Then run `scripts/workflow/boundary.sh snapshot <id> 00-run`.
 
-**Snapshot and boundary checks.** Before each agent, run `git add -A`. After the agent finishes, find the files it changed with `git diff --name-only -- <path>` and `git ls-files --others --exclude-standard -- <path>`. Each agent can change only these paths:
+**Boundary checks.** Give each agent step a number and a name, for example `03-implementer`. Before the agent starts, run `scripts/workflow/boundary.sh snapshot <id> <step>`. After the agent finishes, run `scripts/workflow/boundary.sh check <id> <step> <role>`. The allowed paths for each role are in `scripts/workflow/allowed-paths.conf`:
 
-| Agent | Can change |
+| Role | Can change |
 |---|---|
-| planner | `plans/` |
+| planner | `plans/<id>.md` |
 | test-writer | `tests/` |
 | implementer | `src/`, `AgenticPayments.slnx` |
-| test-auditor, reviewer | nothing |
+| test-auditor, reviewer | nothing (they have no write tools) |
 
-If an agent changes a different path, undo that change (`git checkout -- <path>` and delete the new files). This is a failed gate for that agent. Send the violation to it as a finding.
+The check compares staged, unstaged and untracked files, HEAD, `.git/config` and `.git/hooks` with the snapshot. An agent must not commit.
+
+**On a boundary violation**, stop the run. Do not undo the change, do not delete files, and do not commit. The evidence is in `.git/agent-boundary/<id>/<step>.*`. Write the log entry with the status `STOPPED: boundary violation` and tell me. This is not a loop. I decide what to keep.
+
+**Controls.** A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `.editorconfig`, `.gitattributes`, `.gitignore`. Before the final commit, run `scripts/workflow/boundary.sh check <id> 00-run orchestrator`. It covers the whole run. A change to a control is a maintenance change. It happens only when I ask for it directly, outside a spec run, on `main` or a `maintenance/*` branch.
+
+See `docs/workflow.md` for what the checks do not cover.
 
 **Gates after the implementer.** Run in this sequence:
 1. `dotnet build` (warnings are errors).
@@ -46,7 +52,7 @@ If an agent changes a different path, undo that change (`git checkout -- <path>`
 
 Problems in `src/` go to the implementer. Problems in `tests/` go to the test-writer.
 
-**Audit and review.** Run `git add -A` before the test-auditor and the reviewer, so that `git diff main` shows new files. Send the reviewer only the spec id. Do not send it the plan or the output of the other agents.
+**Audit and review.** The test-auditor and the reviewer have no shell. Before the test-auditor, run `scripts/workflow/boundary.sh diff <base> .agent-input/<id>/tests.diff tests/`. Before the reviewer, run `scripts/workflow/boundary.sh diff <base> .agent-input/<id>/changes.diff`. `<base>` is the `main` commit that the branch started from. Send the reviewer only the spec id. Do not send it the plan or the output of the other agents.
 
 **Decisions.** Record the decisions on unclear specs in the "Decisions" section of `plans/<id>.md` and in `runs/log.md`.
 
