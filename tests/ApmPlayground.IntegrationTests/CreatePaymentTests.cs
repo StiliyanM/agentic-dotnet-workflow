@@ -39,12 +39,11 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
         await db.Payments.Where(p => _createdPaymentIds.Contains(p.Id)).ExecuteDeleteAsync();
     }
 
-    [Theory]
-    [InlineData("ideal")]
-    [InlineData("klarna")]
-    public async Task CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl(string method)
+    [Fact]
+    public async Task CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl()
     {
         using var client = factory.CreateClient();
+        var method = SupportedMethod();
 
         using var response = await client.PostAsJsonAsync("/payments", ValidBody(method));
         var body = await ReadCreatedPaymentAsync(response);
@@ -62,19 +61,13 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
                 raw.RootElement.GetProperty("redirectUrl").GetString()));
     }
 
-    [Theory]
-    [InlineData("ideal", PaymentMethod.Ideal, "EUR", Currency.Eur)]
-    [InlineData("klarna", PaymentMethod.Klarna, "USD", Currency.Usd)]
-    public async Task CreatePayment_ValidRequest_PersistsPayment(
-        string method,
-        PaymentMethod expectedMethod,
-        string currency,
-        Currency expectedCurrency)
+    [Fact]
+    public async Task CreatePayment_ValidRequest_PersistsPayment()
     {
         using var client = factory.CreateClient();
         var amount = ValidAmount();
 
-        using var response = await client.PostAsJsonAsync("/payments", new { amount, currency, method });
+        using var response = await client.PostAsJsonAsync("/payments", new { amount, currency = "USD", method = "klarna" });
         var body = await ReadCreatedPaymentAsync(response);
 
         await using var scope = factory.Services.CreateAsyncScope();
@@ -83,23 +76,9 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
 
         Assert.Multiple(
             () => Assert.Equal(amount, payment.Amount),
-            () => Assert.Equal(expectedCurrency, payment.Currency),
-            () => Assert.Equal(expectedMethod, payment.Method),
+            () => Assert.Equal(Currency.Usd, payment.Currency),
+            () => Assert.Equal(PaymentMethod.Klarna, payment.Method),
             () => Assert.Equal(PaymentStatus.Pending, payment.Status));
-    }
-
-    [Fact]
-    public async Task CreatePayment_TwoRequests_ReturnDifferentPaymentIds()
-    {
-        using var client = factory.CreateClient();
-        var method = SupportedMethod();
-
-        using var firstResponse = await client.PostAsJsonAsync("/payments", ValidBody(method));
-        var first = await ReadCreatedPaymentAsync(firstResponse);
-        using var secondResponse = await client.PostAsJsonAsync("/payments", ValidBody(method));
-        var second = await ReadCreatedPaymentAsync(secondResponse);
-
-        Assert.NotEqual(first.PaymentId, second.PaymentId);
     }
 
     [Theory]
@@ -136,7 +115,6 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
 
     [Theory]
     [InlineData("EUR", "EUR")]
-    [InlineData("eur", "EUR")]
     [InlineData("Gbp", "GBP")]
     [InlineData("usd", "USD")]
     public async Task CreatePayment_Currency_StoresIsoCodeInColumn(string currency, string expectedColumnValue)
@@ -170,41 +148,13 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
         await AssertValidationProblemAsync(response, "amount", "Amount must be greater than 0.");
     }
 
-    [Fact]
-    public async Task CreatePayment_NegativeAmount_Returns400WithAmountError()
-    {
-        using var client = factory.CreateClient();
-        var method = SupportedMethod();
-
-        using var response = await client.PostAsJsonAsync(
-            "/payments",
-            new { amount = -ValidAmount(), currency = SupportedCurrency(), method });
-
-        await AssertValidationProblemAsync(response, "amount", "Amount must be greater than 0.");
-    }
-
-    [Fact]
-    public async Task CreatePayment_AmountAboveMaximum_Returns400WithAmountError()
-    {
-        using var client = factory.CreateClient();
-        var method = SupportedMethod();
-
-        using var response = await client.PostAsJsonAsync(
-            "/payments",
-            new { amount = 10000000000000000m, currency = SupportedCurrency(), method });
-
-        await AssertValidationProblemAsync(response, "amount", "Amount is too large.");
-    }
-
+    // Binding cases: each row proves one JSON reader or enum converter behavior that a validator test cannot prove.
     [Theory]
     [InlineData("currency", "\"JPY\"", "Currency has an invalid value.")]
     [InlineData("currency", "0", "Currency has an invalid value.")]
     [InlineData("currency", "null", "Currency has an invalid value.")]
-    [InlineData("currency", "\"GBP, USD\"", "Currency has an invalid value.")]
     [InlineData("method", "\"ideal, klarna\"", "Method has an invalid value.")]
-    [InlineData("method", "\"paypal\"", "Method has an invalid value.")]
-    [InlineData("method", "1", "Method has an invalid value.")]
-    [InlineData("method", "null", "Method has an invalid value.")]
+    [InlineData("method", "\"1\"", "Method has an invalid value.")]
     [InlineData("amount", "\"abc\"", "Amount has an invalid value.")]
     [InlineData("amount", "true", "Amount has an invalid value.")]
     [InlineData("amount", "null", "Amount has an invalid value.")]

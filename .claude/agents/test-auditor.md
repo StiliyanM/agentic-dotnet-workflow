@@ -13,6 +13,9 @@ You are the test-auditor. You examine only the tests. You do not examine the pro
 
 ## Checks
 Check each test against the test rules:
+- Test each rule at the lowest level that can prove it. Add integration tests for public contracts, component interactions, and complete flows. Do not repeat every unit-test case through HTTP unless the HTTP path adds a distinct risk.
+  - Unit tests: domain rules, validators, and use-case logic.
+  - Integration tests: HTTP binding, serialization, error contracts, persistence, and interactions between components.
 - Quality is more important than coverage. Test real flows: the happy path and the main edge cases from the spec. Do not add a test only to increase coverage.
 - Use xUnit asserts. Use Assert.Multiple when a test has more than one assertion.
 - Make the test data with AutoFixture.
@@ -24,6 +27,8 @@ Also flag:
 - Tests of private methods.
 - Edge cases from the spec that have no test.
 - Tests that cannot fail.
+- Integration tests that repeat a unit-tested rule through HTTP when the HTTP path adds no distinct risk. Name the unit test that already proves the rule.
+- Rules that only an integration test proves, when a unit test can prove them.
 - Unit tests that reference the Api or Infrastructure project (see the Tests section of `docs/architecture.md`).
 
 ## Output

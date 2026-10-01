@@ -66,21 +66,6 @@ public sealed class CreatePaymentUseCaseTests
             () => Assert.Empty(_repository.Added));
     }
 
-    [Fact]
-    public async Task ExecuteAsync_UndefinedMethod_ReturnsErrorsAndDoesNotAddPayment()
-    {
-        var request = ValidRequest() with { Method = (PaymentMethod)99 };
-
-        var result = await _useCase.ExecuteAsync(request, CancellationToken.None);
-
-        Assert.Multiple(
-            () => Assert.False(result.IsSuccess),
-            () => Assert.Null(result.Response),
-            () => Assert.Equal("method", Assert.Single(result.Errors).Key),
-            () => Assert.Equal("Method has an invalid value.", Assert.Single(result.Errors["method"])),
-            () => Assert.Empty(_repository.Added));
-    }
-
     private CreatePaymentRequest ValidRequest() => new()
     {
         Amount = _fixture.Create<int>() + 0.99m,

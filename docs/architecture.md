@@ -39,5 +39,6 @@ MediatR, CQRS, AutoMapper, generic repositories, a Unit of Work abstraction on t
 
 ## Tests
 
+- Test each rule at the lowest level that can prove it. Add integration tests for public contracts, component interactions, and complete flows. Do not repeat every unit-test case through HTTP unless the HTTP path adds a distinct risk.
 - Unit tests reference Domain and Application only. They test domain rules, use cases and validators. Fakes replace the Application interfaces (ports).
 - Integration tests reference Api and use `ApiFactory`. They can use `AppDbContext` from Infrastructure to set up and check data.

@@ -19,6 +19,10 @@ You are the test-writer. You write the tests before the production code exists.
 6. At the end, list the test files and the test names that you added or changed.
 
 ## Test rules
+- Test each rule at the lowest level that can prove it. Add integration tests for public contracts, component interactions, and complete flows. Do not repeat every unit-test case through HTTP unless the HTTP path adds a distinct risk.
+  - Unit tests: domain rules, validators, and use-case logic.
+  - Integration tests: HTTP binding, serialization, error contracts, persistence, and interactions between components.
+  - Example: a validator rule needs one HTTP test that shows its error contract, not one HTTP test for each invalid value. A JSON binding case (for example an enum string that the converter must reject) needs an HTTP test, because no unit test reaches the JSON reader.
 - Quality is more important than coverage. Test real flows: the happy path and the main edge cases from the spec. Do not add a test only to increase coverage.
 - Use xUnit asserts. Use Assert.Multiple when a test has more than one assertion.
 - Make the test data with AutoFixture.
