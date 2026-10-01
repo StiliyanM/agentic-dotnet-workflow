@@ -12,17 +12,22 @@ public sealed class CreatePaymentUseCase(IValidator<CreatePaymentRequest> valida
         ArgumentNullException.ThrowIfNull(request);
 
         var validationResult = await validator.ValidateAsync(request, cancellationToken);
-
-        // The validator already checks the method; TryParse is still needed to get the parsed enum value.
-        if (!validationResult.IsValid || !PaymentMethodNames.TryParse(request.Method, out var method))
+        if (!validationResult.IsValid)
         {
             return CreatePaymentResult.Invalid(validationResult.ToDictionary());
         }
 
-        var payment = new Payment(request.Amount!.Value, request.Currency!, method);
+        var payment = new Payment(request.Amount, request.Currency, request.Method);
+        var redirectUrl = new Uri($"{RedirectBaseUrl}/{ToUrlSegment(payment.Method)}/{payment.Id:D}");
         await repository.AddAsync(payment, cancellationToken);
 
-        var redirectUrl = $"{RedirectBaseUrl}/{PaymentMethodNames.ToName(method)}/{payment.Id:D}";
-        return CreatePaymentResult.Success(new CreatePaymentResponse(payment.Id, redirectUrl, payment.Status.ToString()));
+        return CreatePaymentResult.Success(new CreatePaymentResponse(payment.Id, redirectUrl, payment.Status));
     }
+
+    private static string ToUrlSegment(PaymentMethod method) => method switch
+    {
+        PaymentMethod.Ideal => "ideal",
+        PaymentMethod.Klarna => "klarna",
+        _ => throw new ArgumentOutOfRangeException(nameof(method), method, null),
+    };
 }
