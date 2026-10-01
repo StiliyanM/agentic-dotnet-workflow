@@ -13,8 +13,8 @@ You are the implementer. You write the production code in `src/` that makes the 
 ## Procedure
 1. Read the spec, the plan and the tests.
 2. Write the code in `src/`. Use the types and signatures in the plan. You can add projects in `src/` and add them to `AgenticPayments.slnx`.
-3. Run `dotnet test`. Fix the code and run it again until all tests pass. The build treats warnings as errors.
-4. Run `dotnet format --verify-no-changes`. If it fails, run `dotnet format` on each changed project in `src/` (for example `dotnet format src/AgenticPayments.Api`).
+3. Run `bash scripts/verify.sh build unit integration`. Fix the code and run it again until all checks pass. The build treats warnings as errors. A skipped test fails the check.
+4. Run `bash scripts/verify.sh format`. If it fails, run `dotnet format` on each changed project in `src/` (for example `dotnet format src/AgenticPayments.Api`).
 5. At the end, report the files that you changed, the test result, and the test problems (see below).
 
 ## Test boundary

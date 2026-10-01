@@ -24,9 +24,11 @@ When I write "run spec <id>":
 
 These steps give the details of the orchestrator rules.
 
-**Preflight (before rule 1).** Make sure that the working tree is clean, `docker info` passes, and `dotnet test` passes on `main`. If the `docker` command is not found, add `%LOCALAPPDATA%\Programs\DockerDesktop\resources\bin` to PATH for the command and try again. If one of them fails, stop. Do not make a branch. Do not count it as a loop. Tell me the cause.
+**Preflight (before rule 1).** Make sure that the working tree is clean and that `bash scripts/verify.sh all --results artifacts/preflight` passes on `main`. If the `docker` command is not found, add `%LOCALAPPDATA%\Programs\DockerDesktop\resources\bin` to PATH and try again. If a check fails, stop. Do not make a branch. Do not count it as a loop. Tell me the cause.
 
-**Branch.** Start `spec/<id>` from `main`. Then run `scripts/workflow/boundary.sh snapshot <id> 00-run`.
+**Evidence.** Keep `runs/<id>/` as `docs/workflow.md` describes: `evidence.md` (base commit, one row for each step, verification commands with exit status, findings and loops, decisions), the final report of each agent in `agents/<step>.md`, the verification output in `verify/<step>/`, and the boundary results in `boundary/`. Write only what a command or an agent actually returned. Do not save conversation transcripts or secrets.
+
+**Branch.** Start `spec/<id>` from `main`. Record the base commit in `runs/<id>/evidence.md`. Then run `scripts/workflow/boundary.sh snapshot <id> 00-run`.
 
 **Boundary checks.** Give each agent step a number and a name, for example `03-implementer`. Before the agent starts, run `scripts/workflow/boundary.sh snapshot <id> <step>`. After the agent finishes, run `scripts/workflow/boundary.sh check <id> <step> <role>`. The allowed paths for each role are in `scripts/workflow/allowed-paths.conf`:
 
@@ -37,18 +39,15 @@ These steps give the details of the orchestrator rules.
 | implementer | `src/`, `AgenticPayments.slnx` |
 | test-auditor, reviewer | nothing (they have no write tools) |
 
-The check compares staged, unstaged and untracked files, HEAD, `.git/config` and `.git/hooks` with the snapshot. An agent must not commit.
+The check compares staged, unstaged and untracked files, HEAD, `.git/config` and `.git/hooks` with the snapshot. An agent must not commit. After each check, copy `.git/agent-boundary/<id>/<step>.result` to `runs/<id>/boundary/`, and save the agent's final report in `runs/<id>/agents/<step>.md`. Update `evidence.md` before the next snapshot.
 
 **On a boundary violation**, stop the run. Do not undo the change, do not delete files, and do not commit. The evidence is in `.git/agent-boundary/<id>/<step>.*`. Write the log entry with the status `STOPPED: boundary violation` and tell me. This is not a loop. I decide what to keep.
 
-**Controls.** A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `.editorconfig`, `.gitattributes`, `.gitignore`. Before the final commit, run `scripts/workflow/boundary.sh check <id> 00-run orchestrator`. It covers the whole run. A change to a control is a maintenance change. It happens only when I ask for it directly, outside a spec run, on `main` or a `maintenance/*` branch.
+**Controls.** A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `global.json`, `.editorconfig`, `.gitattributes`, `.gitignore`. Before the final commit, run `scripts/workflow/boundary.sh check <id> 00-run orchestrator`. It covers the whole run. A change to a control is a maintenance change. It happens only when I ask for it directly, outside a spec run, on `main` or a `maintenance/*` branch.
 
 See `docs/workflow.md` for what the checks do not cover.
 
-**Gates after the implementer.** Run in this sequence:
-1. `dotnet build` (warnings are errors).
-2. `dotnet format --verify-no-changes`.
-3. `dotnet test`.
+**Gates after the implementer.** Run `bash scripts/verify.sh build format unit integration --results runs/<id>/verify/<step>`. It stops at the first failed check. Record the command and its exit status in `evidence.md`.
 
 Problems in `src/` go to the implementer. Problems in `tests/` go to the test-writer.
 

@@ -1,0 +1,55 @@
+name: verify
+
+on:
+  push:
+    branches: [main, "spec/**", "maintenance/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    # GitHub-hosted Ubuntu runners have Docker, which Testcontainers needs for PostgreSQL.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: bash scripts/verify.sh restore
+
+      - name: Build
+        id: build
+        run: bash scripts/verify.sh build
+
+      # The checks below run when the build passed, also when an earlier check failed,
+      # so one run reports every failed check.
+      - name: Format verification
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: bash scripts/verify.sh format
+
+      - name: Unit tests
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: bash scripts/verify.sh unit
+
+      - name: Integration tests (PostgreSQL through Testcontainers)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: bash scripts/verify.sh integration
+
+      - name: Boundary check tests
+        if: ${{ !cancelled() }}
+        run: bash scripts/verify.sh boundary
+
+      - name: Upload verification results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-results
+          path: artifacts/verify/
+          if-no-files-found: warn
+          retention-days: 30

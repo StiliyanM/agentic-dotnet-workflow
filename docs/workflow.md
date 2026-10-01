@@ -41,8 +41,75 @@ These checks find mistakes. They are not a security sandbox. An agent that tries
 
 `bash scripts/workflow/tests/boundary.test.sh` runs each case in a new temporary repository: an allowed edit, a forbidden unstaged edit, a forbidden staged edit, a staged edit reverted in the working tree, a new forbidden file, a deleted file, an unexpected commit, a new hook, a reviewer edit, a plan for another spec, evidence kept after a violation, and the diff command.
 
+## Verification commands
+
+CI (`.github/workflows/verify.yml`) and local runs use the same script. On Windows, run it in Git Bash.
+
+| Check | Command |
+|---|---|
+| All checks, in sequence | `bash scripts/verify.sh all` |
+| Restore | `bash scripts/verify.sh restore` |
+| Build (warnings are errors) | `bash scripts/verify.sh build` |
+| Format verification | `bash scripts/verify.sh format` |
+| Unit tests | `bash scripts/verify.sh unit` |
+| Integration tests (needs Docker) | `bash scripts/verify.sh integration` |
+| Boundary check tests | `bash scripts/verify.sh boundary` |
+
+- The output goes to `artifacts/verify/` (or `--results <dir>`): one log for each step, `unit.trx`, `integration.trx`, and `summary.txt` with `<step> exit=<code>` lines.
+- A test step fails when no tests ran, or when a test failed, was skipped, or was not executed. `dotnet test` alone returns exit 0 for a skipped test. The script reads the TRX counters, so a skipped integration test does not count as a pass.
+- CI runs on `ubuntu-24.04`, which has Docker. The SDK version comes from `global.json`. CI uploads `artifacts/verify/` as the `verify-results` artifact, also when a check fails.
+
+## Run evidence
+
+The orchestrator owns the evidence. Agents do not write it. For each spec run, it keeps `runs/<spec-id>/`:
+
+| Path | Content |
+|---|---|
+| `runs/<spec-id>/evidence.md` | The summary below. |
+| `runs/<spec-id>/agents/<step>.md` | The final report of the agent, as the agent gave it. Not the conversation transcript. |
+| `runs/<spec-id>/verify/<step>/` | The output of `scripts/verify.sh` for that verification: logs, TRX files, `summary.txt`. |
+| `runs/<spec-id>/boundary/<step>.result` | The boundary check result. On a violation, also the patches and the commit log. |
+
+`evidence.md` format:
+
+```markdown
+# Evidence: <spec-id>
+
+- Base commit: <sha of main when the branch started>
+- Branch: spec/<spec-id>
+- Status: PASSED | FAILED after 3 loops | STOPPED: boundary violation
+- Final commit: <sha> | not committed
+
+## Steps
+
+| Step | Role | Outcome | Boundary | Output |
+|---|---|---|---|---|
+| 01-planner | planner | plan written | PASS, 1 path | agents/01-planner.md |
+| 04-verify | orchestrator | build, format, unit, integration | – | verify/04-verify/summary.txt |
+
+## Verification
+
+| Step | Command | Exit status | Output |
+|---|---|---|---|
+| 04-verify | `bash scripts/verify.sh build format unit integration --results runs/<spec-id>/verify/04-verify` | 0 | verify/04-verify/ |
+
+## Findings and loops
+
+- Loop 1: test-auditor FAIL (<short reason>). Sent to the test-writer.
+
+## Decisions on unclear specs
+
+- <decision>
+```
+
+Rules for evidence:
+- Record only what a command or an agent actually returned. Do not write a result that no output shows.
+- Record the exit status of each command as the shell returned it.
+- Do not save conversation transcripts, tokens, passwords or connection strings for real systems.
+- Runs before this format (specs 001, 004, 005 and 006) have only their entries in `runs/log.md`. No evidence files were made for them later.
+
 ## Controls and maintenance
 
-A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `.editorconfig`, `.gitattributes` and `.gitignore`. The `orchestrator` role in `allowed-paths.conf` does not include them. The orchestrator checks the whole run against this role before it commits.
+A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `global.json`, `.editorconfig`, `.gitattributes` and `.gitignore`. The `orchestrator` role in `allowed-paths.conf` does not include them. The orchestrator checks the whole run against this role before it commits.
 
 A change to a control is a maintenance change. It happens only when the user asks for it directly, outside a spec run.
