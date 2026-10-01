@@ -136,3 +136,27 @@ The repository, solution and projects have new names. Entries and plans above th
 
 - The projects were moved with `git mv`, so `git log --follow` shows the history of each file.
 - The GitHub repository rename was not done in this change, because this environment has no authenticated GitHub access. Until it is done, `origin` stays `https://github.com/StiliyanM/apm-playground.git`.
+
+## Maintenance before specs 002 and 003 (2026-10-01)
+
+Not a spec run. The user asked for these changes directly. Each one is a separate commit.
+
+| Commit | Change |
+|---|---|
+| `4753562` | Test rule: test each rule at the lowest level that can prove it. Duplicate integration tests removed (each removal is explained in the commit message). Unit 19 → 18, integration 35 → 26. |
+| `f4b8457` | Missing JSON members are found from the contract metadata, not from `JsonException.Message`. |
+| `65b0c4d` | Rename to `AgenticPayments` (see the rename note above). |
+| `5e58f45` | Agent boundary checks (`scripts/workflow/boundary.sh`), read-only test-auditor and reviewer. |
+| `f8b6b16` | `scripts/verify.sh`, GitHub Actions CI, `global.json`, run evidence format. |
+| `22c4f24` | Documenter agent and documentation review. |
+| `f7b3569` | README and `docs/user/payments-api.md`. |
+| (next) | Permission deny rules for control paths in `.claude/settings.json`. |
+
+Public contract changes:
+- A body with a missing member **and** an invalid value now returns both errors. Before, it returned only the invalid-value error. All other error responses are the same. This was verified: the new integration tests ran against the code before the change, and only this case was different.
+- No other change. A non-JSON content type still gives 415 with no body.
+
+Found and documented, not changed:
+- `"amount": "10.50"` (a numeric string) is accepted. `currency` and `method` reject numeric strings. No spec decided this.
+
+Evidence: from the next spec run, each run has `runs/<id>/evidence.md`. No evidence files were made for the earlier runs.

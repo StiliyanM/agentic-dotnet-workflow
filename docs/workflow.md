@@ -113,3 +113,17 @@ Rules for evidence:
 A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `global.json`, `.editorconfig`, `.gitattributes` and `.gitignore`. The `orchestrator` role in `allowed-paths.conf` does not include them. The orchestrator checks the whole run against this role before it commits.
 
 A change to a control is a maintenance change. It happens only when the user asks for it directly, outside a spec run.
+
+### Permission rules
+
+`.claude/settings.json` has `deny` rules for the `Edit` permission on each control path. In Claude Code, `Edit` rules apply to all built-in tools that edit files (Edit and Write), for the main session and for all agents. So no agent and no orchestrator can change a control with these tools.
+
+Limits:
+- The rules do not block shell commands. An agent with Bash (test-writer, implementer) can still change a control with a shell command. The boundary check finds this.
+- The rules apply only in Claude Code with this project's settings.
+
+To make a maintenance change, the user removes the `deny` rules from `.claude/settings.json` by hand, starts a new session, makes the change, and then restores the rules in the same maintenance change. A spec run never does this.
+
+### When rule changes take effect
+
+Claude Code loads `CLAUDE.md`, the agent definitions and the settings when a session starts. After a maintenance change, start a new session before the next spec run. An agent in the old session can still use its old instructions.
