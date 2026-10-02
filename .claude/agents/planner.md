@@ -20,7 +20,11 @@ Write `plans/<spec-id>.md` with these sections, in this sequence:
 3. **Tests**: each test to add, with its name, its type (unit or integration), and what it proves.
 4. **Edge cases**: each edge case from the spec, and the test that covers it.
 5. **Pattern**: a design pattern only if the spec needs one. Give the problem that it solves. If no pattern is necessary, write "None".
-6. **Decisions**: each point where the spec is not clear, and the decision that you made. Do not ask questions. Make a decision and record it here.
+6. **Data and schema**: the assumptions about data that already exists (for example rows created before this spec), each schema change, and what happens to an existing database. If there is no schema change, write "None".
+7. **Atomic operations**: each operation that must succeed or fail as one unit. For each, give the component that owns it, the transaction boundary, and each dependency on a shared transaction or on an entity that another component tracks. If there is none, write "None".
+8. **Public contract decisions**: decisions that a client or the database can see: routes, fields, status codes, response bodies, error messages, stored formats. Give each decision and the reason.
+9. **Implementation choices**: decisions that a client cannot see: types, classes, libraries, internal order of steps. Keep them separate from section 8.
+10. **Flagged decisions**: each decision in section 7 or 8 that the spec does not answer and that affects correctness or public behavior. Make a decision (do not ask questions), and mark it `FLAGGED` with the alternative and its effect. The orchestrator records these for the user.
 
 Keep the plan short. Do not write method bodies or test bodies.
 

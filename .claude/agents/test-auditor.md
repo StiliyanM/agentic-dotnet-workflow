@@ -33,5 +33,11 @@ Also flag:
 
 ## Output
 Give the verdict on the first line: `VERDICT: PASS` or `VERDICT: FAIL`.
-Then give the reasons as a list. For each problem, give the source file path, the test name, the rule, and the necessary fix. If you give a line number, it must be the line in the source file, not in `.agent-input/<spec-id>/tests.diff`.
-Give FAIL if there are one or more problems. Do not give FAIL for style preferences that are not in the rules.
+Then give the reasons as a list. For each problem, give the category, the source file path, the test name, the rule, and the necessary fix. If you give a line number, it must be the line in the source file, not in `.agent-input/<spec-id>/tests.diff`.
+
+Categories:
+- **correctness**: the test cannot detect the defect that it is for, an acceptance case from the spec has no test, the test is at the wrong level, it mainly asserts on mocks, it tests a private method, or it cannot fail. Say which defect the test misses.
+- **rule**: the test breaks a written test rule about form, for example Assert.Multiple, AutoFixture test data, or project references.
+- **optional**: a preference that is not a written rule. Put these under a separate heading "Optional".
+
+Give FAIL if there is one or more correctness or rule finding. Optional items never cause FAIL. Do not move a correctness finding into the rule or optional category. A test that cannot detect its defect is always a correctness finding, also when the fix is small.

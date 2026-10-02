@@ -59,6 +59,8 @@ Problems in `src/` go to the implementer. Problems in `tests/` go to the test-wr
 3. If a gate fails because of a test problem, send it to the test-writer. This is a new loop.
 4. If all gates pass, do not call the implementer. Continue with the step that found the problem: the test-auditor after an audit FAIL, then the reviewer. After a reviewer finding, run the reviewer again.
 
+**Plan gaps and flagged decisions.** When the test-writer reports `PLAN GAP` or `PLAN UPDATE NEEDED`, send it to the planner, then run the test-writer again with the updated plan. This is a loop. Record each `FLAGGED` decision from the plan in `evidence.md` and in the log entry, so that I can review it after the run. A test-auditor finding has a category (correctness, rule or optional); record it.
+
 **Loop reasons.** For each return to an earlier agent, write one line in `evidence.md` under "Findings and loops": the loop number, the gate or agent that found the problem, the finding, the agent that gets it, and why that agent owns it.
 
 **Audit and review.** The test-auditor and the reviewer have no shell. Before the test-auditor, run `scripts/workflow/boundary.sh review-input <base> <id> tests` (writes `.agent-input/<id>/tests.diff`). Before the reviewer, run `scripts/workflow/boundary.sh review-input <base> <id> code` (writes `.agent-input/<id>/changes.diff`: `src/`, `tests/` and `AgenticPayments.slnx` only; never `plans/` or `runs/`). `<base>` is the `main` commit that the branch started from. Do not write review input with `boundary.sh diff` and a hand-made path list. Send the reviewer only the spec id. Do not send it the plan, the evidence or the output of the other agents. The reviewer reads the spec and the shared rules itself.
