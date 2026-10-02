@@ -122,6 +122,44 @@ else
     echo "FAIL diff-path-filter"; failures=$((failures + 1))
 fi
 
+# review-input: the code-review diff contains code and tests, and never plans or run evidence.
+# The plan and the evidence are both tracked (changed) and untracked (new), as in a real run.
+new_repo review-input
+base=$(git rev-parse HEAD)
+echo "# plan" >plans/001-x.md
+git add plans/001-x.md
+git commit -qm "plan on the branch base"
+base_with_plan=$base
+echo "decision: changed" >>plans/001-x.md
+mkdir -p runs/001-x/agents runs/001-x/verify/04-verify
+echo "# evidence" >runs/001-x/evidence.md
+echo "agent reasoning" >runs/001-x/agents/01-planner.md
+echo "build output" >runs/001-x/verify/04-verify/build.log
+echo "class C {}" >src/C.cs
+echo "class U {}" >tests/U.cs
+echo "# readme" >README.md
+mkdir -p docs/user
+echo "# api" >docs/user/api.md
+
+review_input_case() {
+    local kind=$1 file=$2 must=$3 must_not=$4 name="review-input-$1"
+    if ! boundary review-input "$base_with_plan" 001-x "$kind" >/dev/null 2>&1; then
+        echo "FAIL $name: command failed"; failures=$((failures + 1)); return
+    fi
+    local out=".agent-input/001-x/$file" path
+    for path in $must; do
+        grep -q "^diff --git a/$path" "$out" || { echo "FAIL $name: $path missing"; failures=$((failures + 1)); return; }
+    done
+    for path in $must_not; do
+        if grep -q "^diff --git a/$path" "$out"; then echo "FAIL $name: $path included"; failures=$((failures + 1)); return; fi
+    done
+    echo "ok   $name"
+}
+
+review_input_case code changes.diff "src/C.cs tests/U.cs" "plans/ runs/ README.md docs/"
+review_input_case tests tests.diff "tests/U.cs" "plans/ runs/ src/ README.md docs/"
+review_input_case docs docs.diff "README.md docs/user/api.md" "plans/ runs/ src/ tests/"
+
 if [ "$failures" -gt 0 ]; then
     echo "boundary tests: $failures failure(s)"
     exit 1

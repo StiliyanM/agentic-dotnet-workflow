@@ -4,7 +4,13 @@
 #   boundary.sh snapshot <spec-id> <step>          Save the repository state before a step.
 #   boundary.sh check    <spec-id> <step> <role>   Compare the state with the snapshot. Exit 1 on a violation.
 #   boundary.sh diff     <base-ref> <out-file> [<path>...]  Write the diff from <base-ref> to the working tree,
-#                                                  including untracked files (input for read-only agents).
+#                                                  including untracked files.
+#   boundary.sh review-input <base-ref> <spec-id> code|tests|docs
+#                                                  Write the input diff for a read-only agent to
+#                                                  .agent-input/<spec-id>/: changes.diff (code review),
+#                                                  tests.diff (test audit) or docs.diff (documentation review).
+#                                                  Each kind has a fixed path list. plans/ and runs/ are never
+#                                                  included, so the reviewer does not see other agents' reasoning.
 #
 # The checks detect changes to staged, unstaged and untracked files, to HEAD, and to .git/config and
 # .git/hooks. They do not detect changes to ignored files or outside the repository. This is not a
@@ -172,12 +178,37 @@ cmd_diff() {
     echo "boundary: diff $base..working-tree -> $out"
 }
 
-[ $# -ge 1 ] || die "usage: boundary.sh snapshot|check|diff ..."
+# Path lists for the read-only agents. Code review: production code, tests and the solution file.
+review_paths_code=(src/ tests/ AgenticPayments.slnx)
+review_paths_tests=(tests/)
+review_paths_docs=(README.md docs/user/)
+
+cmd_review_input() {
+    [ $# -eq 3 ] || die "usage: boundary.sh review-input <base-ref> <spec-id> code|tests|docs"
+    local base=$1 spec=$2 kind=$3 file
+    local -a paths
+    case "$kind" in
+        code) file=changes.diff; paths=("${review_paths_code[@]}") ;;
+        tests) file=tests.diff; paths=("${review_paths_tests[@]}") ;;
+        docs) file=docs.diff; paths=("${review_paths_docs[@]}") ;;
+        *) die "unknown review input kind: $kind" ;;
+    esac
+    local out=".agent-input/$spec/$file"
+    cmd_diff "$base" "$out" "${paths[@]}" >/dev/null
+    # Second guard: the input must not contain plans or run evidence, whatever the path lists say.
+    if grep -qE '^diff --git a/(plans|runs)/' "$out"; then
+        die "review input $out contains plans/ or runs/ (path list error)"
+    fi
+    echo "boundary: review-input $kind ($base..working-tree, ${paths[*]}) -> $out"
+}
+
+[ $# -ge 1 ] || die "usage: boundary.sh snapshot|check|diff|review-input ..."
 command=$1
 shift
 case "$command" in
     snapshot) cmd_snapshot "$@" ;;
     check) cmd_check "$@" ;;
     diff) cmd_diff "$@" ;;
+    review-input) cmd_review_input "$@" ;;
     *) die "unknown command: $command" ;;
 esac

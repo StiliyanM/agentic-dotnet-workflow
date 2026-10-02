@@ -53,11 +53,11 @@ See `docs/workflow.md` for what the checks do not cover.
 
 Problems in `src/` go to the implementer. Problems in `tests/` go to the test-writer.
 
-**Audit and review.** The test-auditor and the reviewer have no shell. Before the test-auditor, run `scripts/workflow/boundary.sh diff <base> .agent-input/<id>/tests.diff tests/`. Before the reviewer, run `scripts/workflow/boundary.sh diff <base> .agent-input/<id>/changes.diff`. `<base>` is the `main` commit that the branch started from. Send the reviewer only the spec id. Do not send it the plan or the output of the other agents.
+**Audit and review.** The test-auditor and the reviewer have no shell. Before the test-auditor, run `scripts/workflow/boundary.sh review-input <base> <id> tests` (writes `.agent-input/<id>/tests.diff`). Before the reviewer, run `scripts/workflow/boundary.sh review-input <base> <id> code` (writes `.agent-input/<id>/changes.diff`: `src/`, `tests/` and `AgenticPayments.slnx` only; never `plans/` or `runs/`). `<base>` is the `main` commit that the branch started from. Do not write review input with `boundary.sh diff` and a hand-made path list. Send the reviewer only the spec id. Do not send it the plan, the evidence or the output of the other agents. The reviewer reads the spec and the shared rules itself.
 
 **Documentation and final check.** After the reviewer gives APPROVE:
 1. Run the documenter with the spec id and the path `runs/<id>/evidence.md`. Use the normal snapshot and boundary check (role `documenter`).
-2. Documentation check: run `scripts/workflow/boundary.sh diff <base> .agent-input/<id>/docs.diff README.md docs/user/`, then run the reviewer for a documentation review of that diff. Compare each statement that a check passed with the files in `runs/<id>/`. A statement that no output supports is a finding. Findings go to the documenter. A return to the documenter counts as a loop.
+2. Documentation check: run `scripts/workflow/boundary.sh review-input <base> <id> docs` (writes `.agent-input/<id>/docs.diff`), then run a new reviewer for a documentation review of that diff. This is a separate step from the code review. Compare each statement that a check passed with the files in `runs/<id>/`. A statement that no output supports is a finding. Findings go to the documenter. A return to the documenter counts as a loop.
 3. Final check: run `scripts/workflow/boundary.sh check <id> 00-run orchestrator`. Run `scripts/verify.sh` again only if a file outside `README.md`, `docs/user/`, `plans/` and `runs/` changed after the last verification. The documenter boundary check shows this.
 
 **Decisions.** Record the decisions on unclear specs in the "Decisions" section of `plans/<id>.md` and in `runs/log.md`.

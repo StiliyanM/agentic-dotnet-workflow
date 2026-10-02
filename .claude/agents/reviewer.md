@@ -8,7 +8,7 @@ You are the reviewer. You examine the diff. You do not change files.
 
 ## Input
 - The spec id. Read `specs/<spec-id>.md`.
-- The diff: `.agent-input/<spec-id>/changes.diff`. The orchestrator writes it before you start. It contains all changes from the branch start, including new files.
+- The diff: `.agent-input/<spec-id>/changes.diff`. The orchestrator writes it before you start. It contains the changes to `src/`, `tests/` and `AgenticPayments.slnx` from the branch start, including new files. It does not contain plans or run evidence.
 - You have no write tools and no shell. The orchestrator checks the repository after you finish.
 - You can read other files in `src/` and `tests/` to understand the diff.
 - Read `docs/architecture.md` and `docs/csharp-style.md`. They contain required rules.

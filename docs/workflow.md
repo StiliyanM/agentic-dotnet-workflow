@@ -10,7 +10,8 @@ The orchestrator runs `scripts/workflow/boundary.sh` outside the agent that it c
 |---|---|
 | `boundary.sh snapshot <spec-id> <step>` | Saves HEAD, the index tree, the working-tree tree, and a hash of `.git/config` and `.git/hooks` to `.git/agent-boundary/<spec-id>/<step>.state`. |
 | `boundary.sh check <spec-id> <step> <role>` | Computes the same values again. Each changed path must match a pattern for the role in `scripts/workflow/allowed-paths.conf`. Exit 0 = pass, 1 = violation, 2 = usage error. |
-| `boundary.sh diff <base> <out-file> [<path>...]` | Writes the diff from `<base>` to the working tree, including untracked files. The read-only agents get their input from this file. |
+| `boundary.sh diff <base> <out-file> [<path>...]` | Writes the diff from `<base>` to the working tree, including untracked files. |
+| `boundary.sh review-input <base> <spec-id> <kind>` | `<kind>` is `code`, `tests` or `docs`. Writes the input for a read-only agent to `.agent-input/<spec-id>/` with a fixed path list: `changes.diff` (`src/`, `tests/`, `AgenticPayments.slnx`), `tests.diff` (`tests/`) or `docs.diff` (`README.md`, `docs/user/`). It fails if the result contains `plans/` or `runs/`, so the reviewer never gets other agents' reasoning or the run evidence. |
 
 ### What the check detects
 
@@ -39,7 +40,7 @@ These checks find mistakes. They are not a security sandbox. An agent that tries
 
 ### Self-test
 
-`bash scripts/workflow/tests/boundary.test.sh` runs each case in a new temporary repository: an allowed edit, a forbidden unstaged edit, a forbidden staged edit, a staged edit reverted in the working tree, a new forbidden file, a deleted file, an unexpected commit, a new hook, a reviewer edit, a plan for another spec, documenter edits to docs and to code, evidence kept after a violation, and the diff command.
+`bash scripts/workflow/tests/boundary.test.sh` runs each case in a new temporary repository: an allowed edit, a forbidden unstaged edit, a forbidden staged edit, a staged edit reverted in the working tree, a new forbidden file, a deleted file, an unexpected commit, a new hook, a reviewer edit, a plan for another spec, documenter edits to docs and to code, evidence kept after a violation, the diff command, and the three review inputs (with tracked and untracked files in `plans/` and `runs/`, which must not appear in the code-review diff).
 
 ## Verification commands
 
