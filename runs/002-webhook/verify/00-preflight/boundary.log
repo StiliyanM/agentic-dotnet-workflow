@@ -1,0 +1,19 @@
+ok   allowed-edit
+ok   allowed-new-file
+ok   reviewer-no-change
+ok   planner-own-plan
+ok   forbidden-unstaged-edit
+ok   forbidden-staged-edit
+ok   staged-then-reverted
+ok   forbidden-new-file
+ok   forbidden-delete
+ok   unexpected-commit
+ok   hook-added
+ok   reviewer-edit
+ok   planner-other-plan
+ok   documenter-docs
+ok   documenter-code
+ok   evidence-kept
+ok   diff-includes-untracked
+ok   diff-path-filter
+boundary tests: all passed

@@ -3,7 +3,7 @@
 #
 #   bash scripts/verify.sh <step>... [--results <dir>]
 #
-# Steps: restore, build, format, unit, integration, boundary, all.
+# Steps: restore, build, format, unit, integration, boundary, evidence, all.
 # 'all' runs every step in this sequence and stops at the first failure.
 # Output goes to <dir> (default: artifacts/verify): one log for each step, TRX files for the tests,
 # and summary.txt with one line for each step: "<step> exit=<code>".
@@ -25,12 +25,12 @@ steps=()
 while [ $# -gt 0 ]; do
     case "$1" in
         --results) results=$2; shift 2 ;;
-        restore|build|format|unit|integration|boundary) steps+=("$1"); shift ;;
-        all) steps+=(restore build format unit integration boundary); shift ;;
+        restore|build|format|unit|integration|boundary|evidence) steps+=("$1"); shift ;;
+        all) steps+=(restore build format unit integration boundary evidence); shift ;;
         *) echo "verify: unknown argument: $1" >&2; exit 2 ;;
     esac
 done
-[ ${#steps[@]} -gt 0 ] || { echo "usage: scripts/verify.sh <restore|build|format|unit|integration|boundary|all>... [--results <dir>]" >&2; exit 2; }
+[ ${#steps[@]} -gt 0 ] || { echo "usage: scripts/verify.sh <restore|build|format|unit|integration|boundary|evidence|all>... [--results <dir>]" >&2; exit 2; }
 mkdir -p "$results"
 
 # Reads one counter from the Counters element of a TRX file.
@@ -66,6 +66,7 @@ step_build()    { dotnet build "$solution" --no-restore; }
 step_format()   { dotnet format "$solution" --verify-no-changes --no-restore; }
 step_unit()     { run_tests unit "$unit_project"; }
 step_boundary() { bash scripts/workflow/tests/boundary.test.sh; }
+step_evidence() { bash scripts/workflow/tests/evidence-links.test.sh && bash scripts/workflow/check-evidence-links.sh; }
 
 step_integration() {
     # Testcontainers talks to the Docker API directly. The CLI check only gives a clearer message.

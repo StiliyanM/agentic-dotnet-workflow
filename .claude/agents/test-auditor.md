@@ -33,5 +33,5 @@ Also flag:
 
 ## Output
 Give the verdict on the first line: `VERDICT: PASS` or `VERDICT: FAIL`.
-Then give the reasons as a list. For each problem, give the file, the test name, the rule, and the necessary fix.
+Then give the reasons as a list. For each problem, give the source file path, the test name, the rule, and the necessary fix. If you give a line number, it must be the line in the source file, not in `.agent-input/<spec-id>/tests.diff`.
 Give FAIL if there are one or more problems. Do not give FAIL for style preferences that are not in the rules.

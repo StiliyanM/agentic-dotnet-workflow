@@ -484,3 +484,6 @@ $RECYCLE.BIN/
 # Agent run inputs and verification output (not committed)
 .agent-input/
 artifacts/
+
+# Run evidence: keep the verification logs of each spec run. Other *.log files stay ignored.
+!runs/*/verify/**/*.log

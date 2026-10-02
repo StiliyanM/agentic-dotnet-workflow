@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  AgenticPayments.Domain -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Domain\bin\Debug\net10.0\AgenticPayments.Domain.dll
+  AgenticPayments.Application -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Application\bin\Debug\net10.0\AgenticPayments.Application.dll
+  AgenticPayments.UnitTests -> C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\bin\Debug\net10.0\AgenticPayments.UnitTests.dll
+Test run for C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\bin\Debug\net10.0\AgenticPayments.UnitTests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+Results File: C:\Users\Stiliyan\source\repos\ApmPlayground\runs\002-webhook\verify\11-verify\unit.trx
+
+Passed!  - Failed:     0, Passed:    36, Skipped:     0, Total:    36, Duration: 213 ms - AgenticPayments.UnitTests.dll (net10.0)
+verify: unit.trx: total=36 executed=36 passed=36

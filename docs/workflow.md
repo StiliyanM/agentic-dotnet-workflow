@@ -55,6 +55,7 @@ CI (`.github/workflows/verify.yml`) and local runs use the same script. On Windo
 | Unit tests | `bash scripts/verify.sh unit` |
 | Integration tests (needs Docker) | `bash scripts/verify.sh integration` |
 | Boundary check tests | `bash scripts/verify.sh boundary` |
+| Evidence link check (tests, then the check on `runs/`, `README.md`, `docs/`) | `bash scripts/verify.sh evidence` |
 
 - The output goes to `artifacts/verify/` (or `--results <dir>`): one log for each step, `unit.trx`, `integration.trx`, and `summary.txt` with `<step> exit=<code>` lines.
 - A test step fails when no tests ran, or when a test failed, was skipped, or was not executed. `dotnet test` alone returns exit 0 for a skipped test. The script reads the TRX counters, so a skipped integration test does not count as a pass.
@@ -67,9 +68,10 @@ The orchestrator owns the evidence. Agents do not write it. For each spec run, i
 | Path | Content |
 |---|---|
 | `runs/<spec-id>/evidence.md` | The summary below. |
-| `runs/<spec-id>/agents/<step>.md` | The final report of the agent, as the agent gave it. Not the conversation transcript. |
-| `runs/<spec-id>/verify/<step>/` | The output of `scripts/verify.sh` for that verification: logs, TRX files, `summary.txt`. |
-| `runs/<spec-id>/boundary/<step>.result` | The boundary check result. On a violation, also the patches and the commit log. |
+| `runs/<spec-id>/agents/<step>.md` | The final report of the agent, exactly as the agent gave it. No heading, no changed paths, no removed text. Not the conversation transcript. |
+| `runs/<spec-id>/verify/<step>/` | The output of `scripts/verify.sh` for that verification: logs, TRX files, `summary.txt`. The logs are committed (`.gitignore` keeps `runs/*/verify/**/*.log`). |
+| `runs/<spec-id>/boundary/<step>.*` | The boundary snapshot (`.state`), the state after the step (`.after`) and the result (`.result`). On a violation, also the patches and the commit log. |
+| `runs/<spec-id>/corrections.md` | Only when needed: corrections and missing evidence found after the run. |
 
 `evidence.md` format:
 
@@ -107,6 +109,9 @@ Rules for evidence:
 - Record only what a command or an agent actually returned. Do not write a result that no output shows.
 - Record the exit status of each command as the shell returned it.
 - Do not save conversation transcripts, tokens, passwords or connection strings for real systems.
+- Do not change an agent report after it is saved. Put a correction in `corrections.md` and name the file and the problem.
+- When an output was not saved, write "missing" and the reason. Do not make the output again and present it as the original.
+- Before the commit, run `bash scripts/workflow/check-evidence-links.sh` after `git add`. Each link in the evidence must point to a committed file.
 - Runs before this format (specs 001, 004, 005 and 006) have only their entries in `runs/log.md`. No evidence files were made for them later.
 
 ## Controls and maintenance

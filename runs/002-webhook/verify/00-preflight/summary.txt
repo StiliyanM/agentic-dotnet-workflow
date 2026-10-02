@@ -1,0 +1,6 @@
+restore exit=0
+build exit=0
+format exit=0
+unit exit=0
+integration exit=0
+boundary exit=0

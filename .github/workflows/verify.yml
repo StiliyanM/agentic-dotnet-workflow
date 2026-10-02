@@ -45,6 +45,10 @@ jobs:
         if: ${{ !cancelled() }}
         run: bash scripts/verify.sh boundary
 
+      - name: Evidence link check
+        if: ${{ !cancelled() }}
+        run: bash scripts/verify.sh evidence
+
       - name: Upload verification results
         if: ${{ always() }}
         uses: actions/upload-artifact@v4

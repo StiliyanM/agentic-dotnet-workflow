@@ -27,7 +27,7 @@ These steps give the details of the orchestrator rules.
 
 **Preflight (before rule 1).** Make sure that the working tree is clean and that `bash scripts/verify.sh all --results artifacts/preflight` passes on `main`. If the `docker` command is not found, add `%LOCALAPPDATA%\Programs\DockerDesktop\resources\bin` to PATH and try again. If a check fails, stop. Do not make a branch. Do not count it as a loop. Tell me the cause.
 
-**Evidence.** Keep `runs/<id>/` as `docs/workflow.md` describes: `evidence.md` (base commit, one row for each step, verification commands with exit status, findings and loops, decisions), the final report of each agent in `agents/<step>.md`, the verification output in `verify/<step>/`, and the boundary results in `boundary/`. Write only what a command or an agent actually returned. Do not save conversation transcripts or secrets.
+**Evidence.** Keep `runs/<id>/` as `docs/workflow.md` describes: `evidence.md` (base commit, one row for each step, verification commands with exit status, findings and loops, decisions), the final report of each agent in `agents/<step>.md`, the verification output in `verify/<step>/`, and the boundary results in `boundary/`. Write only what a command or an agent actually returned. Save each agent report exactly as the agent gave it: no heading, no changed paths, no removed text. Put any correction in `runs/<id>/corrections.md`. When an output was not saved, write "missing" and the reason. Do not save conversation transcripts or secrets.
 
 **Branch.** Start `spec/<id>` from `main`. Record the base commit in `runs/<id>/evidence.md`. Then run `scripts/workflow/boundary.sh snapshot <id> 00-run`.
 
@@ -41,7 +41,7 @@ These steps give the details of the orchestrator rules.
 | test-auditor, reviewer | nothing (they have no write tools) |
 | documenter | `README.md`, `docs/user/` |
 
-The check compares staged, unstaged and untracked files, HEAD, `.git/config` and `.git/hooks` with the snapshot. An agent must not commit. After each check, copy `.git/agent-boundary/<id>/<step>.result` to `runs/<id>/boundary/`, and save the agent's final report in `runs/<id>/agents/<step>.md`. Update `evidence.md` before the next snapshot.
+The check compares staged, unstaged and untracked files, HEAD, `.git/config` and `.git/hooks` with the snapshot. An agent must not commit. After each check, copy `.git/agent-boundary/<id>/<step>.*` (state, after and result) to `runs/<id>/boundary/`, and save the agent's final report in `runs/<id>/agents/<step>.md`. Update `evidence.md` before the next snapshot.
 
 **On a boundary violation**, stop the run. Do not undo the change, do not delete files, and do not commit. The evidence is in `.git/agent-boundary/<id>/<step>.*`. Write the log entry with the status `STOPPED: boundary violation` and tell me. This is not a loop. I decide what to keep.
 
@@ -64,6 +64,6 @@ Problems in `src/` go to the implementer. Problems in `tests/` go to the test-wr
 
 **Loops.** A loop is one return to an earlier agent after a failed gate.
 
-**End of a passed run.** Add the log entry with a link to `runs/<id>/evidence.md`, then commit it with the code, the documentation and the evidence. Merge `spec/<id>` into `main` with `git merge --no-ff`, so that the next spec starts from this code.
+**End of a passed run.** Add the log entry with a link to `runs/<id>/evidence.md`. Run `git add -A` and `bash scripts/workflow/check-evidence-links.sh`; every evidence link must point to a tracked file. Then commit the log entry with the code, the documentation and the evidence. Merge `spec/<id>` into `main` with `git merge --no-ff`, so that the next spec starts from this code.
 
 **End of a failed run.** Add the log entry. Commit all work on `spec/<id>` with the message `WIP: spec/<id> failed after 3 loops`. Do not merge into `main`. Go back to `main`.

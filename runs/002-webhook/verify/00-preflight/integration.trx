@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e7d200c1-402e-4a87-af6d-a3c0d4ca81d6" name="Stiliyan@DESKTOP-NPVESJH 2026-10-01 23:20:53" runUser="DESKTOP-NPVESJH\Stiliyan" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-01T23:20:53.2373043+03:00" queuing="2026-10-01T23:20:53.2373048+03:00" start="2026-10-01T23:20:32.1399823+03:00" finish="2026-10-01T23:20:54.9051344+03:00" />
+  <TestSettings name="default" id="fef47ff5-5fd0-4105-a1bd-3522f75e9f3c">
+    <Deployment runDeploymentRoot="Stiliyan_DESKTOP-NPVESJH_2026-10-01_23_20_53" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="261915d3-e7c5-4175-bb2d-5ab107ef0421" testId="a531fd16-4101-3d76-0d9e-ff748561cda8" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_PersistsPayment" computerName="DESKTOP-NPVESJH" duration="00:00:00.0200871" startTime="2026-10-01T23:20:54.3430501+03:00" endTime="2026-10-01T23:20:54.3658803+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="261915d3-e7c5-4175-bb2d-5ab107ef0421" />
+    <UnitTestResult executionId="84742ce3-b3f2-4616-ac70-661512640357" testId="a248a394-5a30-9047-d8ff-79e3c38bc0d8" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;true&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0023333" startTime="2026-10-01T23:20:54.1509247+03:00" endTime="2026-10-01T23:20:54.1535432+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="84742ce3-b3f2-4616-ac70-661512640357" />
+    <UnitTestResult executionId="42027843-0ad4-472a-a254-a547fa76bdfe" testId="f894dd8e-2012-0c52-211f-6d303a485192" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;IDEAL&quot;, currency: &quot;eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0080281" startTime="2026-10-01T23:20:54.2974557+03:00" endTime="2026-10-01T23:20:54.3083905+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="42027843-0ad4-472a-a254-a547fa76bdfe" />
+    <UnitTestResult executionId="7b3ab7dc-3bac-4888-93b4-faa8fdc2734f" testId="a377238e-eaf9-c6f7-7e3a-f6e9480316e4" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;0&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0042020" startTime="2026-10-01T23:20:54.1587860+03:00" endTime="2026-10-01T23:20:54.1637291+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7b3ab7dc-3bac-4888-93b4-faa8fdc2734f" />
+    <UnitTestResult executionId="a72fa6fe-49bd-4ce9-88e0-cd8607678fe1" testId="cbabd749-55af-0d55-062d-5d9499f7ede8" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;Gbp&quot;, expectedColumnValue: &quot;GBP&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0145435" startTime="2026-10-01T23:20:54.0692709+03:00" endTime="2026-10-01T23:20:54.0878764+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a72fa6fe-49bd-4ce9-88e0-cd8607678fe1" />
+    <UnitTestResult executionId="4663f434-fc62-4baf-9eef-c3f834453438" testId="b8771c92-5c1c-74ca-c95f-5f48f5ad81c5" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;ideal, klarna\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0020052" startTime="2026-10-01T23:20:54.1536968+03:00" endTime="2026-10-01T23:20:54.1558967+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4663f434-fc62-4baf-9eef-c3f834453438" />
+    <UnitTestResult executionId="5614130f-6039-46ad-b399-d219f7ab7883" testId="2171f9eb-55c9-9f76-1b5b-aa68aba455d9" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyBody_Returns400" computerName="DESKTOP-NPVESJH" duration="00:00:00.0071922" startTime="2026-10-01T23:20:54.3086009+03:00" endTime="2026-10-01T23:20:54.3160960+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5614130f-6039-46ad-b399-d219f7ab7883" />
+    <UnitTestResult executionId="daffd86b-ccc0-438c-86df-d3cbb33e927b" testId="b6a9146a-d252-e679-825a-756eba487247" testName="AgenticPayments.IntegrationTests.HealthTests.Health_WhenDatabaseIsReachable_ReturnsOk" computerName="DESKTOP-NPVESJH" duration="00:00:01.7043152" startTime="2026-10-01T23:20:51.5131940+03:00" endTime="2026-10-01T23:20:53.1961549+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="daffd86b-ccc0-438c-86df-d3cbb33e927b" />
+    <UnitTestResult executionId="dd821c35-d0d1-447d-bce8-4d46ca745e71" testId="f904db9a-0ac6-b1b4-2d88-9fbf64b107a1" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;currency&quot;, expectedMessage: &quot;Currency is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0065583" startTime="2026-10-01T23:20:54.3726667+03:00" endTime="2026-10-01T23:20:54.3796050+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dd821c35-d0d1-447d-bce8-4d46ca745e71" />
+    <UnitTestResult executionId="34d04555-887b-4542-aeb2-64fad641f4aa" testId="d8d3137a-7442-c192-e9e4-f7158f1b681b" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl" computerName="DESKTOP-NPVESJH" duration="00:00:00.0190498" startTime="2026-10-01T23:20:54.3219406+03:00" endTime="2026-10-01T23:20:54.3427031+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34d04555-887b-4542-aeb2-64fad641f4aa" />
+    <UnitTestResult executionId="6f2d5a29-5db6-4b98-8789-71bf2e2bfa07" testId="b82f7476-bd40-024f-9130-303381b26e26" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;method&quot;, expectedMessage: &quot;Method is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0190450" startTime="2026-10-01T23:20:54.3834642+03:00" endTime="2026-10-01T23:20:54.4028192+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6f2d5a29-5db6-4b98-8789-71bf2e2bfa07" />
+    <UnitTestResult executionId="5b3be153-e487-4d68-83c4-3a738f8ed879" testId="71f390fe-27f1-3a87-0d56-bc01a9f44603" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Klarna&quot;, currency: &quot;Usd&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Usd)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0125306" startTime="2026-10-01T23:20:54.2678587+03:00" endTime="2026-10-01T23:20:54.2835599+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b3be153-e487-4d68-83c4-3a738f8ed879" />
+    <UnitTestResult executionId="8ca85972-63a3-4ae2-9647-6ea50479a95e" testId="b6114beb-0634-03fa-7623-d7386fc064f7" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0021627" startTime="2026-10-01T23:20:54.1585385+03:00" endTime="2026-10-01T23:20:54.1586311+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ca85972-63a3-4ae2-9647-6ea50479a95e" />
+    <UnitTestResult executionId="ab005276-318f-44ca-a274-756c63acf7e3" testId="9b076e1b-1090-52e1-f010-8abea7bbcb32" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;1\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0030370" startTime="2026-10-01T23:20:54.1453075+03:00" endTime="2026-10-01T23:20:54.1483570+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ab005276-318f-44ca-a274-756c63acf7e3" />
+    <UnitTestResult executionId="4a093541-8cc9-4730-b868-ae9f1adddbf0" testId="2d608020-d1ed-8c1d-f256-57e8089d2326" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MalformedJson_Returns400" computerName="DESKTOP-NPVESJH" duration="00:00:00.0034497" startTime="2026-10-01T23:20:54.3163077+03:00" endTime="2026-10-01T23:20:54.3200458+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4a093541-8cc9-4730-b868-ae9f1adddbf0" />
+    <UnitTestResult executionId="0055159a-e22b-42b6-975f-8cb4eb1a9a26" testId="a6446c74-bb1c-9583-04df-d87f0c8c6673" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Ideal&quot;, currency: &quot;Eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0909417" startTime="2026-10-01T23:20:54.1730891+03:00" endTime="2026-10-01T23:20:54.2676849+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0055159a-e22b-42b6-975f-8cb4eb1a9a26" />
+    <UnitTestResult executionId="41fce4d4-ad9b-4d12-99a8-2cd55998a74e" testId="07a231ff-f950-b3bf-a870-8755dc79df00" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase" computerName="DESKTOP-NPVESJH" duration="00:00:00.0033642" startTime="2026-10-01T23:20:54.4145523+03:00" endTime="2026-10-01T23:20:54.4180724+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="41fce4d4-ad9b-4d12-99a8-2cd55998a74e" />
+    <UnitTestResult executionId="d550ce9c-2b73-49ee-a3fa-ba2472dee2a3" testId="682ad0db-14a7-7836-15bf-01859530f918" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ContentTypeNotJson_Returns415" computerName="DESKTOP-NPVESJH" duration="00:00:00.0042134" startTime="2026-10-01T23:20:54.4030485+03:00" endTime="2026-10-01T23:20:54.4076320+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d550ce9c-2b73-49ee-a3fa-ba2472dee2a3" />
+    <UnitTestResult executionId="8a729a1e-6b4f-4b97-a910-a8718c1eb6d9" testId="677e8a52-328a-0cad-7910-dc0d1bb6e5a4" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;amount&quot;, expectedMessage: &quot;Amount is required.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0031623" startTime="2026-10-01T23:20:54.3799694+03:00" endTime="2026-10-01T23:20:54.3832714+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a729a1e-6b4f-4b97-a910-a8718c1eb6d9" />
+    <UnitTestResult executionId="7370b6ac-95ec-45ca-9fbc-e8432c7f0802" testId="bb37238a-eaa0-dd84-a8b3-674296fc39fc" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;\&quot;JPY\&quot;&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0036838" startTime="2026-10-01T23:20:54.1408061+03:00" endTime="2026-10-01T23:20:54.1449501+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7370b6ac-95ec-45ca-9fbc-e8432c7f0802" />
+    <UnitTestResult executionId="95e8c1fe-42f2-4c9d-bdb6-c901178542d0" testId="5fcd3cf4-d14e-1aef-4fb8-4fe9f7ce3cee" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;usd&quot;, expectedColumnValue: &quot;USD&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0108505" startTime="2026-10-01T23:20:54.0882652+03:00" endTime="2026-10-01T23:20:54.1016787+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="95e8c1fe-42f2-4c9d-bdb6-c901178542d0" />
+    <UnitTestResult executionId="b0e5d3ac-69e2-4c4b-926d-39b56c154834" testId="54922560-6a4f-bdb7-f72b-2fcd43458818" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0020827" startTime="2026-10-01T23:20:54.1485068+03:00" endTime="2026-10-01T23:20:54.1507907+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b0e5d3ac-69e2-4c4b-926d-39b56c154834" />
+    <UnitTestResult executionId="0294a526-bd23-461a-85a4-14bd068aa2ea" testId="9741e2d9-5494-0c90-aa18-62bce5c9ddec" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_AmountZero_Returns400WithAmountError" computerName="DESKTOP-NPVESJH" duration="00:00:00.0087106" startTime="2026-10-01T23:20:54.1639574+03:00" endTime="2026-10-01T23:20:54.1728703+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0294a526-bd23-461a-85a4-14bd068aa2ea" />
+    <UnitTestResult executionId="f42c3428-4ae2-45d7-9ce3-2b781dacacad" testId="312588f5-925f-b562-47bf-4caae5ecec89" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;EUR&quot;, expectedColumnValue: &quot;EUR&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.7058387" startTime="2026-10-01T23:20:53.2188483+03:00" endTime="2026-10-01T23:20:54.0682818+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f42c3428-4ae2-45d7-9ce3-2b781dacacad" />
+    <UnitTestResult executionId="ad0d84af-0b43-46a6-9903-1bb17323b95f" testId="e0de215f-7bfc-1b0e-ed5f-c02839dbcb2e" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;KLARNA&quot;, currency: &quot;gbp&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Gbp)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0094580" startTime="2026-10-01T23:20:54.2837379+03:00" endTime="2026-10-01T23:20:54.2972613+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ad0d84af-0b43-46a6-9903-1bb17323b95f" />
+    <UnitTestResult executionId="358ca237-2d2a-4a43-b412-67331cc91db5" testId="5c22c064-4b19-2e48-70c0-d20447d15dcb" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyObject_Returns400WithErrorForEachField" computerName="DESKTOP-NPVESJH" duration="00:00:00.0059013" startTime="2026-10-01T23:20:54.3661265+03:00" endTime="2026-10-01T23:20:54.3723938+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="358ca237-2d2a-4a43-b412-67331cc91db5" />
+    <UnitTestResult executionId="d1b06f43-c19c-4d38-9200-f36225e92b69" testId="45923f15-5750-6400-5ba4-357251ef8599" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors" computerName="DESKTOP-NPVESJH" duration="00:00:00.0061493" startTime="2026-10-01T23:20:54.4078539+03:00" endTime="2026-10-01T23:20:54.4142546+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d1b06f43-c19c-4d38-9200-f36225e92b69" />
+    <UnitTestResult executionId="5205b163-cacd-44c7-bbdd-0bb847e2de4d" testId="b96416a7-1a06-ac8c-a486-e7866d73aec7" testName="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;\&quot;abc\&quot;&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" computerName="DESKTOP-NPVESJH" duration="00:00:00.0382912" startTime="2026-10-01T23:20:54.1019571+03:00" endTime="2026-10-01T23:20:54.1406435+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5205b163-cacd-44c7-bbdd-0bb847e2de4d" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;KLARNA&quot;, currency: &quot;gbp&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Gbp)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="e0de215f-7bfc-1b0e-ed5f-c02839dbcb2e">
+      <Execution id="ad0d84af-0b43-46a6-9903-1bb17323b95f" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;\&quot;abc\&quot;&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b96416a7-1a06-ac8c-a486-e7866d73aec7">
+      <Execution id="5205b163-cacd-44c7-bbdd-0bb847e2de4d" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="54922560-6a4f-bdb7-f72b-2fcd43458818">
+      <Execution id="b0e5d3ac-69e2-4c4b-926d-39b56c154834" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Ideal&quot;, currency: &quot;Eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a6446c74-bb1c-9583-04df-d87f0c8c6673">
+      <Execution id="0055159a-e22b-42b6-975f-8cb4eb1a9a26" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="d8d3137a-7442-c192-e9e4-f7158f1b681b">
+      <Execution id="34d04555-887b-4542-aeb2-64fad641f4aa" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyBody_Returns400" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="2171f9eb-55c9-9f76-1b5b-aa68aba455d9">
+      <Execution id="5614130f-6039-46ad-b399-d219f7ab7883" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_EmptyBody_Returns400" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;amount&quot;, expectedMessage: &quot;Amount is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="677e8a52-328a-0cad-7910-dc0d1bb6e5a4">
+      <Execution id="8a729a1e-6b4f-4b97-a910-a8718c1eb6d9" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;IDEAL&quot;, currency: &quot;eur&quot;, expectedSegment: &quot;ideal&quot;, expectedMethod: Ideal, expectedCurrency: Eur)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="f894dd8e-2012-0c52-211f-6d303a485192">
+      <Execution id="42027843-0ad4-472a-a254-a547fa76bdfe" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;0&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a377238e-eaf9-c6f7-7e3a-f6e9480316e4">
+      <Execution id="7b3ab7dc-3bac-4888-93b4-faa8fdc2734f" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;1\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="9b076e1b-1090-52e1-f010-8abea7bbcb32">
+      <Execution id="ab005276-318f-44ca-a274-756c63acf7e3" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;method&quot;, expectedMessage: &quot;Method is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b82f7476-bd40-024f-9130-303381b26e26">
+      <Execution id="6f2d5a29-5db6-4b98-8789-71bf2e2bfa07" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;method&quot;, jsonValue: &quot;\&quot;ideal, klarna\&quot;&quot;, expectedMessage: &quot;Method has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b8771c92-5c1c-74ca-c95f-5f48f5ad81c5">
+      <Execution id="4663f434-fc62-4baf-9eef-c3f834453438" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="07a231ff-f950-b3bf-a870-8755dc79df00">
+      <Execution id="41fce4d4-ad9b-4d12-99a8-2cd55998a74e" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.HealthTests.Health_WhenDatabaseIsReachable_ReturnsOk" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b6a9146a-d252-e679-825a-756eba487247">
+      <Execution id="daffd86b-ccc0-438c-86df-d3cbb33e927b" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.HealthTests" name="Health_WhenDatabaseIsReachable_ReturnsOk" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;true&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a248a394-5a30-9047-d8ff-79e3c38bc0d8">
+      <Execution id="84742ce3-b3f2-4616-ac70-661512640357" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;currency&quot;, jsonValue: &quot;\&quot;JPY\&quot;&quot;, expectedMessage: &quot;Currency has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="bb37238a-eaa0-dd84-a8b3-674296fc39fc">
+      <Execution id="7370b6ac-95ec-45ca-9fbc-e8432c7f0802" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ValidRequest_PersistsPayment" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="a531fd16-4101-3d76-0d9e-ff748561cda8">
+      <Execution id="261915d3-e7c5-4175-bb2d-5ab107ef0421" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_ValidRequest_PersistsPayment" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;EUR&quot;, expectedColumnValue: &quot;EUR&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="312588f5-925f-b562-47bf-4caae5ecec89">
+      <Execution id="f42c3428-4ae2-45d7-9ce3-2b781dacacad" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_Currency_StoresIsoCodeInColumn" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_EmptyObject_Returns400WithErrorForEachField" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="5c22c064-4b19-2e48-70c0-d20447d15dcb">
+      <Execution id="358ca237-2d2a-4a43-b412-67331cc91db5" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_EmptyObject_Returns400WithErrorForEachField" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MethodAndCurrencyInAnyCase_Returns201(method: &quot;Klarna&quot;, currency: &quot;Usd&quot;, expectedSegment: &quot;klarna&quot;, expectedMethod: Klarna, expectedCurrency: Usd)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="71f390fe-27f1-3a87-0d56-bc01a9f44603">
+      <Execution id="5b3be153-e487-4d68-83c4-3a738f8ed879" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MethodAndCurrencyInAnyCase_Returns201" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingField_Returns400WithRequiredError(field: &quot;currency&quot;, expectedMessage: &quot;Currency is required.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="f904db9a-0ac6-b1b4-2d88-9fbf64b107a1">
+      <Execution id="dd821c35-d0d1-447d-bce8-4d46ca745e71" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingField_Returns400WithRequiredError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MalformedJson_Returns400" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="2d608020-d1ed-8c1d-f256-57e8089d2326">
+      <Execution id="4a093541-8cc9-4730-b868-ae9f1adddbf0" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MalformedJson_Returns400" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError(field: &quot;amount&quot;, jsonValue: &quot;null&quot;, expectedMessage: &quot;Amount has an invalid value.&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="b6114beb-0634-03fa-7623-d7386fc064f7">
+      <Execution id="8ca85972-63a3-4ae2-9647-6ea50479a95e" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_FieldWithInvalidValue_Returns400WithInvalidValueError" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="45923f15-5750-6400-5ba4-357251ef8599">
+      <Execution id="d1b06f43-c19c-4d38-9200-f36225e92b69" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_ContentTypeNotJson_Returns415" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="682ad0db-14a7-7836-15bf-01859530f918">
+      <Execution id="d550ce9c-2b73-49ee-a3fa-ba2472dee2a3" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_ContentTypeNotJson_Returns415" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;Gbp&quot;, expectedColumnValue: &quot;GBP&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="cbabd749-55af-0d55-062d-5d9499f7ede8">
+      <Execution id="a72fa6fe-49bd-4ce9-88e0-cd8607678fe1" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_Currency_StoresIsoCodeInColumn" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_Currency_StoresIsoCodeInColumn(currency: &quot;usd&quot;, expectedColumnValue: &quot;USD&quot;)" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="5fcd3cf4-d14e-1aef-4fb8-4fe9f7ce3cee">
+      <Execution id="95e8c1fe-42f2-4c9d-bdb6-c901178542d0" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_Currency_StoresIsoCodeInColumn" />
+    </UnitTest>
+    <UnitTest name="AgenticPayments.IntegrationTests.CreatePaymentTests.CreatePayment_AmountZero_Returns400WithAmountError" storage="c:\users\stiliyan\source\repos\apmplayground\tests\agenticpayments.integrationtests\bin\debug\net10.0\agenticpayments.integrationtests.dll" id="9741e2d9-5494-0c90-aa18-62bce5c9ddec">
+      <Execution id="0294a526-bd23-461a-85a4-14bd068aa2ea" />
+      <TestMethod codeBase="C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AgenticPayments.IntegrationTests.CreatePaymentTests" name="CreatePayment_AmountZero_Returns400WithAmountError" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="a531fd16-4101-3d76-0d9e-ff748561cda8" executionId="261915d3-e7c5-4175-bb2d-5ab107ef0421" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a248a394-5a30-9047-d8ff-79e3c38bc0d8" executionId="84742ce3-b3f2-4616-ac70-661512640357" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f894dd8e-2012-0c52-211f-6d303a485192" executionId="42027843-0ad4-472a-a254-a547fa76bdfe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a377238e-eaf9-c6f7-7e3a-f6e9480316e4" executionId="7b3ab7dc-3bac-4888-93b4-faa8fdc2734f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cbabd749-55af-0d55-062d-5d9499f7ede8" executionId="a72fa6fe-49bd-4ce9-88e0-cd8607678fe1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8771c92-5c1c-74ca-c95f-5f48f5ad81c5" executionId="4663f434-fc62-4baf-9eef-c3f834453438" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2171f9eb-55c9-9f76-1b5b-aa68aba455d9" executionId="5614130f-6039-46ad-b399-d219f7ab7883" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6a9146a-d252-e679-825a-756eba487247" executionId="daffd86b-ccc0-438c-86df-d3cbb33e927b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f904db9a-0ac6-b1b4-2d88-9fbf64b107a1" executionId="dd821c35-d0d1-447d-bce8-4d46ca745e71" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d8d3137a-7442-c192-e9e4-f7158f1b681b" executionId="34d04555-887b-4542-aeb2-64fad641f4aa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b82f7476-bd40-024f-9130-303381b26e26" executionId="6f2d5a29-5db6-4b98-8789-71bf2e2bfa07" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="71f390fe-27f1-3a87-0d56-bc01a9f44603" executionId="5b3be153-e487-4d68-83c4-3a738f8ed879" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6114beb-0634-03fa-7623-d7386fc064f7" executionId="8ca85972-63a3-4ae2-9647-6ea50479a95e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9b076e1b-1090-52e1-f010-8abea7bbcb32" executionId="ab005276-318f-44ca-a274-756c63acf7e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2d608020-d1ed-8c1d-f256-57e8089d2326" executionId="4a093541-8cc9-4730-b868-ae9f1adddbf0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6446c74-bb1c-9583-04df-d87f0c8c6673" executionId="0055159a-e22b-42b6-975f-8cb4eb1a9a26" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07a231ff-f950-b3bf-a870-8755dc79df00" executionId="41fce4d4-ad9b-4d12-99a8-2cd55998a74e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="682ad0db-14a7-7836-15bf-01859530f918" executionId="d550ce9c-2b73-49ee-a3fa-ba2472dee2a3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="677e8a52-328a-0cad-7910-dc0d1bb6e5a4" executionId="8a729a1e-6b4f-4b97-a910-a8718c1eb6d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bb37238a-eaa0-dd84-a8b3-674296fc39fc" executionId="7370b6ac-95ec-45ca-9fbc-e8432c7f0802" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5fcd3cf4-d14e-1aef-4fb8-4fe9f7ce3cee" executionId="95e8c1fe-42f2-4c9d-bdb6-c901178542d0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54922560-6a4f-bdb7-f72b-2fcd43458818" executionId="b0e5d3ac-69e2-4c4b-926d-39b56c154834" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9741e2d9-5494-0c90-aa18-62bce5c9ddec" executionId="0294a526-bd23-461a-85a4-14bd068aa2ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="312588f5-925f-b562-47bf-4caae5ecec89" executionId="f42c3428-4ae2-45d7-9ce3-2b781dacacad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e0de215f-7bfc-1b0e-ed5f-c02839dbcb2e" executionId="ad0d84af-0b43-46a6-9903-1bb17323b95f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c22c064-4b19-2e48-70c0-d20447d15dcb" executionId="358ca237-2d2a-4a43-b412-67331cc91db5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="45923f15-5750-6400-5ba4-357251ef8599" executionId="d1b06f43-c19c-4d38-9200-f36225e92b69" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b96416a7-1a06-ac8c-a486-e7866d73aec7" executionId="5205b163-cacd-44c7-bbdd-0bb847e2de4d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="28" executed="28" passed="28" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.11)&#xD;
+[xUnit.net 00:00:00.36]   Discovering: AgenticPayments.IntegrationTests&#xD;
+[xUnit.net 00:00:00.47]   Discovered:  AgenticPayments.IntegrationTests&#xD;
+[xUnit.net 00:00:00.52]   Starting:    AgenticPayments.IntegrationTests&#xD;
+[testcontainers.org 00:00:00.32] Connected to Docker:&#xD;
+  Host: npipe://./pipe/docker_engine&#xD;
+  Server Version: 29.8.1&#xD;
+  Kernel Version: 6.18.40.1-microsoft-standard-WSL2&#xD;
+  API Version: 1.56&#xD;
+  Operating System: Docker Desktop (containerized)&#xD;
+  Total Memory: 7.64 GB&#xD;
+  Labels: &#xD;
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli&#xD;
+[testcontainers.org 00:00:00.71] Docker container b7268250a1c2 created&#xD;
+[testcontainers.org 00:00:00.85] Start Docker container b7268250a1c2&#xD;
+[testcontainers.org 00:00:01.36] Wait for Docker container b7268250a1c2 to complete readiness checks&#xD;
+[testcontainers.org 00:00:02.52] Docker container b7268250a1c2 ready&#xD;
+[testcontainers.org 00:00:02.75] Docker container ab86aab36763 created&#xD;
+[testcontainers.org 00:00:02.76] Start Docker container ab86aab36763&#xD;
+[testcontainers.org 00:00:03.07] Wait for Docker container ab86aab36763 to complete readiness checks&#xD;
+[testcontainers.org 00:00:03.10] Execute "pg_isready --host localhost --dbname postgres --username postgres" at Docker container ab86aab36763&#xD;
+[testcontainers.org 00:00:04.24] Execute "pg_isready --host localhost --dbname postgres --username postgres" at Docker container ab86aab36763&#xD;
+[testcontainers.org 00:00:05.38] Execute "pg_isready --host localhost --dbname postgres --username postgres" at Docker container ab86aab36763&#xD;
+[testcontainers.org 00:00:05.46] Docker container ab86aab36763 ready&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (38ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END&#xD;
+FROM pg_class AS cls&#xD;
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace&#xD;
+WHERE&#xD;
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND&#xD;
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND&#xD;
+        -- Exclude tables which are members of PG extensions&#xD;
+        NOT EXISTS (&#xD;
+            SELECT 1 FROM pg_depend WHERE&#xD;
+                classid=(&#xD;
+                    SELECT cls.oid&#xD;
+                    FROM pg_class AS cls&#xD;
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace&#xD;
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'&#xD;
+                ) AND&#xD;
+                objid=cls.oid AND&#xD;
+                deptype IN ('e', 'x')&#xD;
+        )&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Payments" (&#xD;
+          "Id" uuid NOT NULL,&#xD;
+          "Amount" numeric(18,2) NOT NULL,&#xD;
+          "Currency" character varying(3) NOT NULL,&#xD;
+          "Method" text NOT NULL,&#xD;
+          "Status" text NOT NULL,&#xD;
+          "CreatedAt" timestamp with time zone NOT NULL,&#xD;
+          CONSTRAINT "PK_Payments" PRIMARY KEY ("Id")&#xD;
+      );&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Api&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT 1&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (25ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (3ms) [Parameters=[p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT s."Value"&#xD;
+      FROM (&#xD;
+          SELECT "Currency" AS "Value" FROM "Payments" WHERE "Id" = @p0&#xD;
+      ) AS s&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (64ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT s."Value"&#xD;
+      FROM (&#xD;
+          SELECT "Currency" AS "Value" FROM "Payments" WHERE "Id" = @p0&#xD;
+      ) AS s&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT s."Value"&#xD;
+      FROM (&#xD;
+          SELECT "Currency" AS "Value" FROM "Payments" WHERE "Id" = @p0&#xD;
+      ) AS s&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (3ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Payments" ("Id", "Amount", "CreatedAt", "Currency", "Method", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@body_PaymentId='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT p."Id", p."Amount", p."CreatedAt", p."Currency", p."Method", p."Status"&#xD;
+      FROM "Payments" AS p&#xD;
+      WHERE p."Id" = @body_PaymentId&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (2ms) [Parameters=[@_createdPaymentIds='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']&#xD;
+      DELETE FROM "Payments" AS p&#xD;
+      WHERE p."Id" = ANY (@_createdPaymentIds)&#xD;
+[testcontainers.org 00:00:08.44] Delete Docker container ab86aab36763&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:21.29]   Finished:    AgenticPayments.IntegrationTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

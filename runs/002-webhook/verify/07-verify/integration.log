@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  AgenticPayments.Domain -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Domain\bin\Debug\net10.0\AgenticPayments.Domain.dll
+  AgenticPayments.Application -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Application\bin\Debug\net10.0\AgenticPayments.Application.dll
+  AgenticPayments.Infrastructure -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Infrastructure\bin\Debug\net10.0\AgenticPayments.Infrastructure.dll
+  AgenticPayments.Api -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Api\bin\Debug\net10.0\AgenticPayments.Api.dll
+  AgenticPayments.IntegrationTests -> C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll
+Test run for C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+Results File: C:\Users\Stiliyan\source\repos\ApmPlayground\runs\002-webhook\verify\07-verify\integration.trx
+
+Passed!  - Failed:     0, Passed:    53, Skipped:     0, Total:    53, Duration: 3 s - AgenticPayments.IntegrationTests.dll (net10.0)
+verify: integration.trx: total=53 executed=53 passed=53

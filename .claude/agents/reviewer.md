@@ -38,5 +38,6 @@ Use the same output format. The check names are accuracy, status, check claim an
 
 ## Output
 Give the verdict on the first line: `VERDICT: APPROVE` or `VERDICT: CHANGES`.
-Then give a list. For each item, give the file and line, the check (correctness, idempotency, error handling, code rule, architecture or style), the problem, and the necessary change.
+Then give a list. For each item, give the source file path and the line number in that source file, the check (correctness, idempotency, error handling, code rule, architecture or style), the problem, and the necessary change.
+Do not give line numbers from `.agent-input/` diff files. Find the line in the source file. If you cannot find the source line, give the file path and the member name (for example a method), and no line number.
 Give CHANGES if one or more items must change. Put optional suggestions under a separate heading "Optional". Optional items do not cause CHANGES.
