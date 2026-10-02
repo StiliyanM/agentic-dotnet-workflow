@@ -147,6 +147,7 @@ You start a run in Claude Code with `run spec <id>`. [CLAUDE.md](CLAUDE.md) has 
 
 Correction rules:
 - A failed gate sends its findings to the agent that owns the problem. Code problems go to the implementer. Test problems and audit failures go to the test-writer. A code problem that needs a new test goes to the test-writer first.
+- After the test-writer corrects tests, the gates run again. The implementer runs only when production code must change. When the gates pass, the run continues with the test-auditor or the reviewer.
 - Documentation-check findings go back to the documenter.
 - A maximum of 3 loops. After that, the run stops and the work is committed as WIP on the branch, not merged.
 - The orchestrator does not ask questions during a run. It records decisions on unclear specs.

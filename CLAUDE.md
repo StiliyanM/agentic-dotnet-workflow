@@ -15,7 +15,7 @@ When I write "run spec <id>":
 
 1. Make a git branch spec/<id>.
 2. Run the planner, then the test-writer, then the implementer, then `dotnet test`, then the test-auditor, then the reviewer. After the reviewer approves, run the documenter, then the documentation check and the final check. After the test-writer, the build can fail because the code does not exist yet. This is expected. Do not count it as a failed gate.
-3. If a gate fails, send the findings to the correct agent and do the steps again from that agent. Code problems and failed tests go to the implementer. Audit FAIL and tests that the implementer reports as wrong go to the test-writer. If a code problem needs a new or changed test, send it first to the test-writer, then to the implementer. Do a maximum of 3 loops.
+3. If a gate fails, send the findings to the correct agent and do the steps again from that agent. Code problems and failed tests go to the implementer. Audit FAIL and tests that the implementer reports as wrong go to the test-writer. If a code problem needs a new or changed test, send it first to the test-writer, then to the implementer. After the test-writer corrects tests, run the gates; call the implementer only when production code must change (see "After a test correction"). Record the reason for each return to an earlier agent. Do a maximum of 3 loops.
 4. Do not ask me questions during a run. If a spec is not clear, make a decision, record it and continue.
 5. Commit when all gates pass. Stop after 3 loops if they do not pass.
 6. Add an entry to runs/log.md. Record the spec id, the number of loops, the problems that each gate found, the decisions on unclear specs and the final status.
@@ -52,6 +52,14 @@ See `docs/workflow.md` for what the checks do not cover.
 **Gates after the implementer.** Run `bash scripts/verify.sh build format unit integration --results runs/<id>/verify/<step>`. It stops at the first failed check. Record the command and its exit status in `evidence.md`.
 
 Problems in `src/` go to the implementer. Problems in `tests/` go to the test-writer.
+
+**After a test correction.** When the test-writer has corrected tests in a loop:
+1. Run the gates (`bash scripts/verify.sh build format unit integration --results runs/<id>/verify/<step>`).
+2. If a gate fails because production code must change (a correct test fails, or the build fails in `src/`), call the implementer. This is also the normal case when the test-writer added a test first for a code finding.
+3. If a gate fails because of a test problem, send it to the test-writer. This is a new loop.
+4. If all gates pass, do not call the implementer. Continue with the step that found the problem: the test-auditor after an audit FAIL, then the reviewer. After a reviewer finding, run the reviewer again.
+
+**Loop reasons.** For each return to an earlier agent, write one line in `evidence.md` under "Findings and loops": the loop number, the gate or agent that found the problem, the finding, the agent that gets it, and why that agent owns it.
 
 **Audit and review.** The test-auditor and the reviewer have no shell. Before the test-auditor, run `scripts/workflow/boundary.sh review-input <base> <id> tests` (writes `.agent-input/<id>/tests.diff`). Before the reviewer, run `scripts/workflow/boundary.sh review-input <base> <id> code` (writes `.agent-input/<id>/changes.diff`: `src/`, `tests/` and `AgenticPayments.slnx` only; never `plans/` or `runs/`). `<base>` is the `main` commit that the branch started from. Do not write review input with `boundary.sh diff` and a hand-made path list. Send the reviewer only the spec id. Do not send it the plan, the evidence or the output of the other agents. The reviewer reads the spec and the shared rules itself.
 

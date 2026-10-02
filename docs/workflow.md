@@ -98,7 +98,8 @@ The orchestrator owns the evidence. Agents do not write it. For each spec run, i
 
 ## Findings and loops
 
-- Loop 1: test-auditor FAIL (<short reason>). Sent to the test-writer.
+- Loop 1: test-auditor FAIL (<short reason>). Sent to the test-writer, because the problem is in a test.
+- Loop 1, after the test correction: gates passed, so the implementer was not called. Next: test-auditor.
 
 ## Decisions on unclear specs
 
