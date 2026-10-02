@@ -117,7 +117,7 @@ Rules for evidence:
 
 ## Controls and maintenance
 
-A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `global.json`, `.editorconfig`, `.gitattributes` and `.gitignore`. The `orchestrator` role in `allowed-paths.conf` does not include them. The orchestrator checks the whole run against this role before it commits.
+A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/engineering-rules.md`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `global.json`, `.editorconfig`, `.gitattributes` and `.gitignore`. The `orchestrator` role in `allowed-paths.conf` does not include them. The orchestrator checks the whole run against this role before it commits.
 
 A change to a control is a maintenance change. It happens only when the user asks for it directly, outside a spec run.
 

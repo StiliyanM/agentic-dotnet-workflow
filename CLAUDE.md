@@ -3,7 +3,7 @@
 Playground to test an agentic development workflow.
 
 - .NET 10 solution `AgenticPayments.slnx`. The code in `src/` follows the layers in `docs/architecture.md` (Domain, Application, Infrastructure, Api). Tests: `tests/AgenticPayments.UnitTests`, `tests/AgenticPayments.IntegrationTests`.
-- `docs/architecture.md`, `docs/csharp-style.md` and `docs/workflow.md` contain required rules for all specs. Only I change them, not a run. `.editorconfig` enforces the style rules that an analyzer can check.
+- `docs/engineering-rules.md`, `docs/architecture.md`, `docs/csharp-style.md` and `docs/workflow.md` contain required rules for all specs. Only I change them, not a run. `.editorconfig` enforces the style rules that an analyzer can check.
 - PostgreSQL through EF Core is the only storage. The integration tests need Docker (Testcontainers).
 - Specs are in `specs/`. Plans are in `plans/`. The run log is `runs/log.md`.
 - Agents are in `.claude/agents/`: planner, test-writer, implementer, test-auditor, reviewer, documenter.
@@ -45,7 +45,7 @@ The check compares staged, unstaged and untracked files, HEAD, `.git/config` and
 
 **On a boundary violation**, stop the run. Do not undo the change, do not delete files, and do not commit. The evidence is in `.git/agent-boundary/<id>/<step>.*`. Write the log entry with the status `STOPPED: boundary violation` and tell me. This is not a loop. I decide what to keep.
 
-**Controls.** A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `global.json`, `.editorconfig`, `.gitattributes`, `.gitignore`. Before the final commit, run `scripts/workflow/boundary.sh check <id> 00-run orchestrator`. It covers the whole run. A change to a control is a maintenance change. It happens only when I ask for it directly, outside a spec run, on `main` or a `maintenance/*` branch.
+**Controls.** A spec run must not change its own controls: `specs/`, `CLAUDE.md`, `.claude/`, `docs/engineering-rules.md`, `docs/architecture.md`, `docs/csharp-style.md`, `docs/workflow.md`, `scripts/`, `.github/`, `Directory.Build.props`, `global.json`, `.editorconfig`, `.gitattributes`, `.gitignore`. Before the final commit, run `scripts/workflow/boundary.sh check <id> 00-run orchestrator`. It covers the whole run. A change to a control is a maintenance change. It happens only when I ask for it directly, outside a spec run, on `main` or a `maintenance/*` branch.
 
 See `docs/workflow.md` for what the checks do not cover.
 

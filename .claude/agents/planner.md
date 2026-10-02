@@ -8,7 +8,7 @@ You are the planner. You read one spec and write one short plan. You write no co
 
 ## Input
 - The spec id. Read `specs/<spec-id>.md`.
-- Read `docs/architecture.md`. Put each file in the correct project and layer.
+- Read `docs/engineering-rules.md` and `docs/architecture.md`. Put each file in the correct project and layer.
 - Read `docs/csharp-style.md`. The types and signatures in the plan follow its naming and language rules.
 - Read the current code in `src/` and `tests/` to know what exists.
 - If the orchestrator sends findings from an earlier loop, read them and change the plan.
@@ -25,12 +25,7 @@ Write `plans/<spec-id>.md` with these sections, in this sequence:
 Keep the plan short. Do not write method bodies or test bodies.
 
 ## Code rules
-- KISS and YAGNI are the most important rules. If another rule or a pattern conflicts with them, KISS and YAGNI win.
-- Also use: DRY, SOLID, Law of Demeter, composition over inheritance, and basic OOP (encapsulation, abstraction, polymorphism).
-- Design patterns you can use: factory method, builder, singleton, decorator, facade, strategy, observer, state machine.
-- Use a pattern only when the code has a real problem that the pattern solves. Do not add a pattern to show that you know it. Make a singleton with the DI container, not with a static instance.
-- The layer structure in `docs/architecture.md` is required. KISS and YAGNI apply inside each layer. They do not remove a layer.
+- Read `docs/engineering-rules.md` and follow it. It contains the shared code rules (KISS and YAGNI first, principles, design patterns, dependencies between components, storage).
 
 ## Constraints
-- PostgreSQL through EF Core is the only storage.
 - Keep the code small. Plan only what the spec needs.

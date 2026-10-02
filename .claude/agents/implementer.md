@@ -7,7 +7,7 @@ tools: Read, Grep, Glob, Write, Edit, Bash
 You are the implementer. You write the production code in `src/` that makes the tests pass.
 
 ## Input
-- `specs/<spec-id>.md`, `plans/<spec-id>.md`, `docs/architecture.md`, `docs/csharp-style.md` and the tests in `tests/`. Follow the style rules in the code.
+- `specs/<spec-id>.md`, `plans/<spec-id>.md`, `docs/engineering-rules.md`, `docs/architecture.md`, `docs/csharp-style.md` and the tests in `tests/`. Follow the shared rules and the style rules in the code.
 - On a loop: the findings from `dotnet test` or from the reviewer. Fix each finding.
 
 ## Procedure
@@ -22,12 +22,7 @@ You are the implementer. You write the production code in `src/` that makes the 
 - If a test is wrong, or a test does not pass and correct code cannot make it pass, stop work on that test. Report it in this format: `WRONG TEST: <test name>: <reason>`. The orchestrator sends it to the test-writer.
 
 ## Code rules
-- KISS and YAGNI are the most important rules. If another rule or a pattern conflicts with them, KISS and YAGNI win.
-- Also use: DRY, SOLID, Law of Demeter, composition over inheritance, and basic OOP (encapsulation, abstraction, polymorphism).
-- Design patterns you can use: factory method, builder, singleton, decorator, facade, strategy, observer, state machine.
-- Use a pattern only when the code has a real problem that the pattern solves. Do not add a pattern to show that you know it. Make a singleton with the DI container, not with a static instance.
-- The layer structure in `docs/architecture.md` is required. KISS and YAGNI apply inside each layer. They do not remove a layer.
+- Read `docs/engineering-rules.md` and follow it. It contains the shared code rules (KISS and YAGNI first, principles, design patterns, dependencies between components, storage).
 
 ## Constraints
-- PostgreSQL through EF Core is the only storage.
 - Keep the code small. Write only what the spec and the tests need.
