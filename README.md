@@ -13,7 +13,7 @@ The case study is a small payments API in .NET 10: create a payment with an alte
 | [005-typed-payment-contract](specs/005-typed-payment-contract.md) | Typed, non-nullable request and response. Case-insensitive enums. Field errors for bad JSON values. | Completed |
 | [006-apply-style-rules](specs/006-apply-style-rules.md) | C# 14 style rules, enforced by analyzers in the build. | Completed |
 | [002-webhook](specs/002-webhook.md) | `POST /webhooks/provider` with HMAC-SHA256 signature check and idempotent event processing. Sets the status to `Succeeded` or `Failed`. | Completed |
-| [003-out-of-order](specs/003-out-of-order.md) | Webhook events out of sequence. A terminal status is not replaced. | **Planned. Not implemented.** |
+| [003-out-of-order](specs/003-out-of-order.md) | Webhook events out of sequence. A terminal status is not replaced. | **Planned. Not implemented.** Waits for policy decisions (see the spec). |
 
 Spec 003 has no code. A webhook event can change any status, also `Succeeded` or `Failed` (see [Known limitations](#known-limitations)).
 
