@@ -5,9 +5,12 @@ namespace AgenticPayments.Application.Webhooks;
 
 public interface IWebhookEventRepository
 {
-    Task<bool> ExistsAsync(string eventId, CancellationToken cancellationToken);
+    Task<ProcessedWebhookEvent?> FindAsync(string eventId, CancellationToken cancellationToken);
 
-    // Saves the event and the changed payment together. Returns false, and saves nothing,
-    // when the event id is already stored (for example by a concurrent delivery).
-    Task<bool> TryRecordAsync(ProcessedWebhookEvent webhookEvent, Payment payment, CancellationToken cancellationToken);
+    // Saves the event and the current state of the payment in one transaction.
+    // The payment must be tracked by the same scoped context, that is, loaded by IPaymentRepository.FindAsync
+    // in this scope; otherwise InvalidOperationException.
+    // DuplicateEvent: the event id is already stored. PaymentChanged: the payment changed after it was loaded.
+    // In both cases nothing is saved and all tracked entities are forgotten, so the caller must load the payment again.
+    Task<WebhookRecordResult> RecordAsync(ProcessedWebhookEvent webhookEvent, Payment payment, CancellationToken cancellationToken);
 }

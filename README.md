@@ -13,9 +13,7 @@ The case study is a small payments API in .NET 10: create a payment with an alte
 | [005-typed-payment-contract](specs/005-typed-payment-contract.md) | Typed, non-nullable request and response. Case-insensitive enums. Field errors for bad JSON values. | Completed |
 | [006-apply-style-rules](specs/006-apply-style-rules.md) | C# 14 style rules, enforced by analyzers in the build. | Completed |
 | [002-webhook](specs/002-webhook.md) | `POST /webhooks/provider` with HMAC-SHA256 signature check and idempotent event processing. Sets the status to `Succeeded` or `Failed`. | Completed |
-| [003-out-of-order](specs/003-out-of-order.md) | Webhook events out of sequence. A terminal status is not replaced. | **Planned. Not implemented.** Policy decisions recorded on 2026-10-02 (see the spec). |
-
-Spec 003 has no code. A webhook event can change any status, also `Succeeded` or `Failed` (see [Known limitations](#known-limitations)).
+| [003-out-of-order](specs/003-out-of-order.md) | Webhook events out of sequence or more than one time. `Succeeded` and `Failed` are final. A later event is ignored, recorded and gets `200`. | Completed |
 
 ## Prerequisites
 
@@ -63,9 +61,11 @@ $env:Webhooks__Provider__Secret = "local-dev-webhook-secret"
 dotnet run --project src/AgenticPayments.Api --launch-profile http
 ```
 
-The API listens on `http://localhost:5034`. It creates the database schema at startup (`EnsureCreated`). `GET /health` returns 200 when the database is reachable.
+The API listens on `http://localhost:5034`. It creates the database schema at startup (`EnsureCreated`), then adds the column `PayloadHash` to `ProcessedWebhookEvents` if it does not exist. `GET /health` returns 200 when the database is reachable.
 
-**Database created before spec 002.** `EnsureCreated` does not add tables to a database that already has tables. A local database from before spec 002 has no `ProcessedWebhookEvents` table, and webhook requests fail. Remove the container (this deletes its payments) and start a new one with the `docker run` command above.
+**Database created by spec 002.** The API adds the `PayloadHash` column at start. You do not need to remove the database.
+
+**Database created before spec 002.** `EnsureCreated` does not add tables to a database that already has tables. A local database from before spec 002 has no `ProcessedWebhookEvents` table, so adding the column fails and the API does not start. Remove the container (this deletes its payments) and start a new one with the `docker run` command above.
 
 Stop and remove the container:
 
@@ -108,9 +108,9 @@ curl -i -X POST http://localhost:5034/webhooks/provider -H "Content-Type: applic
 
 This command was not run as part of the verification. The integration tests send requests in the same format.
 
-Response: `200 OK` with no body. The payment status is now `Succeeded`. The same `eventId` again returns `200` and changes nothing. A missing or wrong signature returns `401`. An unknown `paymentId` returns `404`.
+Response: `200 OK` with no body. The payment status is now `Succeeded`. The same `eventId` again returns `200` and changes nothing. A new `eventId` with `"status":"failed"` returns `200`, and the status stays `Succeeded`. A missing or wrong signature returns `401`. An unknown `paymentId` returns `404`.
 
-The signature rules, the check order and all responses are in [docs/user/provider-webhook.md](docs/user/provider-webhook.md).
+The signature rules, the check order, the status rules and all responses are in [docs/user/provider-webhook.md](docs/user/provider-webhook.md).
 
 ## Verification
 
@@ -155,7 +155,7 @@ Correction rules:
 ## Execution evidence
 
 - [runs/log.md](runs/log.md): one entry for each run, with loops, gate findings, decisions and status.
-- `runs/<id>/evidence.md`: base commit, each step, each verification command with its exit status, and links to the agent reports and test output. The first run with this format is 002: [runs/002-webhook/evidence.md](runs/002-webhook/evidence.md). Its last verification (step 11-verify) ran build, format, unit tests (36/36) and integration tests (55/55) with exit status 0. Earlier runs (001, 004, 005, 006) have only their `runs/log.md` entries.
+- `runs/<id>/evidence.md`: base commit, each step, each verification command with its exit status, and links to the agent reports and test output. The first run with this format is 002: [runs/002-webhook/evidence.md](runs/002-webhook/evidence.md). Its last verification (step 11-verify) ran build, format, unit tests (36/36) and integration tests (55/55) with exit status 0. For 003: [runs/003-out-of-order/evidence.md](runs/003-out-of-order/evidence.md). Its last verification (step 09-verify, output in [runs/003-out-of-order/verify/09-verify/summary.txt](runs/003-out-of-order/verify/09-verify/summary.txt)) ran build, format, unit tests (55/55, [unit.log](runs/003-out-of-order/verify/09-verify/unit.log)) and integration tests (71/71, [integration.log](runs/003-out-of-order/verify/09-verify/integration.log)) with exit status 0. Earlier runs (001, 004, 005, 006) have only their `runs/log.md` entries.
 - CI: each workflow run uploads `artifacts/verify/` (logs and TRX files) as the `verify-results` artifact.
 
 ## Agent boundaries
@@ -176,11 +176,13 @@ The orchestrator runs `scripts/workflow/boundary.sh` before and after each agent
 ## Known limitations
 
 - **Simulated provider redirect.** `redirectUrl` is `https://pay.example.com/{method}/{paymentId}`. No payment provider is called. The URL does not lead to a real payment page.
-- **No status transition rules.** Each new webhook `eventId` sets the status. A later event can change `Succeeded` to `Failed`, or `Failed` to `Succeeded`. Spec 003 is planned to add rules.
-- **Different webhook events at the same time.** When two events with different `eventId` values for the same payment arrive at the same time, the last one saved wins. There is no concurrency check.
+- **A final status is never corrected by a webhook.** `Succeeded` and `Failed` are final. A later event is ignored and gets `200`, so the provider does not see that it was ignored. A provider that retries a failed payment with the same `paymentId` cannot mark it as paid.
+- **No event order.** The provider sends no event time or sequence. The first event that is saved for a `Pending` payment sets the final status.
+- **Statuses from before spec 003 stay.** A payment that went from `Succeeded` to `Failed` (or the reverse) under spec 002 keeps its stored status.
+- **Changed resends are not always logged.** A resent `eventId` with a different payload logs a warning. There is no warning for events recorded before spec 003. For two copies with different payloads that arrive at the same time, a warning is not guaranteed: it can be missing, depending on which save fails first. Both copies get `200`, and only one copy changes the payment. No test covers the warning in this case.
 - **No read endpoint.** There is no `GET /payments/{id}`. The `201` response has no `Location` header. To see a status change, query the database.
 - **Create is not idempotent.** A repeated `POST /payments` creates a second payment. There is no idempotency key.
-- **Schema with `EnsureCreated`.** No migrations. When the database already has tables, `EnsureCreated` does nothing. It does not add new tables or columns to an existing schema. A database created before spec 002 must be removed once (see [Run the API locally](#run-the-api-locally)).
+- **Schema with `EnsureCreated`.** No migrations. When the database already has tables, `EnsureCreated` does nothing. The only schema upgrade is the `PayloadHash` column, added with one `ALTER TABLE` statement at start. A database created before spec 002 must be removed once (see [Run the API locally](#run-the-api-locally)).
 - **`amount` accepts a numeric string.** `"amount": "10.50"` is accepted, but `currency` and `method` reject numeric strings. This comes from the JSON Web defaults. No spec decided it, and no test covers it.
 - **No authentication, authorization or rate limiting.** The webhook signature is the only check, and only on `POST /webhooks/provider`.
 - **Currencies and methods are fixed.** EUR, GBP, USD; `ideal`, `klarna`. There is no check of which currencies a method supports.

@@ -1,0 +1,19 @@
+spec=003-out-of-order
+step=05-implementer
+role=implementer
+allowed=src/* AgenticPayments.slnx
+changed: src/AgenticPayments.Api/Program.cs
+changed: src/AgenticPayments.Api/Webhooks/WebhookEndpoints.cs
+changed: src/AgenticPayments.Application/Webhooks/IWebhookEventRepository.cs
+changed: src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs
+changed: src/AgenticPayments.Application/Webhooks/ProviderWebhookOutcome.cs
+changed: src/AgenticPayments.Application/Webhooks/ProviderWebhookResult.cs
+changed: src/AgenticPayments.Application/Webhooks/WebhookPayloadHash.cs
+changed: src/AgenticPayments.Application/Webhooks/WebhookRecordResult.cs
+changed: src/AgenticPayments.Domain/Payments/Payment.cs
+changed: src/AgenticPayments.Domain/Webhooks/ProcessedWebhookEvent.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/DatabaseInitializer.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/PaymentConfiguration.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/ProcessedWebhookEventConfiguration.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/WebhookEventRepository.cs
+outcome=PASS

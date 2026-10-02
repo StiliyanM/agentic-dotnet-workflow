@@ -1,0 +1,6 @@
+spec=003-out-of-order
+step=04-test-writer
+role=test-writer
+allowed=tests/*
+changed: tests/AgenticPayments.UnitTests/Webhooks/ProcessProviderWebhookUseCaseTests.cs
+outcome=PASS

@@ -14,7 +14,12 @@ public sealed class ProviderWebhookResult
 
     public static ProviderWebhookResult Processed() => new(ProviderWebhookOutcome.Processed, new Dictionary<string, string[]>());
 
+    public static ProviderWebhookResult Ignored() => new(ProviderWebhookOutcome.Ignored, new Dictionary<string, string[]>());
+
     public static ProviderWebhookResult Duplicate() => new(ProviderWebhookOutcome.Duplicate, new Dictionary<string, string[]>());
+
+    public static ProviderWebhookResult DuplicatePayloadMismatch() =>
+        new(ProviderWebhookOutcome.DuplicatePayloadMismatch, new Dictionary<string, string[]>());
 
     public static ProviderWebhookResult PaymentNotFound() =>
         new(ProviderWebhookOutcome.PaymentNotFound, new Dictionary<string, string[]>());

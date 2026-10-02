@@ -6,28 +6,39 @@ namespace AgenticPayments.UnitTests.Webhooks;
 
 public sealed class FakeWebhookEventRepository : IWebhookEventRepository
 {
-    // Event ids that were stored before the test, for example by an earlier delivery.
-    public HashSet<string> StoredEventIds { get; } = new(StringComparer.Ordinal);
+    // Events that were stored before the test, for example by an earlier delivery.
+    public List<ProcessedWebhookEvent> Stored { get; } = [];
 
+    // The events that RecordAsync saved (result Recorded), with the payment that was saved with them.
     public List<(ProcessedWebhookEvent Event, Payment Payment)> Recorded { get; } = [];
 
-    // Simulates a concurrent delivery that stored the same event id after ExistsAsync returned false.
-    public bool RejectRecord { get; set; }
+    // The results of the next RecordAsync calls, in order. When it is empty, RecordAsync saves and returns Recorded.
+    // DuplicateEvent simulates a concurrent delivery of the same event id; PaymentChanged simulates a concurrent status change.
+    public Queue<WebhookRecordResult> RecordResults { get; } = new();
+
+    // Runs before RecordAsync returns its result, for example to change the stored payment between attempts.
+    public Action<WebhookRecordResult>? BeforeResultReturned { get; set; }
 
     public int RecordAttempts { get; private set; }
 
-    public Task<bool> ExistsAsync(string eventId, CancellationToken cancellationToken) =>
-        Task.FromResult(StoredEventIds.Contains(eventId) || Recorded.Any(r => r.Event.EventId == eventId));
+    public Task<ProcessedWebhookEvent?> FindAsync(string eventId, CancellationToken cancellationToken) =>
+        Task.FromResult(
+            Stored.SingleOrDefault(e => e.EventId == eventId)
+            ?? Recorded.Select(r => r.Event).SingleOrDefault(e => e.EventId == eventId));
 
-    public Task<bool> TryRecordAsync(ProcessedWebhookEvent webhookEvent, Payment payment, CancellationToken cancellationToken)
+    public Task<WebhookRecordResult> RecordAsync(
+        ProcessedWebhookEvent webhookEvent,
+        Payment payment,
+        CancellationToken cancellationToken)
     {
         RecordAttempts++;
-        if (RejectRecord)
+        var result = RecordResults.Count > 0 ? RecordResults.Dequeue() : WebhookRecordResult.Recorded;
+        if (result == WebhookRecordResult.Recorded)
         {
-            return Task.FromResult(false);
+            Recorded.Add((webhookEvent, payment));
         }
 
-        Recorded.Add((webhookEvent, payment));
-        return Task.FromResult(true);
+        BeforeResultReturned?.Invoke(result);
+        return Task.FromResult(result);
     }
 }

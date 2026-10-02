@@ -10,6 +10,10 @@ public sealed class ProcessProviderWebhookUseCase(
     IPaymentRepository payments,
     IWebhookEventRepository webhookEvents)
 {
+    // The only status change is Pending -> terminal, and a terminal payment is never saved again,
+    // so a second attempt after a concurrent change cannot conflict again.
+    public const int MaxAttempts = 2;
+
     public async Task<ProviderWebhookResult> ExecuteAsync(ProviderWebhookRequest request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -20,25 +24,47 @@ public sealed class ProcessProviderWebhookUseCase(
             return ProviderWebhookResult.Invalid(validationResult.ToDictionary());
         }
 
-        // The duplicate check runs first, so a repeated event never touches the payment.
-        if (await webhookEvents.ExistsAsync(request.EventId, cancellationToken))
+        var hash = WebhookPayloadHash.Compute(request.PaymentId, request.Status);
+        for (var attempt = 0; attempt < MaxAttempts; attempt++)
         {
-            return ProviderWebhookResult.Duplicate();
+            // The duplicate check runs first, so a repeated event never touches the payment.
+            var storedEvent = await webhookEvents.FindAsync(request.EventId, cancellationToken);
+            if (storedEvent is not null)
+            {
+                // Events stored before spec 003 have no hash; they count as duplicates without a compare.
+                return storedEvent.PayloadHash is null || storedEvent.PayloadHash == hash
+                    ? ProviderWebhookResult.Duplicate()
+                    : ProviderWebhookResult.DuplicatePayloadMismatch();
+            }
+
+            var payment = await payments.FindAsync(request.PaymentId, cancellationToken);
+            if (payment is null)
+            {
+                return ProviderWebhookResult.PaymentNotFound();
+            }
+
+            var applied = payment.TryChangeStatus(ToPaymentStatus(request.Status));
+            // RecordAsync saves the payment that payments.FindAsync loaded and tracks in this scope.
+            var recordResult = await webhookEvents.RecordAsync(
+                new ProcessedWebhookEvent(request.EventId, request.PaymentId, hash),
+                payment,
+                cancellationToken);
+            switch (recordResult)
+            {
+                case WebhookRecordResult.Recorded:
+                    return applied ? ProviderWebhookResult.Processed() : ProviderWebhookResult.Ignored();
+                case WebhookRecordResult.DuplicateEvent:
+                    return ProviderWebhookResult.Duplicate();
+                case WebhookRecordResult.PaymentChanged:
+                    // Another event changed the payment after it was loaded; evaluate this event again on fresh data.
+                    continue;
+                default:
+                    throw new InvalidOperationException($"Unknown record result {recordResult}.");
+            }
         }
 
-        var payment = await payments.FindAsync(request.PaymentId, cancellationToken);
-        if (payment is null)
-        {
-            return ProviderWebhookResult.PaymentNotFound();
-        }
-
-        payment.ChangeStatus(ToPaymentStatus(request.Status));
-        var recorded = await webhookEvents.TryRecordAsync(
-            new ProcessedWebhookEvent(request.EventId, request.PaymentId),
-            payment,
-            cancellationToken);
-
-        return recorded ? ProviderWebhookResult.Processed() : ProviderWebhookResult.Duplicate();
+        throw new InvalidOperationException(
+            $"Webhook event {request.EventId} could not be recorded after {MaxAttempts} attempts because the payment kept changing.");
     }
 
     private static PaymentStatus ToPaymentStatus(ProviderPaymentStatus status) => status switch

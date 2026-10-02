@@ -14,6 +14,8 @@ public sealed class ProcessedWebhookEventConfiguration : IEntityTypeConfiguratio
         // The primary key makes a concurrent repeat of the same event fail with a unique violation.
         builder.HasKey(e => e.EventId);
         builder.Property(e => e.EventId).HasMaxLength(ProcessedWebhookEvent.MaxEventIdLength);
+        // Nullable: events stored before spec 003 have no hash.
+        builder.Property(e => e.PayloadHash).HasMaxLength(ProcessedWebhookEvent.PayloadHashLength);
         builder.HasOne<Payment>()
             .WithMany()
             .HasForeignKey(e => e.PaymentId)

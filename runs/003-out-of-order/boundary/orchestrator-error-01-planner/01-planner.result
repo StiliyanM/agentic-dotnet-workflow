@@ -1,0 +1,8 @@
+spec=003-out-of-order
+step=01-planner
+role=planner
+allowed=plans/003-out-of-order.md
+changed: plans/003-out-of-order.md
+changed: runs/003-out-of-order/agents/01-planner.md
+violation: path not allowed for planner: runs/003-out-of-order/agents/01-planner.md
+outcome=FAIL

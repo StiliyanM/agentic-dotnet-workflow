@@ -1,0 +1,5 @@
+spec=003-out-of-order
+step=10-test-auditor
+role=test-auditor
+allowed=<none>
+outcome=PASS
