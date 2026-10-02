@@ -195,3 +195,20 @@ Evidence: from the next spec run, each run has `runs/<id>/evidence.md`. No evide
 - `WebhookEventRepository.TryRecordAsync` saves the payment only because the same `DbContext` tracks it. This is a hidden dependency.
 - Two different events for the same payment at the same time: the last one saved wins. There is no concurrency token.
 - **Maintenance needed:** the CLAUDE.md command for the reviewer diff has no path filter, so the diff includes `plans/` and `runs/`. In this run the orchestrator used `src/ tests/ AgenticPayments.slnx` as the filter.
+
+## Maintenance after spec 002 (2026-10-02)
+
+Not a spec run. The user asked for these changes directly and lifted the deny rules by hand for this change. The rules were restored at the end.
+
+| Commit | Change | Finding from spec 002 |
+|---|---|---|
+| `2e85cb0` | `boundary.sh review-input`: fixed path lists for the read-only agents. The code-review diff never contains `plans/` or `runs/`. | The CLAUDE.md reviewer diff command had no path filter. |
+| `88da84e` | Verification logs under `runs/*/verify/` are committed. Evidence link check. Source line numbers for review findings. Agent reports saved exactly. | Logs were ignored by `*.log`. One evidence link was broken. The saved reviewer report was edited, and some of its line numbers were diff lines. |
+| `a8d50ad` | After a test correction, the gates run; the implementer runs only when production code must change. Loop reasons are recorded. | Steps 06 and 10 called the implementer only to repeat passing checks. |
+| `184c8ea` | Shared code rules in `docs/engineering-rules.md`. | The same rules were copied in three agent files. The hidden `DbContext` dependency (reviewer optional item 2). |
+| `9e518c5` | Planner sections for schema, atomic operations, contract vs implementation, flagged decisions. Test-writer reads the spec first and reports plan gaps. Test-auditor finding categories. | A test that could not detect its defect; a missing acceptance case; an unstated tracked-entity dependency. |
+| `68b865f` | Spec 003: contract, open decisions D1–D6, acceptance and concurrency cases. Blocked until the decisions are made. | – |
+
+Corrections to the spec 002 evidence: [002-webhook/corrections.md](002-webhook/corrections.md). Original files were recovered; none were made again. Missing evidence is listed there.
+
+Verification of this change: `bash scripts/verify.sh all --results artifacts/maintenance-2026-10-02` exited 0 (unit 36/36, integration 55/55, boundary tests 21 cases, evidence links 54 checked and 0 missing). The output is not committed, because it is not spec run evidence.

@@ -5,6 +5,7 @@
       "Edit(./CLAUDE.md)",
       "Edit(./.claude/**)",
       "Edit(./specs/**)",
+      "Edit(./docs/engineering-rules.md)",
       "Edit(./docs/architecture.md)",
       "Edit(./docs/csharp-style.md)",
       "Edit(./docs/workflow.md)",
