@@ -26,7 +26,7 @@ app.UseExceptionHandler();
 
 using (var scope = app.Services.CreateScope())
 {
-    scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.EnsureCreated();
+    await DatabaseInitializer.InitializeAsync(scope.ServiceProvider.GetRequiredService<AppDbContext>(), CancellationToken.None);
 }
 
 app.MapGet("/health", async (AppDbContext db, CancellationToken cancellationToken) =>

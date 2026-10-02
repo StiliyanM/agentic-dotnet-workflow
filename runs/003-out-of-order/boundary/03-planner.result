@@ -1,0 +1,6 @@
+spec=003-out-of-order
+step=03-planner
+role=planner
+allowed=plans/003-out-of-order.md
+changed: plans/003-out-of-order.md
+outcome=PASS

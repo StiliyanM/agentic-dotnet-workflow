@@ -18,5 +18,8 @@ public sealed class PaymentConfiguration : IEntityTypeConfiguration<Payment>
             .IsRequired();
         builder.Property(p => p.Method).HasConversion<string>();
         builder.Property(p => p.Status).HasConversion<string>();
+        // Optimistic concurrency token on the PostgreSQL system column xmin (no real column), so that two events
+        // that loaded the same payment cannot both save a status. A shadow property keeps the Domain free of it.
+        builder.Property<uint>("Version").IsRowVersion();
     }
 }

@@ -212,3 +212,46 @@ Not a spec run. The user asked for these changes directly and lifted the deny ru
 Corrections to the spec 002 evidence: [002-webhook/corrections.md](002-webhook/corrections.md). Original files were recovered; none were made again. Missing evidence is listed there.
 
 Verification of this change: `bash scripts/verify.sh all --results artifacts/maintenance-2026-10-02` exited 0 (unit 36/36, integration 55/55, boundary tests 21 cases, evidence links 54 checked and 0 missing). The output is not committed, because it is not spec run evidence.
+
+## 003-out-of-order (2026-10-02)
+
+- **Status:** PASSED. Committed on `spec/003-out-of-order` and merged into `main`.
+- **Loops:** 3
+- **Final result:** 55 unit tests and 71 integration tests pass (step 09-verify, exit status 0). Build has 0 warnings. Format check passes.
+- **Evidence:** [runs/003-out-of-order/evidence.md](003-out-of-order/evidence.md). Corrections: [runs/003-out-of-order/corrections.md](003-out-of-order/corrections.md).
+
+### Problems that each gate found
+
+| Gate | Loop 0 | Loop 1 | Loop 2 | Loop 3 |
+|---|---|---|---|---|
+| Preflight | None | – | – | – |
+| Boundary checks | 01-planner: first check FAIL on the orchestrator's own report file (saved before the check); second check PASS. All other steps PASS. | None | None | None |
+| Test-writer | PLAN UPDATE NEEDED: `ProcessedWebhookEvent` constructor needs a nullable `payloadHash` for rows from before this spec. Sent to the planner. | None | – | – |
+| Build / format / test | Not run (plan update first) | None (55/55, 71/71) | None (55/55, 71/71) | – |
+| Test-auditor | – | FAIL (rule): 2 tests had `Assert.ThrowsAsync` outside `Assert.Multiple`. Sent to the test-writer. | PASS (4 optional) | – |
+| Reviewer | – | – | APPROVE (4 optional) | – |
+| Documentation review | – | – | CHANGES: the docs said a warning is never logged for two concurrent copies of one `eventId` with different payloads; the code can log it. Sent to the documenter. | APPROVE (1 optional). The README check claim matches `verify/09-verify/`. |
+
+### Decisions on unclear specs
+
+User decisions D1–D6 are in the spec and applied as written. Decisions from the run (`plans/003-out-of-order.md`, section 10):
+
+- FLAGGED Hash input: SHA-256 of `paymentId|status` (semantic payload), not the raw body bytes.
+- FLAGGED Rows without a hash (before spec 003): a repeat is a duplicate and never logs a warning.
+- FLAGGED Concurrent duplicate with another payload: a unique-key rejection gives `Duplicate` with no hash compare and no warning.
+- FLAGGED Concurrency control: optimistic `xmin` row version and one more evaluation (`MaxAttempts = 2`), not a `FOR UPDATE` lock.
+- FLAGGED Schema upgrade: idempotent `ALTER TABLE ... ADD COLUMN IF NOT EXISTS "PayloadHash"` after `EnsureCreated` in a new `DatabaseInitializer`, not EF Core migrations.
+- FLAGGED Same terminal status again with a new eventId: `Ignored`, recorded, 200.
+- FLAGGED C1 "inside their own transaction": no explicit transaction; each request reads in its own implicit transaction on its own scoped context, and the `xmin` check on the UPDATE protects the save.
+- `ProcessedWebhookEvent` takes `string? payloadHash` with no null guard.
+- The D5 warning is logged in Api (`WebhookEndpoints`), because Application has no logging dependency.
+
+### Open items (optional, not done)
+
+- Two concurrent copies of one `eventId` with different payloads can skip the D5 warning (`DuplicateEvent` path). The reviewer suggests re-evaluating on `DuplicateEvent`.
+- `DatabaseInitializer` repeats the `varchar(64)` length instead of using `ProcessedWebhookEvent.PayloadHashLength`.
+- `Payment.TryChangeStatus(Pending)` on a `Pending` payment returns true without a change (not reachable because of D1).
+- `DatabaseInitializer.InitializeAsync` gets `CancellationToken.None` at start.
+- Test-auditor optional: the spec 002 test `Webhook_DuplicateEventId_...` is now a B4 case and duplicates the new B4 theory; the hash test recomputes the hash with the same algorithm instead of a fixed known answer.
+- Orchestrator process: save an agent report only after that step's boundary check (01-planner error).
+- **Maintenance needed:** `check-evidence-links.sh` reads quoted pseudo-links in agent reports as links. The 13-reviewer-docs report was saved unchanged as `.txt` so the check passes (see corrections.md).

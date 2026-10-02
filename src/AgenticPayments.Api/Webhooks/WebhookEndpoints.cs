@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace AgenticPayments.Api.Webhooks;
 
-public static class WebhookEndpoints
+public static partial class WebhookEndpoints
 {
     public static IEndpointRouteBuilder MapWebhookEndpoints(this IEndpointRouteBuilder app)
     {
@@ -17,6 +17,7 @@ public static class WebhookEndpoints
         IOptions<ProviderWebhookOptions> webhookOptions,
         IOptions<JsonOptions> jsonOptions,
         ProcessProviderWebhookUseCase useCase,
+        ILoggerFactory loggerFactory,
         CancellationToken cancellationToken)
     {
         // The signature is checked before the body is parsed, so an unsigned request learns nothing about the contract.
@@ -35,12 +36,25 @@ public static class WebhookEndpoints
         }
 
         var result = await useCase.ExecuteAsync(body.Value, cancellationToken);
-        return result.Outcome switch
+        switch (result.Outcome)
         {
-            ProviderWebhookOutcome.Processed or ProviderWebhookOutcome.Duplicate => TypedResults.Ok(),
-            ProviderWebhookOutcome.PaymentNotFound => TypedResults.Problem(statusCode: StatusCodes.Status404NotFound),
-            ProviderWebhookOutcome.Invalid => TypedResults.ValidationProblem(result.Errors),
-            _ => throw new InvalidOperationException($"Unknown webhook outcome {result.Outcome}."),
-        };
+            case ProviderWebhookOutcome.Processed or ProviderWebhookOutcome.Ignored or ProviderWebhookOutcome.Duplicate:
+                return TypedResults.Ok();
+            case ProviderWebhookOutcome.DuplicatePayloadMismatch:
+                // 200 keeps the provider from retrying; the warning makes the conflicting resend visible.
+                LogPayloadMismatch(loggerFactory.CreateLogger(typeof(WebhookEndpoints)), body.Value.EventId);
+                return TypedResults.Ok();
+            case ProviderWebhookOutcome.PaymentNotFound:
+                return TypedResults.Problem(statusCode: StatusCodes.Status404NotFound);
+            case ProviderWebhookOutcome.Invalid:
+                return TypedResults.ValidationProblem(result.Errors);
+            default:
+                throw new InvalidOperationException($"Unknown webhook outcome {result.Outcome}.");
+        }
     }
+
+    [LoggerMessage(
+        Level = LogLevel.Warning,
+        Message = "Webhook event {EventId} was received again with a different payload. It was not processed again.")]
+    private static partial void LogPayloadMismatch(ILogger logger, string eventId);
 }

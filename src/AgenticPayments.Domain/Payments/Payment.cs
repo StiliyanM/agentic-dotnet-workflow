@@ -19,5 +19,15 @@ public sealed class Payment(decimal amount, Currency currency, PaymentMethod met
 
     public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
 
-    public void ChangeStatus(PaymentStatus status) => Status = status;
+    // A terminal status (Succeeded, Failed) is final, so a late or repeated event cannot undo it.
+    public bool TryChangeStatus(PaymentStatus status)
+    {
+        if (Status is PaymentStatus.Succeeded or PaymentStatus.Failed)
+        {
+            return false;
+        }
+
+        Status = status;
+        return true;
+    }
 }

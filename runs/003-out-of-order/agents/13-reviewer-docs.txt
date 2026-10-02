@@ -1,0 +1,48 @@
+VERDICT: CHANGES
+
+Scope: documentation review of `.agent-input/003-out-of-order/docs.diff` (README.md, docs/user/payments-api.md, docs/user/provider-webhook.md). I checked the statements against `specs/003-out-of-order.md`, the code in `src/` and the tests in `tests/`. I did not read `runs/`, because my reviewer role does not allow it. The orchestrator must check the claims listed under "Check claims for the orchestrator" against `runs/003-out-of-order/verify/`.
+
+## Items
+
+1. **C:\Users\Stiliyan\source\repos\ApmPlayground\docs\user\provider-webhook.md:202** (section Limits, "No warning for some changed resends"), and **C:\Users\Stiliyan\source\repos\ApmPlayground\README.md:182** (Known limitations, "Changed resends are not always logged")
+   - Check: accuracy.
+   - Problem: Both pages say a warning is never logged when two copies of one `eventId` with different payloads arrive at the same time. No test covers this, and the code does not support it as a fixed rule.
+     - For a `Pending` payment, both copies change the payment. `WebhookEventRepository.RecordAsync` (src/AgenticPayments.Infrastructure/Persistence/WebhookEventRepository.cs:36-39) can return `PaymentChanged` because of the `xmin` token, not `DuplicateEvent`. That depends on the order in which EF Core sends the payment UPDATE and the event INSERT.
+     - On `PaymentChanged`, `ProcessProviderWebhookUseCase.ExecuteAsync` (src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs:58-60) runs the loop again. `FindAsync` then finds the stored event with a different hash and returns `DuplicatePayloadMismatch` (lines 31-37). `WebhookEndpoints` logs the warning for that result (src/AgenticPayments.Api/Webhooks/WebhookEndpoints.cs:43-46).
+     - So a warning can be logged in this case. Only the `DuplicateEvent` path (unique violation) skips the warning.
+   - Change: Do not say that no warning is logged. Say that a warning is not guaranteed for two copies that arrive at the same time: it can be missing, depending on which save fails first. Say that no test covers this case. Keep the statement that both copies get `200` and only one changes the payment. That part is correct.
+
+## Check claims for the orchestrator
+Compare each of these with the files in `runs/003-out-of-order/`:
+
+- **C:\Users\Stiliyan\source\repos\ApmPlayground\README.md:158**: "For 003: [runs/003-out-of-order/evidence.md](...). Its last verification (step 09-verify) ran build, format, unit tests (55/55) and integration tests (71/71) with exit status 0."
+  - The claim has a link to the run evidence, so it is not a check-claim finding on my side.
+  - The orchestrator must confirm these points in `runs/003-out-of-order/verify/09-verify/`:
+    - step 09-verify exists and is the last verification;
+    - build and format passed;
+    - unit tests passed 55/55;
+    - integration tests passed 71/71;
+    - the exit status was 0.
+  - The link goes to `evidence.md`, not to the `verify/` output. If `evidence.md` does not link to `verify/09-verify/`, the claim has no supporting output and is a finding.
+- I found no other statement in the diff that says a check passed. Two statements say something was not run or not tested, and they need no evidence:
+  - README.md: "This command was not run as part of the verification."
+  - provider-webhook.md: "No test covers this case" (database from before spec 002).
+
+## Statements checked and found accurate
+- **Status:** README marks spec 003 as Completed. The "Planned" section and the earlier "not implemented" text are removed. Nothing planned is described as available.
+- **Status rules match the spec decisions:**
+  - `Payment.TryChangeStatus` (src/AgenticPayments.Domain/Payments/Payment.cs:23-32) makes `Succeeded` and `Failed` final.
+  - Ignored events are recorded and get `200` (D2, D3, D4, D6).
+  - `pending` gets `400`, because `ProviderPaymentStatus` has only `Succeeded` and `Failed` (D1).
+  - A resend with a different payload gets `200` and logs the warning text exactly as written in `WebhookEndpoints.cs:58` (D5).
+  - An event with a null `PayloadHash` counts as a duplicate with no warning (`ProcessProviderWebhookUseCase.cs:35`).
+- **PayloadHash:**
+  - The hash is SHA-256 of `paymentId|status`, from the parsed enum, as lower-case hex. That gives 64 characters and does not depend on JSON formatting or the letter case of `status`.
+  - The column is added with `ALTER TABLE ... ADD COLUMN IF NOT EXISTS` in `DatabaseInitializer.cs`, which `Program.cs:29` calls at start.
+  - If the database is from before spec 002 and has no `ProcessedWebhookEvents` table, the statement throws and the API does not start, as the docs say.
+- **Concurrency:** The `xmin` row version (PaymentConfiguration.cs:23) and the evaluation on fresh data after a conflict match the "Different events at the same time" section.
+- **Test names:** Every test name in the "Source" lines exists, in the file that the docs name.
+- **Production readiness:** The docs do not claim it.
+
+## Optional
+- README.md:158: link straight to `runs/003-out-of-order/verify/09-verify/` (or its TRX or log files) next to `evidence.md`. Then the test counts link to their output.

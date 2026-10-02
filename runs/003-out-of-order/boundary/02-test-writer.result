@@ -1,0 +1,16 @@
+spec=003-out-of-order
+step=02-test-writer
+role=test-writer
+allowed=tests/*
+changed: tests/AgenticPayments.IntegrationTests/DatabaseInitializerTests.cs
+changed: tests/AgenticPayments.IntegrationTests/Infrastructure/CapturingLoggerProvider.cs
+changed: tests/AgenticPayments.IntegrationTests/Infrastructure/RacingPaymentRepository.cs
+changed: tests/AgenticPayments.IntegrationTests/Infrastructure/RacingWebhookEventRepository.cs
+changed: tests/AgenticPayments.IntegrationTests/Infrastructure/WebhookRaceCoordinator.cs
+changed: tests/AgenticPayments.IntegrationTests/ProviderWebhookTests.cs
+changed: tests/AgenticPayments.UnitTests/Payments/FakePaymentRepository.cs
+changed: tests/AgenticPayments.UnitTests/Payments/PaymentTests.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/FakeWebhookEventRepository.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/ProcessProviderWebhookUseCaseTests.cs
+changed: tests/AgenticPayments.UnitTests/Webhooks/WebhookPayloadHashTests.cs
+outcome=PASS

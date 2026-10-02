@@ -41,12 +41,36 @@ public sealed class PaymentTests
     [Theory]
     [InlineData(PaymentStatus.Succeeded)]
     [InlineData(PaymentStatus.Failed)]
-    public void ChangeStatus_SetsStatus(PaymentStatus status)
+    public void TryChangeStatus_FromPending_SetsStatusAndReturnsTrue(PaymentStatus status)
     {
-        var payment = new Payment(_fixture.Create<decimal>(), _fixture.Create<Currency>(), _fixture.Create<PaymentMethod>());
+        var payment = NewPayment();
 
-        payment.ChangeStatus(status);
+        var changed = payment.TryChangeStatus(status);
 
-        Assert.Equal(status, payment.Status);
+        Assert.Multiple(
+            () => Assert.True(changed),
+            () => Assert.Equal(status, payment.Status));
     }
+
+    [Theory]
+    [InlineData(PaymentStatus.Succeeded, PaymentStatus.Pending)]
+    [InlineData(PaymentStatus.Succeeded, PaymentStatus.Succeeded)]
+    [InlineData(PaymentStatus.Succeeded, PaymentStatus.Failed)]
+    [InlineData(PaymentStatus.Failed, PaymentStatus.Pending)]
+    [InlineData(PaymentStatus.Failed, PaymentStatus.Succeeded)]
+    [InlineData(PaymentStatus.Failed, PaymentStatus.Failed)]
+    public void TryChangeStatus_FromTerminal_ReturnsFalseAndKeepsStatus(PaymentStatus terminalStatus, PaymentStatus newStatus)
+    {
+        var payment = NewPayment();
+        Assert.True(payment.TryChangeStatus(terminalStatus));
+
+        var changed = payment.TryChangeStatus(newStatus);
+
+        Assert.Multiple(
+            () => Assert.False(changed),
+            () => Assert.Equal(terminalStatus, payment.Status));
+    }
+
+    private Payment NewPayment() =>
+        new(_fixture.Create<decimal>(), _fixture.Create<Currency>(), _fixture.Create<PaymentMethod>());
 }
