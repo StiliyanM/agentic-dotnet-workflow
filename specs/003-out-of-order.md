@@ -5,10 +5,6 @@ Webhook events can arrive in the wrong sequence or more than one time.
 - A non-terminal status must not replace a terminal status (Succeeded, Failed).
 - Decide what occurs if Failed arrives after Succeeded. Record the decision.
 
-## Status of this spec
-
-**Blocked: the decisions in "Open decisions" are not made.** Do not start a run until the user records each decision in this file. The planner must not choose these policies, because they are business decisions, not unclear details.
-
 ## Terms
 
 - **Terminal status**: `Succeeded` or `Failed`.
@@ -82,3 +78,22 @@ Spec 002 applied any terminal status after any other ("the last event wins"). So
 - A read endpoint for payments.
 - Event ordering by provider timestamps or sequence numbers. The provider sends no timestamp or sequence number (spec 002 fields).
 - Refunds and other statuses.
+
+## Status of this spec
+
+**Ready.** The user made the decisions on 2026-10-02 (the recommendations in "Open decisions"):
+
+| # | Decision |
+|---|---|
+| D1 | The webhook does not accept `pending`. It gives 400, as in spec 002. |
+| D2 | `Failed` after `Succeeded` is ignored. The status stays `Succeeded`. |
+| D3 | `Succeeded` after `Failed` is ignored. A terminal status is final. |
+| D4 | An ignored event is recorded as processed. A repeat of its `eventId` is a duplicate. |
+| D5 | The same `eventId` with a different payload gives 200 and changes nothing. A hash of the payload is stored. A different hash is logged as a warning. Events recorded before this spec have no hash and still count as duplicates. |
+| D6 | An ignored event gives 200 with no body. |
+
+With these decisions, the expected results of the B cases are:
+- B1: the status stays `Succeeded`, the event is recorded, 200.
+- B2: the status stays `Failed`, the event is recorded, 200.
+- B3: 200, nothing changes (duplicate).
+- B4: 200, nothing changes, a warning is logged.
