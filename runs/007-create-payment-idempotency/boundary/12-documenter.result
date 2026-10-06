@@ -1,0 +1,7 @@
+spec=007-create-payment-idempotency
+step=12-documenter
+role=documenter
+allowed=README.md docs/user/*
+changed: README.md
+changed: docs/user/payments-api.md
+outcome=PASS

@@ -1,0 +1,22 @@
+spec=007-create-payment-idempotency
+step=03-implementer
+role=implementer
+allowed=src/* AgenticPayments.slnx
+changed: src/AgenticPayments.Api/Payments/PaymentEndpoints.cs
+changed: src/AgenticPayments.Application/ApplicationServiceCollectionExtensions.cs
+changed: src/AgenticPayments.Application/Payments/CreatePaymentOutcome.cs
+changed: src/AgenticPayments.Application/Payments/CreatePaymentRequestHash.cs
+changed: src/AgenticPayments.Application/Payments/CreatePaymentResult.cs
+changed: src/AgenticPayments.Application/Payments/CreatePaymentUseCase.cs
+changed: src/AgenticPayments.Application/Payments/IIdempotencyRecordRepository.cs
+changed: src/AgenticPayments.Application/Payments/IPaymentRepository.cs
+changed: src/AgenticPayments.Application/Payments/IdempotencyKeyValidator.cs
+changed: src/AgenticPayments.Application/Payments/IdempotencySaveResult.cs
+changed: src/AgenticPayments.Domain/Payments/IdempotencyRecord.cs
+changed: src/AgenticPayments.Infrastructure/InfrastructureServiceCollectionExtensions.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/AppDbContext.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/DatabaseInitializer.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/IdempotencyRecordConfiguration.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/IdempotencyRecordRepository.cs
+changed: src/AgenticPayments.Infrastructure/Persistence/PaymentRepository.cs
+outcome=PASS

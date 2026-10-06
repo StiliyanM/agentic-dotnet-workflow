@@ -151,7 +151,7 @@ The commands to run the API with the secret are in the [README](../../README.md#
 
 This example uses the API from the README local run, with the secret `local-dev-webhook-secret`. Use your own secret value. The example was not run as part of the verification.
 
-1. Create a payment with `POST /payments` and copy the `paymentId` from the response.
+1. Create a payment with `POST /payments` (with an `Idempotency-Key` header, see the [README example](../../README.md#example)) and copy the `paymentId` from the response.
 2. Sign the body and send it (bash, needs `openssl`):
 
 ```bash
@@ -179,7 +179,7 @@ docker exec agentic-payments-db psql -U postgres -d apm -c 'SELECT "Id", "Status
 
 ## Database schema
 
-At start, the API creates the schema with `EnsureCreated`. Then it adds the column `PayloadHash` to `ProcessedWebhookEvents` when the column does not exist (`ALTER TABLE ... ADD COLUMN IF NOT EXISTS`). This step runs on each start and changes nothing when the column exists.
+At start, the API creates the schema with `EnsureCreated`. Then it adds the column `PayloadHash` to `ProcessedWebhookEvents` when the column does not exist (`ALTER TABLE ... ADD COLUMN IF NOT EXISTS`). This step runs on each start and changes nothing when the column exists. After that, the API creates the `IdempotencyRecords` table for `POST /payments` (spec 007) and its index when they do not exist (`CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`).
 
 - **Database created by spec 002.** The API adds `PayloadHash` at start. The existing event rows stay, with no hash. Stored payment statuses do not change. A payment that went from `Succeeded` to `Failed` (or the reverse) before spec 003 keeps its status. The new rules apply only to events that arrive after the change.
 - **Database created before spec 002.** `EnsureCreated` does nothing when the database already has tables, so the `ProcessedWebhookEvents` table does not exist. The `ALTER TABLE` statement then fails, and the API does not start. No test covers this case.
@@ -191,9 +191,9 @@ docker rm -f agentic-payments-db
 docker run -d --name agentic-payments-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=apm -p 5433:5432 postgres:17-alpine
 ```
 
-Then start the API again. It creates both tables.
+Then start the API again. It creates all tables.
 
-Source: `src/AgenticPayments.Api/Program.cs`, `src/AgenticPayments.Infrastructure/Persistence/DatabaseInitializer.cs`, `src/AgenticPayments.Infrastructure/Persistence/AppDbContext.cs`. Tests: `InitializeAsync_PayloadHashColumnMissing_AddsNullableColumnAndKeepsRows`, `InitializeAsync_RunTwice_DoesNotFail` in `tests/AgenticPayments.IntegrationTests/DatabaseInitializerTests.cs`.
+Source: `src/AgenticPayments.Api/Program.cs`, `src/AgenticPayments.Infrastructure/Persistence/DatabaseInitializer.cs`, `src/AgenticPayments.Infrastructure/Persistence/AppDbContext.cs`. Tests: `InitializeAsync_PayloadHashColumnMissing_AddsNullableColumnAndKeepsRows`, `InitializeAsync_IdempotencyTableMissing_CreatesTable`, `InitializeAsync_RunTwice_DoesNotFail` in `tests/AgenticPayments.IntegrationTests/DatabaseInitializerTests.cs`.
 
 ## Limits
 
@@ -201,5 +201,5 @@ Source: `src/AgenticPayments.Api/Program.cs`, `src/AgenticPayments.Infrastructur
 - **No event order.** The API does not use event time or sequence. The first event that is saved for a `Pending` payment wins, also when the provider sent it later.
 - **No warning for some changed resends.** There is no warning when the stored event has no `PayloadHash` (recorded before spec 003). When two copies of one `eventId` with different payloads arrive at the same time, a warning is not guaranteed. It can be missing. This depends on which save fails first. Both copies get `200`, and only one copy changes the payment. No test covers the warning in this case.
 - **`eventId` from a 404 is not recorded.** A retry with the same `eventId` is processed when the payment exists.
-- **No migrations.** The schema change for spec 003 is one `ALTER TABLE` statement at start, not an EF Core migration.
+- **No migrations.** The schema change for spec 003 is one `ALTER TABLE` statement at start, and the `IdempotencyRecords` table for spec 007 is created with `CREATE TABLE IF NOT EXISTS` at start. Neither is an EF Core migration.
 - See also [Known limitations](../../README.md#known-limitations) in the README.

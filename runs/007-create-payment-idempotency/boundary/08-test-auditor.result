@@ -1,0 +1,5 @@
+spec=007-create-payment-idempotency
+step=08-test-auditor
+role=test-auditor
+allowed=<none>
+outcome=PASS

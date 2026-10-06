@@ -1,0 +1,9 @@
+spec=007-create-payment-idempotency
+step=06-test-writer
+role=test-writer
+allowed=tests/*
+changed: tests/AgenticPayments.IntegrationTests/CreatePaymentIdempotencyTests.cs
+changed: tests/AgenticPayments.IntegrationTests/CreatePaymentTests.cs
+changed: tests/AgenticPayments.IntegrationTests/DatabaseInitializerTests.cs
+changed: tests/AgenticPayments.UnitTests/Payments/IdempotencyRecordTests.cs
+outcome=PASS

@@ -1,0 +1,12 @@
+  AgenticPayments.Domain -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Domain\bin\Debug\net10.0\AgenticPayments.Domain.dll
+  AgenticPayments.Application -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Application\bin\Debug\net10.0\AgenticPayments.Application.dll
+  AgenticPayments.Infrastructure -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Infrastructure\bin\Debug\net10.0\AgenticPayments.Infrastructure.dll
+  AgenticPayments.UnitTests -> C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\bin\Debug\net10.0\AgenticPayments.UnitTests.dll
+  AgenticPayments.Api -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Api\bin\Debug\net10.0\AgenticPayments.Api.dll
+  AgenticPayments.IntegrationTests -> C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.16

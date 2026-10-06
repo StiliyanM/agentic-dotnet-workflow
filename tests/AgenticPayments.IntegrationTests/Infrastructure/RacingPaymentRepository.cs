@@ -8,8 +8,6 @@ public sealed class RacingPaymentRepository(IPaymentRepository inner, WebhookRac
 {
     private bool _loadedOnce;
 
-    public Task AddAsync(Payment payment, CancellationToken cancellationToken) => inner.AddAsync(payment, cancellationToken);
-
     public async Task<Payment?> FindAsync(Guid id, CancellationToken cancellationToken)
     {
         var payment = await inner.FindAsync(id, cancellationToken);

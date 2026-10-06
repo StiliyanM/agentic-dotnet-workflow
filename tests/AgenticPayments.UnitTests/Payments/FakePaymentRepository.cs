@@ -5,7 +5,7 @@ namespace AgenticPayments.UnitTests.Payments;
 
 public sealed class FakePaymentRepository : IPaymentRepository
 {
-    // Holds the payments that AddAsync stored. Tests can also seed payments here for FindAsync.
+    // Payments that were stored before the test. FindAsync returns them.
     public List<Payment> Added { get; } = [];
 
     // A payment that FindAsync returns for an id instead of the one in Added.
@@ -13,12 +13,6 @@ public sealed class FakePaymentRepository : IPaymentRepository
     public Dictionary<Guid, Payment> Reloaded { get; } = [];
 
     public int FindCalls { get; private set; }
-
-    public Task AddAsync(Payment payment, CancellationToken cancellationToken)
-    {
-        Added.Add(payment);
-        return Task.CompletedTask;
-    }
 
     public Task<Payment?> FindAsync(Guid id, CancellationToken cancellationToken)
     {

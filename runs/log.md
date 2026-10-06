@@ -255,3 +255,46 @@ User decisions D1–D6 are in the spec and applied as written. Decisions from th
 - Test-auditor optional: the spec 002 test `Webhook_DuplicateEventId_...` is now a B4 case and duplicates the new B4 theory; the hash test recomputes the hash with the same algorithm instead of a fixed known answer.
 - Orchestrator process: save an agent report only after that step's boundary check (01-planner error).
 - **Maintenance needed:** `check-evidence-links.sh` reads quoted pseudo-links in agent reports as links. The 13-reviewer-docs report was saved unchanged as `.txt` so the check passes (see corrections.md).
+
+## 007-create-payment-idempotency (2026-10-07)
+
+- **Status:** PASSED. Committed on `spec/007-create-payment-idempotency` and merged into `main`.
+- **Loops:** 2
+- **Final result:** 87 unit tests and 90 integration tests pass (step 07-verify, exit status 0). Build has 0 warnings. Format check passes.
+- **Evidence:** [runs/007-create-payment-idempotency/evidence.md](007-create-payment-idempotency/evidence.md).
+
+### Problems that each gate found
+
+| Gate | Loop 0 | Loop 1 | Loop 2 |
+|---|---|---|---|
+| Preflight | First attempt: integration failed, Docker was not running (run not started). Second attempt: none | – | – |
+| Boundary checks | None (all PASS) | None | None |
+| Test-writer | No PLAN GAP | – | – |
+| Build / format / test | None (88/88, 93/93) | None (87/87, 90/90) | – |
+| Test-auditor | FAIL: 2 correctness (integration tests repeat unit-tested rules: 422 currency/method cases, key longer than 100), 1 rule (`CreatePaymentTests` and `DatabaseInitializerTests` did not clean idempotency records). Sent to the test-writer. | PASS (5 optional) | – |
+| Reviewer | – | APPROVE (6 optional) | – |
+| Documentation review | – | CHANGES: payments-api.md listed the body errors that come without a key error incompletely. Sent to the documenter. | APPROVE (2 optional). The README check claim matches `verify/07-verify/` (checked by the orchestrator). |
+
+### Decisions on unclear specs
+
+From `plans/007-create-payment-idempotency.md`, section 10:
+
+- FLAGGED Overlap gives 409, not a wait-and-replay: the conflict is detected at the save (primary key, or `xmin` on renewal). C1 gives 201 + 409.
+- FLAGGED No separate "processing" state: the payment and the key record are saved in one transaction.
+- FLAGGED A replay always returns `status: Pending` (the first response), even after a webhook changed the payment.
+- FLAGGED The 400 validation error key is `Idempotency-Key` (the header name).
+- FLAGGED Body errors (415, unreadable body, missing field) come before key errors; key errors and field rule errors are returned together.
+- FLAGGED A whitespace-only key is rejected (400).
+- FLAGGED A key is expired at exactly 24h (`>=`).
+- FLAGGED Multiple `Idempotency-Key` header values are joined with `,` into one key (no test covers this).
+- FLAGGED Schema upgrade with raw idempotent SQL (`CREATE TABLE/INDEX IF NOT EXISTS`) in `DatabaseInitializer`, not EF Core migrations.
+- Not flagged: `IPaymentRepository.AddAsync` removed; `TimeProvider` injected.
+- Test-writer decision (loop 1): the C1 test requires exactly one 201 and one 409, following the plan; the spec also allows two 201s with the same `paymentId`.
+
+### Open items (optional, not done)
+
+- Test-writer kept the known-answer hash test (`"10.50|Eur|Ideal"`): the hash is stored, so its format is a data contract.
+- Test-auditor optional: `SaveAsync_KeyAlreadyStored_...` mostly repeats C1; `Assert.Empty(_records.Saved)` in the key-conflict unit test cannot fail; `Assert.Same` in the expired-key unit test ties it to in-place renewal; the amount-scale HTTP variant repeats a unit test.
+- Reviewer optional: the max-length message repeats `IdempotencyRecord.MaxKeyLength`; the use case depends on the general `IValidator<string>`; `IsSuccess` duplicates `Outcome`; `IdempotencyKeyHeader` could be private.
+- Documentation optional: README line 188 joins two sentences with a comma and mixes the pre-007 limitation into the concurrency bullet; the 409 row in payments-api.md names only the first-use race.
+- Orchestrator process: the reviewer agent does not read `runs/`, so the orchestrator compared the README check claim with `verify/07-verify/` itself.

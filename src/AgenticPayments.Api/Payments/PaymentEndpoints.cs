@@ -6,6 +6,8 @@ namespace AgenticPayments.Api.Payments;
 
 public static class PaymentEndpoints
 {
+    public const string IdempotencyKeyHeader = "Idempotency-Key";
+
     public static IEndpointRouteBuilder MapPaymentEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapPost("/payments", CreatePaymentAsync);
@@ -27,9 +29,20 @@ public static class PaymentEndpoints
             return body.Error;
         }
 
-        var result = await useCase.ExecuteAsync(body.Value, cancellationToken);
-        return result.IsSuccess
-            ? TypedResults.Json(result.Response, statusCode: StatusCodes.Status201Created)
-            : TypedResults.ValidationProblem(result.Errors);
+        // A missing header gives "", so the use case reports it with the field errors.
+        var idempotencyKey = httpRequest.Headers[IdempotencyKeyHeader].ToString();
+        var result = await useCase.ExecuteAsync(idempotencyKey, body.Value, cancellationToken);
+        return result.Outcome switch
+        {
+            CreatePaymentOutcome.Success => TypedResults.Json(result.Response, statusCode: StatusCodes.Status201Created),
+            CreatePaymentOutcome.Invalid => TypedResults.ValidationProblem(result.Errors),
+            CreatePaymentOutcome.IdempotencyKeyReused => TypedResults.Problem(
+                detail: "The Idempotency-Key was already used with a different request.",
+                statusCode: StatusCodes.Status422UnprocessableEntity),
+            CreatePaymentOutcome.IdempotencyKeyInProgress => TypedResults.Problem(
+                detail: "Another request with the same Idempotency-Key was processed at the same time. Retry the request.",
+                statusCode: StatusCodes.Status409Conflict),
+            _ => throw new InvalidOperationException($"Unknown create payment outcome {result.Outcome}."),
+        };
     }
 }

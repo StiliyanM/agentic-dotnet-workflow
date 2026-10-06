@@ -24,25 +24,29 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
 
     private readonly Fixture _fixture = new();
     private readonly List<Guid> _createdPaymentIds = [];
+    private readonly List<string> _keys = [];
 
     public Task InitializeAsync() => Task.CompletedTask;
 
     public async Task DisposeAsync()
     {
-        if (_createdPaymentIds.Count == 0)
-        {
-            return;
-        }
-
         await using var scope = factory.Services.CreateAsyncScope();
         var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        await db.Payments.Where(p => _createdPaymentIds.Contains(p.Id)).ExecuteDeleteAsync();
+        if (_keys.Count > 0)
+        {
+            await db.IdempotencyRecords.Where(r => _keys.Contains(r.Key)).ExecuteDeleteAsync();
+        }
+
+        if (_createdPaymentIds.Count > 0)
+        {
+            await db.Payments.Where(p => _createdPaymentIds.Contains(p.Id)).ExecuteDeleteAsync();
+        }
     }
 
     [Fact]
     public async Task CreatePayment_ValidRequest_Returns201WithPendingStatusAndRedirectUrl()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
         var method = SupportedMethod();
 
         using var response = await client.PostAsJsonAsync("/payments", ValidBody(method));
@@ -64,7 +68,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_ValidRequest_PersistsPayment()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
         var amount = ValidAmount();
 
         using var response = await client.PostAsJsonAsync("/payments", new { amount, currency = "USD", method = "klarna" });
@@ -93,7 +97,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
         PaymentMethod expectedMethod,
         Currency expectedCurrency)
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(
             client,
@@ -119,7 +123,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [InlineData("usd", "USD")]
     public async Task CreatePayment_Currency_StoresIsoCodeInColumn(string currency, string expectedColumnValue)
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await client.PostAsJsonAsync(
             "/payments",
@@ -138,7 +142,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_AmountZero_Returns400WithAmountError()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
         var method = SupportedMethod();
 
         using var response = await client.PostAsJsonAsync(
@@ -163,7 +167,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
         string jsonValue,
         string expectedMessage)
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(client, RawBody(field, jsonValue));
 
@@ -176,7 +180,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [InlineData("method", "Method is required.")]
     public async Task CreatePayment_MissingField_Returns400WithRequiredError(string field, string expectedMessage)
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(client, BodyWithout(field));
 
@@ -186,7 +190,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_EmptyObject_Returns400WithErrorForEachField()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(client, """{}""");
 
@@ -205,7 +209,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_MissingFieldAndInvalidValue_Returns400WithBothErrors()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(
             client,
@@ -223,7 +227,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_ContentTypeNotJson_Returns415()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
         using var content = new StringContent(
             $$"""{"amount":{{RawAmount()}},"currency":"{{SupportedCurrency()}}","method":"{{SupportedMethod()}}"}""",
             Encoding.UTF8,
@@ -240,7 +244,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_PropertyNameInOtherCase_ErrorKeyIsCamelCase()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(
             client,
@@ -252,7 +256,7 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_MalformedJson_Returns400()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(client, """{ "amount": 10.50, "currency": """);
 
@@ -262,11 +266,21 @@ public sealed class CreatePaymentTests(ApiFactory factory) : IAsyncLifetime
     [Fact]
     public async Task CreatePayment_EmptyBody_Returns400()
     {
-        using var client = factory.CreateClient();
+        using var client = CreateClientWithNewKey();
 
         using var response = await PostRawAsync(client, string.Empty);
 
         await AssertPlainProblemAsync(response);
+    }
+
+    // Each test sends one request per client, so a new key per client gives every request its own Idempotency-Key.
+    private HttpClient CreateClientWithNewKey()
+    {
+        var key = _fixture.Create<Guid>().ToString();
+        _keys.Add(key);
+        var client = factory.CreateClient();
+        client.DefaultRequestHeaders.Add("Idempotency-Key", key);
+        return client;
     }
 
     private object ValidBody(string method) =>

@@ -1,3 +1,4 @@
+using AgenticPayments.Application.Payments;
 using AgenticPayments.Application.Webhooks;
 using AgenticPayments.Domain.Payments;
 using AgenticPayments.Domain.Webhooks;
@@ -15,6 +16,7 @@ public sealed class DatabaseInitializerTests(ApiFactory factory) : IAsyncLifetim
 {
     private readonly Fixture _fixture = new();
     private readonly List<Guid> _paymentIds = [];
+    private readonly List<string> _keys = [];
 
     public Task InitializeAsync() => Task.CompletedTask;
 
@@ -25,6 +27,13 @@ public sealed class DatabaseInitializerTests(ApiFactory factory) : IAsyncLifetim
         // Restores the column if a test left it dropped, so that the other tests of the collection keep a valid schema.
         await db.Database.ExecuteSqlRawAsync(
             """ALTER TABLE "ProcessedWebhookEvents" ADD COLUMN IF NOT EXISTS "PayloadHash" character varying(64) NULL""");
+        // Restores the IdempotencyRecords table if a test left it dropped.
+        await DatabaseInitializer.InitializeAsync(db, CancellationToken.None);
+        if (_keys.Count > 0)
+        {
+            await db.IdempotencyRecords.Where(r => _keys.Contains(r.Key)).ExecuteDeleteAsync();
+        }
+
         if (_paymentIds.Count > 0)
         {
             // The event rows are deleted with their payment (cascade).
@@ -68,7 +77,52 @@ public sealed class DatabaseInitializerTests(ApiFactory factory) : IAsyncLifetim
         await DatabaseInitializer.InitializeAsync(db, CancellationToken.None);
 
         var column = await ReadPayloadHashColumnAsync(db);
-        Assert.Equal("YES:64", column);
+        var idempotencyTableExists = await IdempotencyTableExistsAsync(db);
+        Assert.Multiple(
+            () => Assert.Equal("YES:64", column),
+            () => Assert.True(idempotencyTableExists));
+    }
+
+    [Fact]
+    public async Task InitializeAsync_IdempotencyTableMissing_CreatesTable()
+    {
+        await using var scope = factory.Services.CreateAsyncScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        // The schema of a database that spec 003 created.
+        await db.Database.ExecuteSqlRawAsync("""DROP TABLE "IdempotencyRecords" """);
+
+        await DatabaseInitializer.InitializeAsync(db, CancellationToken.None);
+
+        var payment = new Payment(_fixture.Create<int>() + 0.75m, _fixture.Create<Currency>(), _fixture.Create<PaymentMethod>());
+        _paymentIds.Add(payment.Id);
+        var key = _fixture.Create<Guid>().ToString();
+        _keys.Add(key);
+        var hash = CreatePaymentRequestHash.Compute(payment.Amount, payment.Currency, payment.Method);
+        var createdAt = DateTimeOffset.UtcNow;
+        db.Payments.Add(payment);
+        db.IdempotencyRecords.Add(new IdempotencyRecord(key, hash, payment.Id, createdAt));
+        await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
+        var tableExists = await IdempotencyTableExistsAsync(db);
+        var stored = await db.IdempotencyRecords.AsNoTracking().SingleAsync(r => r.Key == key);
+        Assert.Multiple(
+            () => Assert.True(tableExists),
+            () => Assert.Equal(payment.Id, stored.PaymentId),
+            () => Assert.Equal(hash, stored.RequestHash),
+            () => Assert.Equal(createdAt.ToUnixTimeMilliseconds(), stored.CreatedAt.ToUnixTimeMilliseconds()));
+    }
+
+    private static async Task<bool> IdempotencyTableExistsAsync(AppDbContext db)
+    {
+        var tables = await db.Database
+            .SqlQueryRaw<string>(
+                """
+                SELECT table_name AS "Value"
+                FROM information_schema.tables
+                WHERE table_name = 'IdempotencyRecords'
+                """)
+            .ToListAsync();
+        return tables.Count == 1;
     }
 
     // Returns "<is_nullable>:<character_maximum_length>" of the PayloadHash column; null when the column does not exist.

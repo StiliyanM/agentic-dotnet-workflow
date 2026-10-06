@@ -4,11 +4,17 @@ namespace AgenticPayments.Application.Payments;
 
 public sealed class CreatePaymentResult
 {
-    private CreatePaymentResult(CreatePaymentResponse? response, IDictionary<string, string[]> errors)
+    private CreatePaymentResult(
+        CreatePaymentOutcome outcome,
+        CreatePaymentResponse? response = null,
+        IDictionary<string, string[]>? errors = null)
     {
+        Outcome = outcome;
         Response = response;
-        Errors = errors;
+        Errors = errors ?? new Dictionary<string, string[]>();
     }
+
+    public CreatePaymentOutcome Outcome { get; }
 
     public CreatePaymentResponse? Response { get; }
 
@@ -17,8 +23,16 @@ public sealed class CreatePaymentResult
     [MemberNotNullWhen(true, nameof(Response))]
     public bool IsSuccess => Response is not null;
 
-    public static CreatePaymentResult Success(CreatePaymentResponse response) =>
-        new(response, new Dictionary<string, string[]>());
+    public static CreatePaymentResult Success(CreatePaymentResponse response)
+    {
+        ArgumentNullException.ThrowIfNull(response);
+        return new(CreatePaymentOutcome.Success, response);
+    }
 
-    public static CreatePaymentResult Invalid(IDictionary<string, string[]> errors) => new(null, errors);
+    public static CreatePaymentResult Invalid(IDictionary<string, string[]> errors) =>
+        new(CreatePaymentOutcome.Invalid, errors: errors);
+
+    public static CreatePaymentResult IdempotencyKeyReused() => new(CreatePaymentOutcome.IdempotencyKeyReused);
+
+    public static CreatePaymentResult IdempotencyKeyInProgress() => new(CreatePaymentOutcome.IdempotencyKeyInProgress);
 }
