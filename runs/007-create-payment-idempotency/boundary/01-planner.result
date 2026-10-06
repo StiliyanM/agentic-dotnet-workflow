@@ -1,0 +1,6 @@
+spec=007-create-payment-idempotency
+step=01-planner
+role=planner
+allowed=plans/007-create-payment-idempotency.md
+changed: plans/007-create-payment-idempotency.md
+outcome=PASS

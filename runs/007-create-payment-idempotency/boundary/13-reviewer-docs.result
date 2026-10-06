@@ -1,0 +1,5 @@
+spec=007-create-payment-idempotency
+step=13-reviewer-docs
+role=reviewer
+allowed=<none>
+outcome=PASS

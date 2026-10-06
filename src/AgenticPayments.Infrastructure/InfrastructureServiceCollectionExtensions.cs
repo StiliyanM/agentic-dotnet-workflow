@@ -14,6 +14,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("Postgres")));
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<IWebhookEventRepository, WebhookEventRepository>();
+        services.AddScoped<IIdempotencyRecordRepository, IdempotencyRecordRepository>();
         return services;
     }
 }

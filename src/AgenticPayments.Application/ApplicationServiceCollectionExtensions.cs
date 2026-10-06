@@ -10,6 +10,7 @@ public static class ApplicationServiceCollectionExtensions
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddValidatorsFromAssembly(typeof(ApplicationServiceCollectionExtensions).Assembly);
+        services.AddSingleton(TimeProvider.System);
         services.AddScoped<CreatePaymentUseCase>();
         services.AddScoped<ProcessProviderWebhookUseCase>();
         return services;

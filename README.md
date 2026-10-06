@@ -14,6 +14,7 @@ The case study is a small payments API in .NET 10: create a payment with an alte
 | [006-apply-style-rules](specs/006-apply-style-rules.md) | C# 14 style rules, enforced by analyzers in the build. | Completed |
 | [002-webhook](specs/002-webhook.md) | `POST /webhooks/provider` with HMAC-SHA256 signature check and idempotent event processing. Sets the status to `Succeeded` or `Failed`. | Completed |
 | [003-out-of-order](specs/003-out-of-order.md) | Webhook events out of sequence or more than one time. `Succeeded` and `Failed` are final. A later event is ignored, recorded and gets `200`. | Completed |
+| [007-create-payment-idempotency](specs/007-create-payment-idempotency.md) | Required `Idempotency-Key` header on `POST /payments`. A retry with the same key and request returns the first response and creates no second payment. | Completed |
 
 ## Prerequisites
 
@@ -61,9 +62,9 @@ $env:Webhooks__Provider__Secret = "local-dev-webhook-secret"
 dotnet run --project src/AgenticPayments.Api --launch-profile http
 ```
 
-The API listens on `http://localhost:5034`. It creates the database schema at startup (`EnsureCreated`), then adds the column `PayloadHash` to `ProcessedWebhookEvents` if it does not exist. `GET /health` returns 200 when the database is reachable.
+The API listens on `http://localhost:5034`. It creates the database schema at startup (`EnsureCreated`), then adds the column `PayloadHash` to `ProcessedWebhookEvents` if it does not exist, and creates the table `IdempotencyRecords` if it does not exist. `GET /health` returns 200 when the database is reachable.
 
-**Database created by spec 002.** The API adds the `PayloadHash` column at start. You do not need to remove the database.
+**Database created by spec 002 or later.** The API adds the `PayloadHash` column and the `IdempotencyRecords` table at start. You do not need to remove the database.
 
 **Database created before spec 002.** `EnsureCreated` does not add tables to a database that already has tables. A local database from before spec 002 has no `ProcessedWebhookEvents` table, so adding the column fails and the API does not start. Remove the container (this deletes its payments) and start a new one with the `docker run` command above.
 
@@ -78,7 +79,7 @@ docker rm -f agentic-payments-db
 Request:
 
 ```bash
-curl -i -X POST http://localhost:5034/payments -H "Content-Type: application/json" -d '{"amount": 10.50, "currency": "EUR", "method": "ideal"}'
+curl -i -X POST http://localhost:5034/payments -H "Content-Type: application/json" -H "Idempotency-Key: 6f1c2b7e-0d4a-4c3e-9a51-2f7d8e1b4c90" -d '{"amount": 10.50, "currency": "EUR", "method": "ideal"}'
 ```
 
 Response (`201 Created`):
@@ -86,6 +87,8 @@ Response (`201 Created`):
 ```json
 {"paymentId":"01a0f8e9-1f75-7503-9a58-ca8bd6c56f21","redirectUrl":"https://pay.example.com/ideal/01a0f8e9-1f75-7503-9a58-ca8bd6c56f21","status":"Pending"}
 ```
+
+The `Idempotency-Key` header is required. Use a new key (1 to 100 characters) for each new payment. Send the same request with the same key again: the response is `201` with the same `paymentId` and `redirectUrl`, and no second payment is created. The same key with a different `amount`, `currency` or `method` returns `422`. A missing or empty key returns `400` with `errors.Idempotency-Key`: `"Idempotency-Key header is required."` A key expires 24 hours after it was stored. Then the same key creates a new payment.
 
 A request with a missing amount and an unknown currency (`{"currency": "JPY", "method": "ideal"}`) returns `400` with `application/problem+json`:
 
@@ -155,7 +158,7 @@ Correction rules:
 ## Execution evidence
 
 - [runs/log.md](runs/log.md): one entry for each run, with loops, gate findings, decisions and status.
-- `runs/<id>/evidence.md`: base commit, each step, each verification command with its exit status, and links to the agent reports and test output. The first run with this format is 002: [runs/002-webhook/evidence.md](runs/002-webhook/evidence.md). Its last verification (step 11-verify) ran build, format, unit tests (36/36) and integration tests (55/55) with exit status 0. For 003: [runs/003-out-of-order/evidence.md](runs/003-out-of-order/evidence.md). Its last verification (step 09-verify, output in [runs/003-out-of-order/verify/09-verify/summary.txt](runs/003-out-of-order/verify/09-verify/summary.txt)) ran build, format, unit tests (55/55, [unit.log](runs/003-out-of-order/verify/09-verify/unit.log)) and integration tests (71/71, [integration.log](runs/003-out-of-order/verify/09-verify/integration.log)) with exit status 0. Earlier runs (001, 004, 005, 006) have only their `runs/log.md` entries.
+- `runs/<id>/evidence.md`: base commit, each step, each verification command with its exit status, and links to the agent reports and test output. The first run with this format is 002: [runs/002-webhook/evidence.md](runs/002-webhook/evidence.md). Its last verification (step 11-verify) ran build, format, unit tests (36/36) and integration tests (55/55) with exit status 0. For 003: [runs/003-out-of-order/evidence.md](runs/003-out-of-order/evidence.md). Its last verification (step 09-verify, output in [runs/003-out-of-order/verify/09-verify/summary.txt](runs/003-out-of-order/verify/09-verify/summary.txt)) ran build, format, unit tests (55/55, [unit.log](runs/003-out-of-order/verify/09-verify/unit.log)) and integration tests (71/71, [integration.log](runs/003-out-of-order/verify/09-verify/integration.log)) with exit status 0. For 007: [runs/007-create-payment-idempotency/evidence.md](runs/007-create-payment-idempotency/evidence.md). Its last verification (step 07-verify, output in [runs/007-create-payment-idempotency/verify/07-verify/summary.txt](runs/007-create-payment-idempotency/verify/07-verify/summary.txt)) ran build, format, unit tests (87/87, [unit.log](runs/007-create-payment-idempotency/verify/07-verify/unit.log)) and integration tests (90/90, [integration.log](runs/007-create-payment-idempotency/verify/07-verify/integration.log)) with exit status 0. Earlier runs (001, 004, 005, 006) have only their `runs/log.md` entries.
 - CI: each workflow run uploads `artifacts/verify/` (logs and TRX files) as the `verify-results` artifact.
 
 ## Agent boundaries
@@ -181,8 +184,10 @@ The orchestrator runs `scripts/workflow/boundary.sh` before and after each agent
 - **Statuses from before spec 003 stay.** A payment that went from `Succeeded` to `Failed` (or the reverse) under spec 002 keeps its stored status.
 - **Changed resends are not always logged.** A resent `eventId` with a different payload logs a warning. There is no warning for events recorded before spec 003. For two copies with different payloads that arrive at the same time, a warning is not guaranteed: it can be missing, depending on which save fails first. Both copies get `200`, and only one copy changes the payment. No test covers the warning in this case.
 - **No read endpoint.** There is no `GET /payments/{id}`. The `201` response has no `Location` header. To see a status change, query the database.
-- **Create is not idempotent.** A repeated `POST /payments` creates a second payment. There is no idempotency key.
-- **Schema with `EnsureCreated`.** No migrations. When the database already has tables, `EnsureCreated` does nothing. The only schema upgrade is the `PayloadHash` column, added with one `ALTER TABLE` statement at start. A database created before spec 002 must be removed once (see [Run the API locally](#run-the-api-locally)).
+- **Idempotency keys are kept for 24 hours only, and never deleted.** After 24 hours, the same key creates a new payment. Expired keys stay in the `IdempotencyRecords` table. There is no cleanup job.
+- **Two requests with the same new key at the same time.** One payment is created. One request gets `201`. The other gets `409` and must retry, When the first request was already saved before the other request looked up the key, the other request gets the replay (`201`, same `paymentId`) for the same request, or `422` for a different request. The API does not wait and replay. Payments created before spec 007 have no key and cannot be replayed.
+- **A replay always shows `Pending`.** A repeated request with the same key returns the first response, also when a webhook changed the status since.
+- **Schema with `EnsureCreated`.** No migrations. When the database already has tables, `EnsureCreated` does nothing. The only schema upgrades are the `PayloadHash` column (one `ALTER TABLE` statement) and the `IdempotencyRecords` table (`CREATE TABLE IF NOT EXISTS` and `CREATE INDEX IF NOT EXISTS`), run at start. A database created before spec 002 must be removed once (see [Run the API locally](#run-the-api-locally)).
 - **`amount` accepts a numeric string.** `"amount": "10.50"` is accepted, but `currency` and `method` reject numeric strings. This comes from the JSON Web defaults. No spec decided it, and no test covers it.
 - **No authentication, authorization or rate limiting.** The webhook signature is the only check, and only on `POST /webhooks/provider`.
 - **Currencies and methods are fixed.** EUR, GBP, USD; `ideal`, `klarna`. There is no check of which currencies a method supports.
