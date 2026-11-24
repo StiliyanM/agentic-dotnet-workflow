@@ -129,12 +129,60 @@ public sealed class ProcessProviderWebhookUseCaseTests
             () => Assert.Equal(0, _webhookEvents.RecordAttempts));
     }
 
+    // Fallback of plan 008 decision F1: the read after the unique-key failure finds no stored event.
+    // This must not happen in production, but the result stays Duplicate instead of an exception.
     [Fact]
     public async Task ExecuteAsync_RecordReturnsDuplicateEvent_ReturnsDuplicate()
     {
         var payment = SeedPayment();
         var request = Request(payment.Id, ProviderPaymentStatus.Failed);
         _webhookEvents.RecordResults.Enqueue(WebhookRecordResult.DuplicateEvent);
+
+        var result = await _useCase.ExecuteAsync(request, CancellationToken.None);
+
+        Assert.Multiple(
+            () => Assert.Equal(ProviderWebhookOutcome.Duplicate, result.Outcome),
+            () => Assert.Empty(result.Errors),
+            () => Assert.Equal(1, _webhookEvents.RecordAttempts),
+            () => Assert.Empty(_webhookEvents.Recorded));
+    }
+
+    [Theory]
+    [InlineData("other status")]
+    [InlineData("other paymentId")]
+    public async Task ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch(string difference)
+    {
+        var payment = SeedPayment();
+        var request = Request(payment.Id, ProviderPaymentStatus.Succeeded);
+        var winnerEvent = difference switch
+        {
+            "other status" => new ProcessedWebhookEvent(
+                request.EventId,
+                payment.Id,
+                WebhookPayloadHash.Compute(payment.Id, ProviderPaymentStatus.Failed)),
+            "other paymentId" => StoredEventForOtherPayment(request),
+            _ => throw new ArgumentOutOfRangeException(nameof(difference), difference, null),
+        };
+        LoseRaceTo(winnerEvent);
+
+        var result = await _useCase.ExecuteAsync(request, CancellationToken.None);
+
+        Assert.Multiple(
+            () => Assert.Equal(ProviderWebhookOutcome.DuplicatePayloadMismatch, result.Outcome),
+            () => Assert.Empty(result.Errors),
+            () => Assert.Equal(1, _webhookEvents.RecordAttempts),
+            () => Assert.Empty(_webhookEvents.Recorded));
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadSame_ReturnsDuplicate()
+    {
+        var payment = SeedPayment();
+        var request = Request(payment.Id, ProviderPaymentStatus.Succeeded);
+        LoseRaceTo(new ProcessedWebhookEvent(
+            request.EventId,
+            payment.Id,
+            WebhookPayloadHash.Compute(payment.Id, request.Status)));
 
         var result = await _useCase.ExecuteAsync(request, CancellationToken.None);
 
@@ -237,6 +285,20 @@ public sealed class ProcessProviderWebhookUseCaseTests
 
         _payments.Added.Add(payment);
         return payment;
+    }
+
+    // Simulates a concurrent request that saved winnerEvent after this request's first read:
+    // the first read finds nothing, the save fails on the unique key, and only then the winner's event is stored.
+    private void LoseRaceTo(ProcessedWebhookEvent winnerEvent)
+    {
+        _webhookEvents.RecordResults.Enqueue(WebhookRecordResult.DuplicateEvent);
+        _webhookEvents.BeforeResultReturned = recordResult =>
+        {
+            if (recordResult == WebhookRecordResult.DuplicateEvent)
+            {
+                _webhookEvents.Stored.Add(winnerEvent);
+            }
+        };
     }
 
     private ProcessedWebhookEvent StoredEventForOtherPayment(ProviderWebhookRequest request)

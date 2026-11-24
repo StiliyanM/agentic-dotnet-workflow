@@ -1,0 +1,76 @@
+diff --git a/runs/008-concurrent-webhook-mismatch-warning/agents/04-implementer.md b/runs/008-concurrent-webhook-mismatch-warning/agents/04-implementer.md
+new file mode 100644
+index 0000000..9fb1ebc
+--- /dev/null
++++ b/runs/008-concurrent-webhook-mismatch-warning/agents/04-implementer.md
+@@ -0,0 +1,30 @@
++## Implementer report: spec 008-concurrent-webhook-mismatch-warning
++
++All checks pass. The unit tests (90 of 90) and the integration tests (94 of 94) pass, with no skipped tests.
++
++### Files changed
++I changed one file, as the plan says:
++- C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Application\Webhooks\ProcessProviderWebhookUseCase.cs
++
++### What the change does
++- **Fix:** when `RecordAsync` returns `WebhookRecordResult.DuplicateEvent`, the use case now reads the stored event again with `webhookEvents.FindAsync(request.EventId, ...)` and compares its payload hash with the request:
++  - A different hash gives `DuplicatePayloadMismatch`. The endpoint then logs the existing warning once, from R2 only (E1).
++  - The same hash gives `Duplicate`.
++  - No stored event, or an event without a hash (stored before spec 003), gives `Duplicate` (F1 in the plan, and the contract for events without a hash).
++- **Refactor:** the hash compare is now in one private static method, `ToDuplicateResult(ProcessedWebhookEvent storedEvent, string hash)`. The first read and the read after the failure both use it.
++- **No change** to the repository, the endpoint, the warning text, level or category, the schema, or any public type or signature.
++- **Did not touch:** `tests/` and `AgenticPayments.slnx`. I did not commit.
++
++### Test result
++I ran these checks in this order:
++- `bash scripts/verify.sh build unit integration`:
++  - build passed with 0 warnings and 0 errors.
++  - unit: total 90, passed 90.
++  - integration: total 94, passed 94, including C3–C6.
++  - The output is in `artifacts/verify/unit.trx` and `artifacts/verify/integration.trx`.
++- `bash scripts/verify.sh format`: passed.
++
++My first run of `verify.sh build unit integration` ran on the old code and failed 2 unit tests. That was because my first edit attempt (a Python script) did not run, since Python was not available. I then made the change with the Edit tool and ran the checks again. The results above are from that second run.
++
++### Test problems
++None. No WRONG TEST and no DECISION CONFLICT. The change follows E1–E3 and the spec's "Contract that does not change".
+diff --git a/src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs b/src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs
+index 6bf3885..32f98b5 100644
+--- a/src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs
++++ b/src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs
+@@ -31,10 +31,7 @@ public sealed class ProcessProviderWebhookUseCase(
+             var storedEvent = await webhookEvents.FindAsync(request.EventId, cancellationToken);
+             if (storedEvent is not null)
+             {
+-                // Events stored before spec 003 have no hash; they count as duplicates without a compare.
+-                return storedEvent.PayloadHash is null || storedEvent.PayloadHash == hash
+-                    ? ProviderWebhookResult.Duplicate()
+-                    : ProviderWebhookResult.DuplicatePayloadMismatch();
++                return ToDuplicateResult(storedEvent, hash);
+             }
+ 
+             var payment = await payments.FindAsync(request.PaymentId, cancellationToken);
+@@ -54,7 +51,9 @@ public sealed class ProcessProviderWebhookUseCase(
+                 case WebhookRecordResult.Recorded:
+                     return applied ? ProviderWebhookResult.Processed() : ProviderWebhookResult.Ignored();
+                 case WebhookRecordResult.DuplicateEvent:
+-                    return ProviderWebhookResult.Duplicate();
++                    // A concurrent request saved this event id after the first read; compare with its payload.
++                    var winnerEvent = await webhookEvents.FindAsync(request.EventId, cancellationToken);
++                    return winnerEvent is null ? ProviderWebhookResult.Duplicate() : ToDuplicateResult(winnerEvent, hash);
+                 case WebhookRecordResult.PaymentChanged:
+                     // Another event changed the payment after it was loaded; evaluate this event again on fresh data.
+                     continue;
+@@ -67,6 +66,12 @@ public sealed class ProcessProviderWebhookUseCase(
+             $"Webhook event {request.EventId} could not be recorded after {MaxAttempts} attempts because the payment kept changing.");
+     }
+ 
++    // Events stored before spec 003 have no hash; they count as duplicates without a compare.
++    private static ProviderWebhookResult ToDuplicateResult(ProcessedWebhookEvent storedEvent, string hash) =>
++        storedEvent.PayloadHash is null || storedEvent.PayloadHash == hash
++            ? ProviderWebhookResult.Duplicate()
++            : ProviderWebhookResult.DuplicatePayloadMismatch();
++
+     private static PaymentStatus ToPaymentStatus(ProviderPaymentStatus status) => status switch
+     {
+         ProviderPaymentStatus.Succeeded => PaymentStatus.Succeeded,

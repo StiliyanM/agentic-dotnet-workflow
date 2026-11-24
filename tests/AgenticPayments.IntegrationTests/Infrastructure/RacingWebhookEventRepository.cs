@@ -14,13 +14,9 @@ public sealed class RacingWebhookEventRepository(IWebhookEventRepository inner, 
     public Task<WebhookRecordResult> RecordAsync(
         ProcessedWebhookEvent webhookEvent,
         Payment payment,
-        CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(webhookEvent);
-
-        return coordinator.RecordInOrderAsync(
-            webhookEvent.EventId,
+        CancellationToken cancellationToken) =>
+        coordinator.RecordInOrderAsync(
+            webhookEvent,
             () => inner.RecordAsync(webhookEvent, payment, cancellationToken),
             cancellationToken);
-    }
 }

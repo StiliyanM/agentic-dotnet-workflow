@@ -1,0 +1,50 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  AgenticPayments.Domain -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Domain\bin\Debug\net10.0\AgenticPayments.Domain.dll
+  AgenticPayments.Application -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Application\bin\Debug\net10.0\AgenticPayments.Application.dll
+  AgenticPayments.Infrastructure -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Infrastructure\bin\Debug\net10.0\AgenticPayments.Infrastructure.dll
+  AgenticPayments.Api -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Api\bin\Debug\net10.0\AgenticPayments.Api.dll
+  AgenticPayments.IntegrationTests -> C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll
+Test run for C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\bin\Debug\net10.0\AgenticPayments.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:09.92]     AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdOtherPayment_KeepsOtherPaymentPendingAndLogsOneWarning [FAIL]
+[xUnit.net 00:00:09.99]     AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(firstSavedStatus: "succeeded", otherStatus: "failed", expectedStatus: Succeeded) [FAIL]
+[xUnit.net 00:00:10.05]     AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(firstSavedStatus: "failed", otherStatus: "succeeded", expectedStatus: Failed) [FAIL]
+  Failed AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdOtherPayment_KeepsOtherPaymentPendingAndLogsOneWarning [72 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   0
+  Stack Trace:
+     at AgenticPayments.IntegrationTests.ProviderWebhookTests.<>c__DisplayClass33_0.<Webhook_ConcurrentSameEventIdOtherPayment_KeepsOtherPaymentPendingAndLogsOneWarning>b__8() in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 585
+--- End of stack trace from previous location ---
+   at AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdOtherPayment_KeepsOtherPaymentPendingAndLogsOneWarning() in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 577
+   at AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdOtherPayment_KeepsOtherPaymentPendingAndLogsOneWarning() in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 577
+--- End of stack trace from previous location ---
+  Failed AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(firstSavedStatus: "succeeded", otherStatus: "failed", expectedStatus: Succeeded) [67 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   0
+  Stack Trace:
+     at AgenticPayments.IntegrationTests.ProviderWebhookTests.<>c__DisplayClass32_1.<Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning>b__6() in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 552
+--- End of stack trace from previous location ---
+   at AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(String firstSavedStatus, String otherStatus, PaymentStatus expectedStatus) in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 546
+   at AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(String firstSavedStatus, String otherStatus, PaymentStatus expectedStatus) in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 546
+--- End of stack trace from previous location ---
+  Failed AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(firstSavedStatus: "failed", otherStatus: "succeeded", expectedStatus: Failed) [55 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   0
+  Stack Trace:
+     at AgenticPayments.IntegrationTests.ProviderWebhookTests.<>c__DisplayClass32_1.<Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning>b__6() in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 552
+--- End of stack trace from previous location ---
+   at AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(String firstSavedStatus, String otherStatus, PaymentStatus expectedStatus) in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 546
+   at AgenticPayments.IntegrationTests.ProviderWebhookTests.Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(String firstSavedStatus, String otherStatus, PaymentStatus expectedStatus) in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.IntegrationTests\ProviderWebhookTests.cs:line 546
+--- End of stack trace from previous location ---
+Results File: C:\Users\Stiliyan\source\repos\ApmPlayground\runs\008-concurrent-webhook-mismatch-warning\verify\03-before-fix\integration\integration.trx
+
+Failed!  - Failed:     3, Passed:    91, Skipped:     0, Total:    94, Duration: 5 s - AgenticPayments.IntegrationTests.dll (net10.0)
+verify: integration.trx: total=94 executed=94 passed=91
+verify: 3 test(s) did not run and pass (failed, skipped or not executed)

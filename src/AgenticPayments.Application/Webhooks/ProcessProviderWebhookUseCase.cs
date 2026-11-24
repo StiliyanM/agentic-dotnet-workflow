@@ -31,10 +31,7 @@ public sealed class ProcessProviderWebhookUseCase(
             var storedEvent = await webhookEvents.FindAsync(request.EventId, cancellationToken);
             if (storedEvent is not null)
             {
-                // Events stored before spec 003 have no hash; they count as duplicates without a compare.
-                return storedEvent.PayloadHash is null || storedEvent.PayloadHash == hash
-                    ? ProviderWebhookResult.Duplicate()
-                    : ProviderWebhookResult.DuplicatePayloadMismatch();
+                return ToDuplicateResult(storedEvent, hash);
             }
 
             var payment = await payments.FindAsync(request.PaymentId, cancellationToken);
@@ -54,7 +51,9 @@ public sealed class ProcessProviderWebhookUseCase(
                 case WebhookRecordResult.Recorded:
                     return applied ? ProviderWebhookResult.Processed() : ProviderWebhookResult.Ignored();
                 case WebhookRecordResult.DuplicateEvent:
-                    return ProviderWebhookResult.Duplicate();
+                    // A concurrent request saved this event id after the first read; compare with its payload.
+                    var winnerEvent = await webhookEvents.FindAsync(request.EventId, cancellationToken);
+                    return winnerEvent is null ? ProviderWebhookResult.Duplicate() : ToDuplicateResult(winnerEvent, hash);
                 case WebhookRecordResult.PaymentChanged:
                     // Another event changed the payment after it was loaded; evaluate this event again on fresh data.
                     continue;
@@ -66,6 +65,12 @@ public sealed class ProcessProviderWebhookUseCase(
         throw new InvalidOperationException(
             $"Webhook event {request.EventId} could not be recorded after {MaxAttempts} attempts because the payment kept changing.");
     }
+
+    // Events stored before spec 003 have no hash; they count as duplicates without a compare.
+    private static ProviderWebhookResult ToDuplicateResult(ProcessedWebhookEvent storedEvent, string hash) =>
+        storedEvent.PayloadHash is null || storedEvent.PayloadHash == hash
+            ? ProviderWebhookResult.Duplicate()
+            : ProviderWebhookResult.DuplicatePayloadMismatch();
 
     private static PaymentStatus ToPaymentStatus(ProviderPaymentStatus status) => status switch
     {
