@@ -442,7 +442,7 @@ public sealed class ProviderWebhookTests(ApiFactory factory) : IAsyncLifetime
             () => Assert.Equal(PaymentStatus.Pending, otherPaymentStatus),
             () => Assert.Equal(paymentId, storedEvent.PaymentId),
             () => Assert.Equal(WebhookPayloadHash.Compute(paymentId, ProviderPaymentStatus.Succeeded), storedEvent.PayloadHash),
-            () => Assert.Contains(eventId, Assert.Single(warnings), StringComparison.Ordinal));
+            () => Assert.Equal(MismatchWarning(eventId), Assert.Single(warnings)));
     }
 
     [Fact]
@@ -490,16 +490,8 @@ public sealed class ProviderWebhookTests(ApiFactory factory) : IAsyncLifetime
         var paymentId = await SeedPaymentAsync();
         var firstEventId = NewEventId();
         var otherEventId = NewEventId();
-        var coordinator = new WebhookRaceCoordinator(firstEventId);
-        await using var raceFactory = factory.WithWebHostBuilder(builder => builder.ConfigureTestServices(services =>
-        {
-            services.AddScoped<IPaymentRepository>(provider => new RacingPaymentRepository(
-                new PaymentRepository(provider.GetRequiredService<AppDbContext>()),
-                coordinator));
-            services.AddScoped<IWebhookEventRepository>(provider => new RacingWebhookEventRepository(
-                new WebhookEventRepository(provider.GetRequiredService<AppDbContext>()),
-                coordinator));
-        }));
+        var coordinator = new WebhookRaceCoordinator(e => e.EventId == firstEventId);
+        await using var raceFactory = WithRace(coordinator, new CapturingLoggerProvider());
         using var client = raceFactory.CreateClient();
         var firstBody = Body(firstEventId, paymentId, firstSavedStatus);
         var otherBody = Body(otherEventId, paymentId, otherStatus);
@@ -522,6 +514,105 @@ public sealed class ProviderWebhookTests(ApiFactory factory) : IAsyncLifetime
             () => Assert.Equal(expectedStatus, paymentStatus),
             () => Assert.Equal(1, firstEventCount),
             () => Assert.Equal(1, otherEventCount));
+    }
+
+    // C3 and C4 of spec 008: the same event id with another status. Both requests read before either one saves.
+    [Theory]
+    [InlineData("succeeded", "failed", PaymentStatus.Succeeded)]
+    [InlineData("failed", "succeeded", PaymentStatus.Failed)]
+    public async Task Webhook_ConcurrentSameEventIdDifferentStatus_FirstSavedWinsAndLogsOneWarning(
+        string firstSavedStatus,
+        string otherStatus,
+        PaymentStatus expectedStatus)
+    {
+        var paymentId = await SeedPaymentAsync();
+        var eventId = NewEventId();
+        var firstHash = WebhookPayloadHash.Compute(
+            paymentId,
+            Enum.Parse<ProviderPaymentStatus>(firstSavedStatus, ignoreCase: true));
+        // Both requests have the same event id, so the payload hash selects the request that saves first.
+        var coordinator = new WebhookRaceCoordinator(e => e.PayloadHash == firstHash);
+        var logs = new CapturingLoggerProvider();
+        await using var raceFactory = WithRace(coordinator, logs);
+        using var client = raceFactory.CreateClient();
+        var firstBody = Body(eventId, paymentId, firstSavedStatus);
+        var otherBody = Body(eventId, paymentId, otherStatus);
+
+        var results = await PostConcurrentlyAsync(client, firstBody, otherBody);
+
+        var paymentStatus = await ReadPaymentStatusAsync(paymentId);
+        var storedEvent = await FindSingleEventAsync(eventId);
+        var mismatchWarningCount = MismatchWarningCount(logs, eventId);
+        var warningCount = WarningCountForEvent(logs, eventId);
+        Assert.Multiple(
+            () => Assert.All(results, r => Assert.Equal(HttpStatusCode.OK, r.StatusCode)),
+            () => Assert.All(results, r => Assert.Empty(r.Content)),
+            () => Assert.Equal(expectedStatus, paymentStatus),
+            () => Assert.Equal(paymentId, storedEvent.PaymentId),
+            () => Assert.Equal(firstHash, storedEvent.PayloadHash),
+            () => Assert.Equal(1, mismatchWarningCount),
+            () => Assert.Equal(1, warningCount));
+    }
+
+    // C5 of spec 008: the same event id for another payment. Only the unique key rejects the second save.
+    [Fact]
+    public async Task Webhook_ConcurrentSameEventIdOtherPayment_KeepsOtherPaymentPendingAndLogsOneWarning()
+    {
+        var paymentId = await SeedPaymentAsync();
+        var otherPaymentId = await SeedPaymentAsync();
+        var eventId = NewEventId();
+        var firstHash = WebhookPayloadHash.Compute(paymentId, ProviderPaymentStatus.Succeeded);
+        var coordinator = new WebhookRaceCoordinator(e => e.PayloadHash == firstHash);
+        var logs = new CapturingLoggerProvider();
+        await using var raceFactory = WithRace(coordinator, logs);
+        using var client = raceFactory.CreateClient();
+        var firstBody = Body(eventId, paymentId, "succeeded");
+        var otherBody = Body(eventId, otherPaymentId, "succeeded");
+
+        var results = await PostConcurrentlyAsync(client, firstBody, otherBody);
+
+        var paymentStatus = await ReadPaymentStatusAsync(paymentId);
+        var otherPaymentStatus = await ReadPaymentStatusAsync(otherPaymentId);
+        var storedEvent = await FindSingleEventAsync(eventId);
+        var otherPaymentEventCount = await CountEventsForPaymentAsync(otherPaymentId);
+        var mismatchWarningCount = MismatchWarningCount(logs, eventId);
+        var warningCount = WarningCountForEvent(logs, eventId);
+        Assert.Multiple(
+            () => Assert.All(results, r => Assert.Equal(HttpStatusCode.OK, r.StatusCode)),
+            () => Assert.All(results, r => Assert.Empty(r.Content)),
+            () => Assert.Equal(PaymentStatus.Succeeded, paymentStatus),
+            () => Assert.Equal(PaymentStatus.Pending, otherPaymentStatus),
+            () => Assert.Equal(paymentId, storedEvent.PaymentId),
+            () => Assert.Equal(firstHash, storedEvent.PayloadHash),
+            () => Assert.Equal(0, otherPaymentEventCount),
+            () => Assert.Equal(1, mismatchWarningCount),
+            () => Assert.Equal(1, warningCount));
+    }
+
+    // C6 of spec 008: the same payload twice. Guard: a race between equal payloads logs no warning.
+    [Fact]
+    public async Task Webhook_ConcurrentSameEventIdSamePayload_ProcessesOnceAndLogsNoWarning()
+    {
+        var paymentId = await SeedPaymentAsync();
+        var eventId = NewEventId();
+        // Both payloads are equal, so the request that reaches the save first is R1; the other one waits.
+        var coordinator = new WebhookRaceCoordinator(_ => true);
+        var logs = new CapturingLoggerProvider();
+        await using var raceFactory = WithRace(coordinator, logs);
+        using var client = raceFactory.CreateClient();
+        var body = Body(eventId, paymentId, "succeeded");
+
+        var results = await PostConcurrentlyAsync(client, body, body);
+
+        var paymentStatus = await ReadPaymentStatusAsync(paymentId);
+        var eventCount = await CountEventsAsync(eventId);
+        var warningCount = WarningCountForEvent(logs, eventId);
+        Assert.Multiple(
+            () => Assert.All(results, r => Assert.Equal(HttpStatusCode.OK, r.StatusCode)),
+            () => Assert.All(results, r => Assert.Empty(r.Content)),
+            () => Assert.Equal(PaymentStatus.Succeeded, paymentStatus),
+            () => Assert.Equal(1, eventCount),
+            () => Assert.Equal(0, warningCount));
     }
 
     [Fact]
@@ -730,6 +821,56 @@ public sealed class ProviderWebhookTests(ApiFactory factory) : IAsyncLifetime
     // A host that shares the collection's database and also writes its log entries to the given provider.
     private WebApplicationFactory<Program> WithCapturedLogs(CapturingLoggerProvider logs) =>
         factory.WithWebHostBuilder(builder => builder.ConfigureLogging(logging => logging.AddProvider(logs)));
+
+    // A host that shares the collection's database, forces two requests to overlap at the persistence boundary
+    // through the coordinator, and writes its log entries to the given provider.
+    private WebApplicationFactory<Program> WithRace(WebhookRaceCoordinator coordinator, CapturingLoggerProvider logs) =>
+        factory.WithWebHostBuilder(builder => builder
+            .ConfigureLogging(logging => logging.AddProvider(logs))
+            .ConfigureTestServices(services =>
+            {
+                services.AddScoped<IPaymentRepository>(provider => new RacingPaymentRepository(
+                    new PaymentRepository(provider.GetRequiredService<AppDbContext>()),
+                    coordinator));
+                services.AddScoped<IWebhookEventRepository>(provider => new RacingWebhookEventRepository(
+                    new WebhookEventRepository(provider.GetRequiredService<AppDbContext>()),
+                    coordinator));
+            }));
+
+    // Sends both bodies at the same time and reads each response before it is disposed.
+    private static async Task<(HttpStatusCode StatusCode, string Content)[]> PostConcurrentlyAsync(
+        HttpClient client,
+        string firstBody,
+        string otherBody)
+    {
+        var responses = await Task.WhenAll(
+            PostWebhookAsync(client, firstBody, [Sign(firstBody, ApiFactory.WebhookSecret)]),
+            PostWebhookAsync(client, otherBody, [Sign(otherBody, ApiFactory.WebhookSecret)]));
+        try
+        {
+            return await Task.WhenAll(responses.Select(async r => (r.StatusCode, await r.Content.ReadAsStringAsync())));
+        }
+        finally
+        {
+            foreach (var response in responses)
+            {
+                response.Dispose();
+            }
+        }
+    }
+
+    // Counts the mismatch warnings for one event by their exact text, so that a second warning for the same conflict
+    // and a warning with another text both fail the test.
+    private static int MismatchWarningCount(CapturingLoggerProvider logs, string eventId) =>
+        WebhookWarnings(logs).Count(m => string.Equals(m, MismatchWarning(eventId), StringComparison.Ordinal));
+
+    // Counts all webhook warnings that name the event, whatever their text.
+    private static int WarningCountForEvent(CapturingLoggerProvider logs, string eventId) =>
+        WebhookWarnings(logs).Count(m => m.Contains(eventId, StringComparison.Ordinal));
+
+    // The rendered text of the existing mismatch warning; spec 008 keeps it unchanged.
+    private static string MismatchWarning(string eventId) =>
+        $"Webhook event {eventId} was received again with a different payload. It was not processed again.";
 
     private static List<string> WebhookWarnings(CapturingLoggerProvider logs) =>
     [

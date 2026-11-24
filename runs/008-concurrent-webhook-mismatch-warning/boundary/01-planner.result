@@ -1,0 +1,6 @@
+spec=008-concurrent-webhook-mismatch-warning
+step=01-planner
+role=planner
+allowed=plans/008-concurrent-webhook-mismatch-warning.md
+changed: plans/008-concurrent-webhook-mismatch-warning.md
+outcome=PASS

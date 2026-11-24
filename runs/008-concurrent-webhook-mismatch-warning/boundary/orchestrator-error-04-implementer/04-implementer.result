@@ -1,0 +1,8 @@
+spec=008-concurrent-webhook-mismatch-warning
+step=04-implementer
+role=implementer
+allowed=src/* AgenticPayments.slnx
+changed: runs/008-concurrent-webhook-mismatch-warning/agents/04-implementer.md
+changed: src/AgenticPayments.Application/Webhooks/ProcessProviderWebhookUseCase.cs
+violation: path not allowed for implementer: runs/008-concurrent-webhook-mismatch-warning/agents/04-implementer.md
+outcome=FAIL

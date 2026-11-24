@@ -1,0 +1,34 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  AgenticPayments.Domain -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Domain\bin\Debug\net10.0\AgenticPayments.Domain.dll
+  AgenticPayments.Application -> C:\Users\Stiliyan\source\repos\ApmPlayground\src\AgenticPayments.Application\bin\Debug\net10.0\AgenticPayments.Application.dll
+  AgenticPayments.UnitTests -> C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\bin\Debug\net10.0\AgenticPayments.UnitTests.dll
+Test run for C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\bin\Debug\net10.0\AgenticPayments.UnitTests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.64]     AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch(difference: "other status") [FAIL]
+[xUnit.net 00:00:00.65]     AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch(difference: "other paymentId") [FAIL]
+  Failed AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch(difference: "other status") [5 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: DuplicatePayloadMismatch
+Actual:   Duplicate
+  Stack Trace:
+     at AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.<>c__DisplayClass11_0.<ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch>b__0() in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\Webhooks\ProcessProviderWebhookUseCaseTests.cs:line 169
+--- End of stack trace from previous location ---
+   at AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch(String difference) in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\Webhooks\ProcessProviderWebhookUseCaseTests.cs:line 168
+--- End of stack trace from previous location ---
+  Failed AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch(difference: "other paymentId") [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: DuplicatePayloadMismatch
+Actual:   Duplicate
+  Stack Trace:
+     at AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.<>c__DisplayClass11_0.<ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch>b__0() in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\Webhooks\ProcessProviderWebhookUseCaseTests.cs:line 169
+--- End of stack trace from previous location ---
+   at AgenticPayments.UnitTests.Webhooks.ProcessProviderWebhookUseCaseTests.ExecuteAsync_RecordReturnsDuplicateEventStoredPayloadDiffers_ReturnsDuplicatePayloadMismatch(String difference) in C:\Users\Stiliyan\source\repos\ApmPlayground\tests\AgenticPayments.UnitTests\Webhooks\ProcessProviderWebhookUseCaseTests.cs:line 168
+--- End of stack trace from previous location ---
+Results File: C:\Users\Stiliyan\source\repos\ApmPlayground\runs\008-concurrent-webhook-mismatch-warning\verify\03-before-fix\unit\unit.trx
+
+Failed!  - Failed:     2, Passed:    88, Skipped:     0, Total:    90, Duration: 243 ms - AgenticPayments.UnitTests.dll (net10.0)
+verify: unit.trx: total=90 executed=90 passed=88
+verify: 2 test(s) did not run and pass (failed, skipped or not executed)

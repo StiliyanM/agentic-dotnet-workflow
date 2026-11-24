@@ -309,3 +309,40 @@ Not a spec run. The user asked for these changes directly and lifted the deny ru
 | `28a60e6` | Before-fix step: when a spec lists cases that must fail before the fix, the orchestrator runs build and format, unit and integration against the current code after the test-writer. A must-fail case that passes goes to the test-writer (a loop). The test-writer makes these tests compile against the current code or reports `PLAN GAP`. "Before the fix" section in the evidence format. | Specs 002 and 007: two tests could not fail (the "two header values" row; `Assert.Empty(_records.Saved)`, still in main). |
 
 Verification of this change: `bash scripts/verify.sh all --results artifacts/maintenance-2026-11-24` exited 0 (unit 87/87, integration 90/90, boundary tests 21 cases, evidence links 132 checked and 0 missing). The first attempt exited 1 because Docker was not running; it passed after Docker started. The output is not committed, because it is not spec run evidence.
+
+## 008-concurrent-webhook-mismatch-warning (2026-11-24)
+
+- **Status:** PASSED. Committed on `spec/008-concurrent-webhook-mismatch-warning` and merged into `main`.
+- **Loops:** 3
+- **Final result:** 90 unit tests and 94 integration tests pass (step 12-verify, exit status 0); C3, C4, C5 and C6 pass. Build has 0 warnings. Format check passes.
+- **Before the fix (step 03):** C5 failed as required; C3 and C4 also failed (allowed by E3); C6 passed (guard). First run of the before-fix step.
+- **Evidence:** [runs/008-concurrent-webhook-mismatch-warning/evidence.md](008-concurrent-webhook-mismatch-warning/evidence.md).
+
+### Problems that each gate found
+
+| Gate | Loop 0 | Loop 1 | Loop 2 | Loop 3 |
+|---|---|---|---|---|
+| Preflight | None | – | – | – |
+| Boundary checks | 04-implementer: first check FAIL on the orchestrator's own report file (saved before the check); the second check PASS, 1 path. Not an agent violation, not a loop (see corrections.md) | None | None | None |
+| Test-writer | No PLAN GAP | – | – | – |
+| Before-fix step | C5 fails (expected); C3, C4 fail (allowed); C6 passes | – | – | – |
+| Build / format / test | None (90/90, 94/94) | None (90/90, 94/94) | None (90/90, 94/94) | – |
+| Test-auditor | FAIL: 1 correctness (the warning count did not check the warning text, so a different text would pass). Sent to the test-writer. | PASS (2 optional) | – | – |
+| Reviewer | – | CHANGES: 1 style item in a test helper (`RacingWebhookEventRepository.RecordAsync` must be expression-bodied). Sent to the test-writer. | APPROVE (3 optional) | – |
+| Documentation review | – | – | CHANGES: "the tests cover two copies, not three or more" was false (a 5-copy test exists). Sent to the documenter. | APPROVE (3 optional) |
+
+### Decisions on unclear specs
+
+From `plans/008-concurrent-webhook-mismatch-warning.md`, section 10:
+
+- E1, E2, E3: user decisions in the spec, followed. No DECISION CONFLICT.
+- FLAGGED F1: if the read after the unique-key failure finds no stored event, the result is `Duplicate` (200, no warning). Not reachable with the current code; the alternative (500) would break required behavior 5.
+- Not flagged: R1 is selected by payload hash in C3–C5 and by first arrival (atomic claim) in C6.
+- Not flagged: fix in the use case (a read after `DuplicateEvent`), no new `WebhookRecordResult` value, no schema change.
+
+### Open items (optional, not done)
+
+- Test-auditor optional: the C6 `eventCount == 1` check cannot fail (unique key); C6 could also check the stored hash.
+- Reviewer optional: a code comment on why a missing event after `DuplicateEvent` falls back to `Duplicate`; the unit-test comment refers to "plan 008 decision F1" (plans are not code); string-label theory in the unit test (kept to match the spec 003 theory); unused `CapturingLoggerProvider` in the spec 003 race test.
+- Documentation optional: the headings "Changed resends are not always logged" / "No warning for some changed resends" now apply only to events recorded before spec 003; "at most the first saved copy changes a payment"; older README typo "must retry, When".
+- Orchestrator process: the report-before-check error happened again (003 01-planner, now 008 04-implementer). The helper now runs the check first; consider making this part of the procedure.

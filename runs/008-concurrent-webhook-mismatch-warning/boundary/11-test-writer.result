@@ -1,0 +1,6 @@
+spec=008-concurrent-webhook-mismatch-warning
+step=11-test-writer
+role=test-writer
+allowed=tests/*
+changed: tests/AgenticPayments.IntegrationTests/Infrastructure/RacingWebhookEventRepository.cs
+outcome=PASS
