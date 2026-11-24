@@ -298,3 +298,14 @@ From `plans/007-create-payment-idempotency.md`, section 10:
 - Reviewer optional: the max-length message repeats `IdempotencyRecord.MaxKeyLength`; the use case depends on the general `IValidator<string>`; `IsSuccess` duplicates `Outcome`; `IdempotencyKeyHeader` could be private.
 - Documentation optional: README line 188 joins two sentences with a comma and mixes the pre-007 limitation into the concurrency bullet; the 409 row in payments-api.md names only the first-use race.
 - Orchestrator process: the reviewer agent does not read `runs/`, so the orchestrator compared the README check claim with `verify/07-verify/` itself.
+
+## Maintenance after spec 007 (2026-11-24)
+
+Not a spec run. The user asked for these changes directly and lifted the deny rules by hand for this change. The rules were restored at the end.
+
+| Commit | Change | Finding |
+|---|---|---|
+| `519f45a` | Rule 4: an agent must not go against a decision recorded in the spec or against its "Contract that does not change". It reports `DECISION CONFLICT`, and the run stops with `STOPPED: decision conflict` (not a loop). The planner does not mark such a choice `FLAGGED`. The reviewer checks each spec decision; a difference is a required item. | Spec 003: user decision D5 says a changed duplicate logs a warning. The planner decided that a concurrent duplicate logs no warning (FLAGGED), the reviewer reported it as optional, and it was merged. |
+| `28a60e6` | Before-fix step: when a spec lists cases that must fail before the fix, the orchestrator runs build and format, unit and integration against the current code after the test-writer. A must-fail case that passes goes to the test-writer (a loop). The test-writer makes these tests compile against the current code or reports `PLAN GAP`. "Before the fix" section in the evidence format. | Specs 002 and 007: two tests could not fail (the "two header values" row; `Assert.Empty(_records.Saved)`, still in main). |
+
+Verification of this change: `bash scripts/verify.sh all --results artifacts/maintenance-2026-11-24` exited 0 (unit 87/87, integration 90/90, boundary tests 21 cases, evidence links 132 checked and 0 missing). The first attempt exited 1 because Docker was not running; it passed after Docker started. The output is not committed, because it is not spec run evidence.
