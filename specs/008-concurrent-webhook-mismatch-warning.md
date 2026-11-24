@@ -1,7 +1,5 @@
 # 008-concurrent-webhook-mismatch-warning
 
-> **DRAFT.** Do not run this spec. The user must approve the open decisions and put this file in `specs/`.
-
 Two requests with the same `eventId` and different payloads can arrive at the same time. Decision D5 of spec 003 requires a warning for a different payload. When both requests read before either one saves, the warning can be missing.
 
 ## Problem
@@ -55,7 +53,7 @@ The sequential cases A4 and B4 of spec 003 and their tests must still pass.
 
 1. **Forced overlap.** Each test for C3–C6 forces the overlap at the persistence boundary. `Task.WhenAll` alone is not enough. The current `WebhookRaceCoordinator` (`tests/AgenticPayments.IntegrationTests/Infrastructure/WebhookRaceCoordinator.cs`) selects the first request by `eventId`. In C3–C6 both requests have the same `eventId`, so the test needs another way to select R1 (for example the payload). The test-writer chooses it.
 2. **Exactly one warning.** The test counts the mismatch warnings for E in the capturing logger. A check that "a warning exists" is not enough.
-3. **Failing evidence before the fix.** After the test-writer step and before the implementer step, the orchestrator runs `bash scripts/verify.sh build format unit integration --results runs/008-concurrent-webhook-mismatch-warning/verify/<step>-before-fix`. It records the command, the exit status and the names of the failing tests from `integration.trx` in `evidence.md`. This run is expected to fail. It is not a failed gate and not a loop.
+3. **Failing evidence before the fix.** The orchestrator runs the before-fix step (`CLAUDE.md`). Expected results:
    - C5 must fail in this run. The current code cannot log the warning in C5.
    - C3 and C4 can pass or fail before the fix. The result depends on which save failure EF Core reports first. Record the actual result. Do not repeat the run to get a different result.
    - C6 is a guard. It can pass before the fix.
@@ -85,4 +83,10 @@ Implementation details are agent decisions inside this contract. Examples: a new
 
 ## Status of this spec
 
-**DRAFT.** Open decisions: E1, E2, E3.
+**Ready.** The user made the decisions on 2026-11-24:
+
+| # | Decision |
+|---|---|
+| E1 | R2, the request whose save fails, logs the warning (the recommendation). |
+| E2 | The before-fix run is a standing step for bug-fix specs in `CLAUDE.md`, added before this run (the alternative, not the recommendation). A test that could not fail was found twice (spec 002, "two header values"; spec 007, `Assert.Empty(_records.Saved)`). This spec is the first run of the step. |
+| E3 | C3 and C4 do not have to fail before the fix (the recommendation). |
