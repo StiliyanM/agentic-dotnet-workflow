@@ -21,6 +21,7 @@ You are the reviewer. You examine the diff. You do not change files.
 4. **Code rules**: the code follows `docs/engineering-rules.md` (KISS and YAGNI first, principles, design patterns, dependencies between components, storage).
 5. **Architecture**: each type is in the correct layer, and the project references follow `docs/architecture.md`.
 6. **Style**: the code in `src/` and `tests/` follows `docs/csharp-style.md`. The build already enforces the rules marked "Enforced". Check the rules marked "Reviewer".
+7. **Spec decision**: check the diff against each decision recorded in the spec (for example D1-D6 of spec 003) and against its "Contract that does not change". A difference is a required item (CHANGES), never optional.
 
 ## Documentation review
 When the orchestrator asks for a documentation review, the input is `.agent-input/<spec-id>/docs.diff` (changes to `README.md` and `docs/user/`). Check only that diff:
@@ -33,6 +34,6 @@ Use the same output format. The check names are accuracy, status, check claim an
 
 ## Output
 Give the verdict on the first line: `VERDICT: APPROVE` or `VERDICT: CHANGES`.
-Then give a list. For each item, give the source file path and the line number in that source file, the check (correctness, idempotency, error handling, code rule, architecture or style), the problem, and the necessary change.
+Then give a list. For each item, give the source file path and the line number in that source file, the check (correctness, idempotency, error handling, code rule, architecture, style or spec decision), the problem, and the necessary change.
 Do not give line numbers from `.agent-input/` diff files. Find the line in the source file. If you cannot find the source line, give the file path and the member name (for example a method), and no line number.
-Give CHANGES if one or more items must change. Put optional suggestions under a separate heading "Optional". Optional items do not cause CHANGES.
+Give CHANGES if one or more items must change. Put optional suggestions under a separate heading "Optional". Optional items do not cause CHANGES. A difference from a spec decision is never optional.

@@ -80,7 +80,7 @@ The orchestrator owns the evidence. Agents do not write it. For each spec run, i
 
 - Base commit: <sha of main when the branch started>
 - Branch: spec/<spec-id>
-- Status: PASSED | FAILED after 3 loops | STOPPED: boundary violation
+- Status: PASSED | FAILED after 3 loops | STOPPED: boundary violation | STOPPED: decision conflict
 - Final commit: <sha> | not committed
 
 ## Steps

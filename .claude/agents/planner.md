@@ -26,6 +26,8 @@ Write `plans/<spec-id>.md` with these sections, in this sequence:
 9. **Implementation choices**: decisions that a client cannot see: types, classes, libraries, internal order of steps. Keep them separate from section 8.
 10. **Flagged decisions**: each decision in section 7 or 8 that the spec does not answer and that affects correctness or public behavior. Make a decision (do not ask questions), and mark it `FLAGGED` with the alternative and its effect. The orchestrator records these for the user.
 
+A choice that goes against a decision recorded in the spec (for example D1-D6 of spec 003) or against its "Contract that does not change" is not a flagged decision. Do not make it and do not mark it `FLAGGED`. Report `DECISION CONFLICT: <decision>: <reason>` at the end of your answer. The orchestrator stops the run.
+
 Keep the plan short. Do not write method bodies or test bodies.
 
 ## Code rules
