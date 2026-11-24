@@ -49,6 +49,18 @@ The check compares staged, unstaged and untracked files, HEAD, `.git/config` and
 
 See `docs/workflow.md` for what the checks do not cover.
 
+**Before-fix step.** When a spec lists cases that must fail before the fix, run a before-fix step after the test-writer and before the implementer. `<step>` is the number of this step, for example `03`. Run each command on its own, because `verify.sh` stops at the first failed check:
+1. `bash scripts/verify.sh build format --results runs/<id>/verify/<step>-before-fix`
+2. `bash scripts/verify.sh unit --results runs/<id>/verify/<step>-before-fix/unit`
+3. `bash scripts/verify.sh integration --results runs/<id>/verify/<step>-before-fix/integration`
+
+Expected: the listed cases fail. This is not a failed gate and not a loop.
+- A listed must-fail case passes: the test cannot catch the bug. Send it to the test-writer (a loop).
+- The build or format check fails: send it to the test-writer (a loop).
+- A case that the spec says may pass or fail: record the actual result. Do not repeat the run.
+
+Record the step in the "Before the fix" section of `evidence.md`. A spec without such a list works as now (rule 2: the build can fail after the test-writer).
+
 **Gates after the implementer.** Run `bash scripts/verify.sh build format unit integration --results runs/<id>/verify/<step>`. It stops at the first failed check. Record the command and its exit status in `evidence.md`.
 
 Problems in `src/` go to the implementer. Problems in `tests/` go to the test-writer.

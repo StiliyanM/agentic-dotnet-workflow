@@ -16,6 +16,7 @@ You are the test-writer. You write the tests before the production code exists.
 3. Write the tests that the plan lists and the tests for spec cases that the plan's signatures can express, in `tests/AgenticPayments.UnitTests` and `tests/AgenticPayments.IntegrationTests`.
 4. Use only the types and signatures in the plan. If a test needs a type or a signature that the plan does not have, do not add it. Report `PLAN UPDATE NEEDED: <type or signature>: <reason>`. The orchestrator sends it to the planner.
 5. Do not write production code in `src/`. Do not add stubs. The build can fail because the code does not exist yet. This is expected.
+   - Exception: when the spec lists cases that must fail before the fix, their tests must compile against the current code. The orchestrator runs them before the implementer, and they must fail. If that is not possible, report `PLAN GAP: <case>: <reason>`.
 6. Run `dotnet format whitespace --folder tests` to format the tests. This command does not need a build.
 7. At the end, list the test files and the test names that you added or changed, and each `PLAN GAP` and `PLAN UPDATE NEEDED`.
 

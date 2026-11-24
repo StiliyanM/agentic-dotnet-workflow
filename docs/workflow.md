@@ -96,6 +96,24 @@ The orchestrator owns the evidence. Agents do not write it. For each spec run, i
 |---|---|---|---|
 | 04-verify | `bash scripts/verify.sh build format unit integration --results runs/<spec-id>/verify/04-verify` | 0 | verify/04-verify/ |
 
+## Before the fix
+
+Only for a spec that lists cases that must fail before the fix. Otherwise write "Not needed".
+
+| Step | Command | Exit status | Output |
+|---|---|---|---|
+| 03-before-fix | `bash scripts/verify.sh build format --results runs/<spec-id>/verify/03-before-fix` | 0 | verify/03-before-fix/ |
+| 03-before-fix | `bash scripts/verify.sh unit --results runs/<spec-id>/verify/03-before-fix/unit` | 0 | verify/03-before-fix/unit/ |
+| 03-before-fix | `bash scripts/verify.sh integration --results runs/<spec-id>/verify/03-before-fix/integration` | 1 | verify/03-before-fix/integration/ |
+
+Failing tests (from the TRX files):
+- `<test name>` (integration/integration.trx)
+
+| Case | Expected | Actual |
+|---|---|---|
+| C5 | fail | fail |
+| C3 | pass or fail | pass |
+
 ## Findings and loops
 
 - Loop 1: test-auditor FAIL (<short reason>). Sent to the test-writer, because the problem is in a test.
